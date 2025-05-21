@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             Contact Me
           </a>
           <a 
-            href="/Manish_Chaudhari_Resume_Updated.pdf" // Assuming resume is in public folder
+            href="/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf" // Assuming resume is in public folder
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
