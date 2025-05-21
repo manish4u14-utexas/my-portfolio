@@ -24,7 +24,6 @@ function App() {
         <Contact />
         <footer className="text-center py-8 bg-slate-900 text-white">
           <p>&copy; {new Date().getFullYear()} Manish Chaudhari. All rights reserved.</p>
-          <p className="text-xs text-gray-500 mt-1">Design inspired by Varad Bhogayata</p>
         </footer>
       </main>
     </div>
