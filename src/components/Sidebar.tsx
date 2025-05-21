@@ -13,7 +13,7 @@ const Sidebar: React.FC = () => {
     { name: 'Education', icon: <GraduationCap size={20} />, href: '#education', id: 'education' },
     { name: 'Certifications', icon: <Award size={20} />, href: '#certifications', id: 'certifications' }, // Added Certifications
     { name: 'Contact', icon: <Mail size={20} />, href: '#contact', id: 'contact' },
-    { name: 'Resume', icon: <FileText size={20} />, href: '/Manish_Chaudhari_Resume_Updated.pdf', id: 'resume' } // Link to resume PDF
+    { name: 'Resume', icon: <FileText size={20} />, href: '/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf', id: 'resume' } // Link to resume PDF
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
