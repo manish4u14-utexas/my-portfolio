@@ -11,9 +11,9 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="flex min-h-screen bg-gray-100 font-sans">
+   <div className="flex min-h-screen bg-gray-100 font-sans w-full overflow-hidden">
       <Sidebar />
-      <main className="flex-1 md:pl-64"> {/* Adjust pl based on sidebar width, remove for mobile stack */}
+      <main className="flex-1 w-full md:pl-64"> {/* Adjust pl based on sidebar width */}
         <Hero />
         <About />
         <Experience />
