@@ -15,6 +15,15 @@ const Hero: React.FC = () => {
     >
       <div className="absolute inset-0 opacity-10 bg-grid-slate-700 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
       <div className="relative z-10">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8">
+          <div className="mb-6 md:mb-0">
+            <img 
+              src="/my-portfolio/profile-photo.jpg" 
+              alt="Manish Chaudhari" 
+              className="w-48 h-48 rounded-full border-4 border-sky-400 shadow-xl object-cover transition-all duration-500 hover:scale-105"
+            />
+        </div>
+        <div className="text-center md:text-left">
         <h1 
           className={`text-5xl md:text-7xl font-bold mb-4 transition-all duration-1000 ease-out ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
@@ -47,6 +56,8 @@ const Hero: React.FC = () => {
           >
             View Resume
           </a>
+           </div>
+          </div>
         </div>
       </div>
     </section>
