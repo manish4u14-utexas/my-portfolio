@@ -64,7 +64,7 @@ const Skills: React.FC = () => {
         className={`transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         style={{ transitionDelay: `${inView ? categoryIndex * 150 : 0}ms` }}
       >
-        <h3 className="text-2xl font-semibold mb-6 text-sky-300">{title}</h3>
+        <h3 className="text-2xl font-semibold mb-6 text-sky-600">{title}</h3>
         {isTechnical ? (
           <div className="space-y-4">
             {items.map((skill, index) => {
