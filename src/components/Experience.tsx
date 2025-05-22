@@ -15,29 +15,28 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, company, locatio
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
-    // delay: index * 150, // Stagger based on index
   });
 
   return (
     <div 
       ref={ref}
-      className={`mb-12 p-6 bg-slate-800 rounded-lg shadow-xl transition-all duration-700 ease-out hover:shadow-sky-500/50 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }} // Apply delay only when inView becomes true
+      className={`mb-12 p-6 bg-white rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-sky-500/20 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h3 className="text-2xl font-bold text-sky-400">{title}</h3>
-          <p className="text-lg font-semibold text-sky-300">{company}, {location}</p>
+          <h3 className="text-2xl font-bold text-sky-600">{title}</h3>
+          <p className="text-lg font-semibold text-sky-500">{company}, {location}</p>
         </div>
-        <p className="text-sm text-gray-400 whitespace-nowrap pl-2">{dates}</p>
+        <p className="text-sm text-gray-500 whitespace-nowrap pl-2">{dates}</p>
       </div>
-      <ul className="list-disc list-inside space-y-2 text-gray-300 mb-3">
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-3">
         {responsibilities.map((resp, idx) => (
           <li key={idx}>{resp}</li>
         ))}
       </ul>
       {technologies && (
-        <p className="text-sm text-sky-500 mt-4 pt-3 border-t border-slate-700">
+        <p className="text-sm text-sky-600 mt-4 pt-3 border-t border-gray-200">
           <span className="font-semibold">Key Technologies & Tools:</span> {technologies}
         </p>
       )}
@@ -92,17 +91,15 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 md:px-10 bg-slate-700 text-gray-200 overflow-hidden">
+    <section id="experience" className="py-20 px-4 md:px-10 bg-gray-100 text-slate-800 overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <h2 
           ref={sectionTitleRef}
-          className={`text-4xl font-bold text-center mb-16 text-sky-400 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`text-4xl font-bold text-center mb-16 text-sky-600 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           Professional Experience & AI Integration
         </h2>
         <div className="relative">
-          {/* Optional: Vertical line for timeline effect - can be styled with ::before on items or a dedicated div */}
-          {/* <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-sky-700 hidden md:block"></div> */}
           {experiences.map((exp, index) => (
             <ExperienceItem {...exp} key={index} index={index} />
           ))}
@@ -113,4 +110,3 @@ const Experience: React.FC = () => {
 };
 
 export default Experience;
-
