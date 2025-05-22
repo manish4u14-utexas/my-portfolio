@@ -18,7 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technolog
   return (
     <div 
       ref={ref}
-      className={`bg-slate-800 p-6 rounded-lg shadow-xl hover:shadow-sky-500/40 transition-all duration-500 ease-out transform hover:-translate-y-1 flex flex-col h-full ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`bg-white p-6 rounded-lg shadow-xl hover:shadow-sky-500/40 transition-all duration-500 ease-out transform hover:-translate-y-1 flex flex-col h-full ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
       <h3 className="text-xl font-bold text-sky-400 mb-3">{title}</h3>
