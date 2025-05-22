@@ -17,11 +17,11 @@ const About: React.FC = () => {
     <section 
       id="about" 
       ref={sectionRef}
-      className="py-20 px-4 md:px-10 bg-white text-slate-800 overflow-hidden" // Changed from bg-slate-700 text-gray-200
+      className="py-20 px-4 md:px-10 bg-white text-slate-800 overflow-hidden" 
     >
       <div className="max-w-4xl mx-auto">
         <h2 
-          className={`text-4xl font-bold text-center mb-12 text-sky-600 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} // Changed from text-sky-400
+          className={`text-4xl font-bold text-center mb-12 text-sky-600 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           About Me
         </h2>
@@ -37,10 +37,10 @@ const About: React.FC = () => {
         </div>
         <div 
           ref={listRef}
-          className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} // Changed from border-slate-600
+          className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <h3 className="text-2xl font-semibold mb-6 text-sky-600">Key Areas of Expertise:</h3> <!-- Changed from text-sky-300 -->
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700"> <!-- Changed from text-gray-300 -->
+          <h3 className="text-2xl font-semibold mb-6 text-sky-600">Key Areas of Expertise:</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
             {[
               "AI-Driven Business Transformation",
               "System & Workflow Automation",
@@ -56,7 +56,7 @@ const About: React.FC = () => {
                 className={`flex items-center transition-all duration-500 ease-out ${listInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
                 style={{ transitionDelay: `${listInView ? index * 100 : 0}ms` }}
               >
-                <span className="text-sky-600 mr-3 text-xl">✔</span>{item} <!-- Changed from text-sky-500 -->
+                <span className="text-sky-600 mr-3 text-xl">✔</span>{item}
               </li>
             ))}
           </ul>
