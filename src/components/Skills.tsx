@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
                 <div 
                   ref={itemRef}
                   key={`tech-${index}`}
-                  className={`p-4 bg-slate-800 rounded-lg shadow-md hover:shadow-sky-500/30 transition-all duration-300 ease-out transform hover:-translate-y-0.5 ${itemInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
+                  className={`p-4 bg-white rounded-lg shadow-md hover:shadow-sky-500/30 transition-all duration-300 ease-out transform hover:-translate-y-0.5 ${itemInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
                   style={{ transitionDelay: `${itemInView ? index * 50 : 0}ms` }}
                 >
                   <h4 className="font-semibold text-sky-400 text-lg mb-1">{skill.name}</h4>
