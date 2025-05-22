@@ -21,13 +21,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technolog
       className={`bg-white p-6 rounded-lg shadow-xl hover:shadow-sky-500/40 transition-all duration-500 ease-out transform hover:-translate-y-1 flex flex-col h-full ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
-      <h3 className="text-xl font-bold text-sky-400 mb-3">{title}</h3>
-      <p className="text-gray-300 text-sm mb-4 flex-grow">{description}</p>
+      <h3 className="text-xl font-bold text-sky-600 mb-3">{title}</h3>
+      <p className="text-gray-700 text-sm mb-4 flex-grow">{description}</p>
       <div>
-        <p className="text-xs text-sky-300 mb-2 font-semibold">Key Technologies:</p>
+        <p className="text-xs text-sky-600 mb-2 font-semibold">Key Technologies:</p>
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech, idx) => (
-            <span key={idx} className="bg-sky-700 hover:bg-sky-600 text-sky-200 text-xs px-3 py-1 rounded-full transition-colors duration-200">
+            <span key={idx} className="bg-sky-700 hover:bg-sky-600 text-sky-600 text-xs px-3 py-1 rounded-full transition-colors duration-200">
               {tech}
             </span>
           ))}
@@ -68,11 +68,11 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-10 bg-gray-900 text-gray-200 overflow-hidden">
+    <section id="projects" className="py-20 px-4 md:px-10 bg-gray-900 text-gray-700 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 
           ref={sectionTitleRef}
-          className={`text-4xl font-bold text-center mb-16 text-sky-400 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`text-4xl font-bold text-center mb-16 text-sky-600 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           Key Projects & Initiatives
         </h2>
