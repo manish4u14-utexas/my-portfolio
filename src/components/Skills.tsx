@@ -76,14 +76,14 @@ const Skills: React.FC = () => {
                   className={`p-4 bg-white rounded-lg shadow-md hover:shadow-sky-500/30 transition-all duration-300 ease-out transform hover:-translate-y-0.5 ${itemInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
                   style={{ transitionDelay: `${itemInView ? index * 50 : 0}ms` }}
                 >
-                  <h4 className="font-semibold text-sky-400 text-lg mb-1">{skill.name}</h4>
-                  <p className="text-gray-400 text-sm">{skill.description}</p>
+                  <h4 className="font-semibold text-sky-700 text-lg mb-1">{skill.name}</h4>
+                  <p className="text-gray-700 text-sm">{skill.description}</p>
                 </div>
               );
             })}
           </div>
         ) : (
-          <ul className="list-none space-y-3 text-gray-300">
+          <ul className="list-none space-y-3 text-gray-700">
             {items.map((skill, index) => {
               const { ref: itemRef, inView: itemInView } = useInView({ triggerOnce: true, threshold: 0.1 });
               return (
@@ -93,7 +93,7 @@ const Skills: React.FC = () => {
                   className={`flex items-start transition-all duration-300 ease-out ${itemInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
                   style={{ transitionDelay: `${itemInView ? index * 50 : 0}ms` }}
                 >
-                  <span className="text-sky-500 mr-3 mt-1 text-lg">❖</span>{skill}
+                  <span className="text-sky-700 mr-3 mt-1 text-lg">❖</span>{skill}
                 </li>
               );
             })}
@@ -108,7 +108,7 @@ const Skills: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <h2 
           ref={sectionTitleRef}
-          className={`text-4xl font-bold text-center mb-16 text-sky-400 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`text-4xl font-bold text-center mb-16 text-sky-600 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           Core Competencies & AI Capabilities
         </h2>
