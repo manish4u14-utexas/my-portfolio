@@ -24,10 +24,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technolog
       <h3 className="text-xl font-bold text-sky-600 mb-3">{title}</h3>
       <p className="text-gray-700 text-sm mb-4 flex-grow">{description}</p>
       <div>
-        <p className="text-xs text-white-600 mb-2 font-semibold">Key Technologies:</p>
+        <p className="text-xs text-sky-600 mb-2 font-semibold">Key Technologies:</p>
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech, idx) => (
-            <span key={idx} className="bg-sky-700 hover:bg-sky-600 text-sky-600 text-xs px-3 py-1 rounded-full transition-colors duration-200">
+            <span key={idx} className="bg-sky-700 hover:bg-sky-600 text-white-600 text-xs px-3 py-1 rounded-full transition-colors duration-200">
               {tech}
             </span>
           ))}
