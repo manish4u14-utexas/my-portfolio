@@ -68,7 +68,7 @@ const Experience: React.FC = () => {
       technologies: "Generative AI (ChatGPT, Bard), AI-driven automation, Web API, Salesforce Sales Cloud, Heroku, Figma, Postman, Node.js, Bash, Jira, Confluence, Chalk, New Relic, Kibana, Bug Snag, SQL Server, Microsoft Project, Contentful CMS, Lucid Chart, MS Visio, Balsamiq."
     },
     {
-      title: "Sr. Business Systems Analyst & Scrum Master",
+      title: "Sr. Business Analyst & Scrum Master",
       company: "Align Technology",
       location: "Hyderabad, IN",
       dates: "August 2018 – December 2021",
@@ -93,15 +93,15 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 md:px-10 bg-gray-100 text-slate-800 overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" className="py-16 px-4 md:px-8 bg-gray-100 text-slate-800">
+      <div className="max-w-3xl mx-auto">
         <h2 
           ref={sectionTitleRef}
           className={`text-4xl font-bold text-center mb-16 text-sky-600 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           Professional Experience & AI Integration
         </h2>
-        <div className="relative">
+        <div className="space-y-6">
           {experiences.map((exp, index) => (
             <ExperienceItem {...exp} key={index} index={index} />
           ))}
