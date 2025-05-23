@@ -17,13 +17,13 @@ const CertificationItem: React.FC<CertificationItemProps> = ({ name, issuer, dat
   return (
     <div 
       ref={ref}
-      className={`bg-slate-800 p-4 rounded-lg shadow-xl hover:shadow-sky-500/30 transition-all duration-500 ease-out transform hover:-translate-y-1 text-center h-full flex flex-col justify-between ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`bg-white p-4 rounded-lg shadow-xl hover:shadow-sky-500/30 transition-all duration-500 ease-out transform hover:-translate-y-1 text-center h-full flex flex-col justify-between ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
       <div>
         <div className={`w-16 h-16 bg-sky-700 rounded-full mx-auto mb-4 flex items-center justify-center text-sky-300 text-2xl font-semibold transition-all duration-300 ease-out ${inView ? 'scale-100' : 'scale-50'}`}>{name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase()}</div>
-        <h3 className="text-md font-bold text-sky-400 mb-1">{name}</h3>
-        <p className="text-sm text-sky-300 mb-1">{issuer}</p>
+        <h3 className="text-md font-bold text-sky-700 mb-1">{name}</h3>
+        <p className="text-sm text-gray-600 mb-1">{issuer}</p>
       </div>
       {date && <p className="text-xs text-gray-400 mt-2">{date}</p>}
     </div>
