@@ -62,7 +62,7 @@ const Education: React.FC = () => {
   ];
 
   return (
-    <section id="education" className="py-20 px-4 md:px-10 bg-slate-700 text-gray-200 overflow-hidden">
+    <section id="education" className="py-20 px-4 md:px-10 bg-white text-gray-200 overflow-hidden">
       <div className="max-w-3xl mx-auto">
         <h2 
           ref={sectionTitleRef}
