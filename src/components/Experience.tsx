@@ -23,12 +23,12 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, company, locatio
       className={`mb-12 p-6 bg-white rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-sky-500/20 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
-      <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
-        <div className="flex-1 min-w-0">
-          <h3 className="text-2xl font-bold text-sky-600 break-words">{title}</h3>
-          <p className="text-lg font-semibold text-sky-500 break-words">{company}, {location}</p>
+      <div className="flex flex-col md:flex-row justify-between items-start mb-4">
+        <div>
+          <h3 className="text-2xl font-bold text-sky-600">{title}</h3>
+          <p className="text-lg font-semibold text-sky-500">{company}, {location}</p>
         </div>
-        <p className="text-sm text-gray-500 whitespace-nowrap self-end md:self-start mt-1 md:mt-0">{dates}</p>
+        <p className="text-sm text-gray-500 whitespace-nowrap md:pl-2 mt-2 md:mt-0">{dates}</p>
       </div>
       <ul className="list-disc pl-5 space-y-3 text-gray-700 mb-4">
         {responsibilities.map((resp, idx) => (
