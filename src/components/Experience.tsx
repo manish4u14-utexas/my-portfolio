@@ -18,29 +18,31 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, company, locatio
   });
 
   return (
-    <div 
-      ref={ref}
-      className={`mb-12 p-6 bg-white rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-sky-500/20 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
-    >
-      <div className="flex justify-between items-start mb-2">
-        <div>
-          <h3 className="text-2xl font-bold text-sky-600">{title}</h3>
-          <p className="text-lg font-semibold text-sky-500">{company}, {location}</p>
-        </div>
-        <p className="text-sm text-gray-500 whitespace-nowrap pl-2">{dates}</p>
-      </div>
-      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-3">
-        {responsibilities.map((resp, idx) => (
-          <li key={idx}>{resp}</li>
-        ))}
-      </ul>
-      {technologies && (
-        <p className="text-sm text-sky-600 mt-4 pt-3 border-t border-gray-200">
-          <span className="font-semibold">Key Technologies & Tools:</span> {technologies}
-        </p>
-      )}
+   <div 
+    ref={ref}
+    className={`mb-8 p-6 bg-white rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-sky-500/20 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
+  >
+  <div className="flex flex-col md:flex-row justify-between items-start mb-4 gap-2">
+    <div className="flex-1">
+      <h3 className="text-xl md:text-2xl font-bold text-sky-600">{title}</h3>
+      <p className="text-base md:text-lg font-medium text-sky-500">{company}, {location}</p>
     </div>
+    <p className="text-sm text-gray-500 md:text-right min-w-[150px]">{dates}</p>
+  </div>
+  <ul className="space-y-3 text-gray-700 mb-4 pl-5">
+    {responsibilities.map((resp, idx) => (
+      <li key={idx} className="relative before:absolute before:-left-5 before:top-2 before:w-2 before:h-2 before:rounded-full before:bg-sky-500">
+        {resp}
+      </li>
+    ))}
+  </ul>
+  {technologies && (
+    <div className="text-sm text-sky-600 mt-4 pt-3 border-t border-gray-200 pl-2">
+      <span className="font-semibold">Key Technologies & Tools:</span> {technologies}
+    </div>
+    )}
+  </div>
   );
 };
 
