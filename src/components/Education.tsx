@@ -18,7 +18,7 @@ const EducationItem: React.FC<EducationItemProps> = ({ degree, institution, date
   return (
     <div 
       ref={ref}
-      className={`mb-8 p-6 bg-slate-800 rounded-lg shadow-xl hover:shadow-sky-500/40 transition-all duration-500 ease-out transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`mb-8 p-6 bg-white rounded-lg shadow-xl hover:shadow-sky-500/40 transition-all duration-500 ease-out transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
       <div className="flex justify-between items-start mb-1">
