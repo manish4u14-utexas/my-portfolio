@@ -26,11 +26,11 @@ const About: React.FC = () => {
           About Me
         </h2>
         <div className={`text-lg leading-relaxed space-y-6 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-left max-w-3xl px-8 mx-auto">
+          <p className="text-left pl-4 md:pl-6">
             A results-driven Senior Business Systems Analyst with over 10 years of experience, spearheading AI-driven business transformation and delivering impactful system solutions. 
             Proven expertise in optimizing workflows through AI, achieving up to 40% reduction in manual effort for documentation and a 25% improvement in sprint accuracy. 
           </p>
-          <p className="text-left max-w-3xl px-8 mx-auto">
+          <p className="text-left pl-4 md:pl-6">
             Adept at Web API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
             A collaborative leader proficient in Agile methodologies, data analysis, and UAT support, currently advancing AI capabilities through an M.S. in Artificial Intelligence at the University of Texas at Austin.
           </p>
