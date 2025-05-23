@@ -40,7 +40,7 @@ const About: React.FC = () => {
           className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <h3 className="text-2xl font-semibold mb-6 text-sky-600">Key Areas of Expertise:</h3>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 pl-4 md:pl-6">
             {[
               "AI-Driven Business Transformation",
               "System & Workflow Automation",
