@@ -22,10 +22,10 @@ const EducationItem: React.FC<EducationItemProps> = ({ degree, institution, date
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
       <div className="flex justify-between items-start mb-1">
-        <h3 className="text-xl font-bold text-sky-400">{degree}</h3>
-        <p className="text-sm text-gray-400 whitespace-nowrap pl-4">{dates}</p>
+        <h3 className="text-xl font-bold text-sky-700">{degree}</h3>
+        <p className="text-sm text-gray-600 whitespace-nowrap pl-4">{dates}</p>
       </div>
-      <p className="text-lg font-semibold text-sky-300 mb-2">{institution}</p>
+      <p className="text-lg font-semibold text-gray-700 mb-2">{institution}</p>
       {details && (
         <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
           {details.map((detail, idx) => (
