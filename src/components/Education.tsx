@@ -51,13 +51,13 @@ const Education: React.FC = () => {
     },
     {
       degree: "Bachelor of Engineering in Computer Science",
-      institution: "SLIET, Sangrur, Punjab",
+      institution: "SLIET, Longowal, Sangrur, Punjab",
       dates: "2012",
     },
     {
       degree: "Diploma in Computer Science",
-      institution: "SLIET, Longowal, Punjab",
-      dates: "", 
+      institution: "SLIET, Longowal, Sangrur, Punjab",
+      dates: "2009", 
     },
   ];
 
