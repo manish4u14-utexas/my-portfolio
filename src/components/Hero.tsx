@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
 
         {/* Education - Moved up right below name */}
         <p 
-          className={`text-md md:text-lg italic text-sky-300 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`text-md md:text-lg italic text-gray-600 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           M.S. in Artificial Intelligence (In Progress), University of Texas at Austin
         </p>
