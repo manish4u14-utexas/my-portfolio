@@ -28,7 +28,7 @@ const Project: React.FC<ProjectProps> = ({ title, description, technologies, ind
         {technologies.map((tech, i) => (
           <span 
             key={i} 
-            className="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-sm"
+            className="bg-sky-100 text-sky-600 hover:bg-white px-3 py-1 rounded-full text-sm"
           >
             {tech}
           </span>
