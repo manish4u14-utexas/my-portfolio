@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
               delay: 50,
               deleteSpeed: 30,
               //pauseFor: 1500,
-              wrapperClassName: "text-sky-300",
+              wrapperClassName: "text-white font-bold",
               cursorClassName: "text-sky-300"
             }}
             onInit={(typewriter) => {
