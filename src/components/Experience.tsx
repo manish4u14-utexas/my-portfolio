@@ -20,7 +20,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ title, company, locatio
   return (
  <div 
       ref={ref}
-      className={`mb-12 p-6 bg-white rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-sky-500/20 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`mb-12 p-6 bg-gray-100 rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-sky-500/20 transform hover:-translate-y-1 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
     >
       <div className="flex flex-col md:flex-row justify-between items-start mb-4">
