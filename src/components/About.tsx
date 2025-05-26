@@ -31,7 +31,7 @@ const About: React.FC = () => {
             Proven expertise in optimizing workflows through AI, achieving up to 40% reduction in manual effort for documentation and a 25% improvement in sprint accuracy. 
           </p>
           <p className="text-left pl-4 md:pl-6">
-            Adept at Web API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
+            Expert in Web application development and API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
             A collaborative leader proficient in Agile methodologies, data analysis, and UAT support, currently advancing AI capabilities through an M.S. in Artificial Intelligence at the University of Texas at Austin.
           </p>
            <p className="text-left pl-4 md:pl-6">
@@ -45,14 +45,16 @@ const About: React.FC = () => {
           <h3 className="text-2xl font-semibold mb-6 text-sky-600">Key Areas of Expertise:</h3>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 pl-4 md:pl-6">
             {[
-              "AI-Driven Business Transformation",
+              "AI-Driven Business Analysis",
               "System & Workflow Automation",
-              "Web API Design & Integration",
+              "Web App Design & API Integration",
               "Salesforce CRM Optimization",
               "Heroku Cloud Management",
               "Agile & Scrum Leadership",
               "Data Analysis & UAT Support",
-              "Requirements Engineering"
+              "Requirements Engineering",
+              "Full Cycle Delivery",
+              "Contentful Content Management"
             ].map((item, index) => (
               <li 
                 key={index} 
