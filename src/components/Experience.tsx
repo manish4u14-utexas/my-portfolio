@@ -91,7 +91,7 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-4 md:px-10 bg-gray-100 text-slate-800 overflow-hidden">
+    <section id="experience" className="py-20 px-4 md:px-10 bg-white text-slate-800 overflow-hidden">
       <div className="max-w-3xl mx-auto">
         <h2 
           ref={sectionTitleRef}
