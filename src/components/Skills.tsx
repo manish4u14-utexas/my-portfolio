@@ -86,7 +86,10 @@ const Skills: React.FC = () => {
       point: "Performing thorough web application analysis and optimization for both consumer and provider platforms, focusing on user experience and performance.",
     },
     {
-      point: "Proficiently managing Salesforce CRM for comprehensive lead generation, targeted campaign and event management, and account lifecycle workflows..",
+      point: "Proficiently managing Salesforce CRM for comprehensive lead generation, targeted campaign and event management, and account lifecycle workflows.",
+    },
+    {
+      point: "Led and executed user acceptance testing (UAT) phases, contributing to successful project go-lives with minimal post-launch issues and high user satisfaction.",
     }
   ];
 
@@ -104,12 +107,8 @@ const Skills: React.FC = () => {
       description: "Advanced in SQL Server, MongoDB, and Salesforce SOQL for data extraction and reporting."
     },
     {
-      title: "Generative AI Tools",
-      description: "Deep experience using ChatGPT, DeepSeek, Copilot, Gamini, Manus, and Claude for prompt engineering, workflow optimization, and agent creation."
-    },
-    {
-      title: "AI Agent Creation",
-      description: "Build AI agents using Microsoft Power Automate and Manus AI for business workflows and support automation."
+      title: "Generative AI & Agents",
+      description: "Deep experience using ChatGPT, DeepSeek, Copilot, Gamini, Manus, and Claude for prompt engineering, workflow optimization, and agent creation using Microsoft Power Automate and Manus AI for business workflows."
     },
     {
       title: "Automation Expertise",
@@ -131,25 +130,25 @@ const Skills: React.FC = () => {
   
   const projectManagementSkills = [
     {
-      point: "Manage Agile delivery using Jira, Asana, Chalk, and Microsoft Project.",
+      point: "Lead end-to-end Agile delivery cycles, from backlog grooming to sprint reviews, ensuring on-time feature rollout and continuous iteration.",
     },
     {
-      point: "Design UI/UX wireframes and architecture diagrams using Figma, Lucidchart, Miro, Draw.io and Visily.ai.",
+      point: "Drive collaboration between product, engineering, and data teams to translate complex requirements into technical execution.",
     },
     {
-      point: "Collaborate across teams to align business requirements with technical design and product execution.",
+      point: "Champion cross-functional transparency by setting up automated progress tracking, sprint boards, and KPIs in tools like Asana and Microsoft Project.",
     }
   ];
   
   const softSkills = [
     {
-      point: "Strong communicator with proven stakeholder engagement across technical and business units.",
+      point: "Build alignment across technical and business teams through clear communication, structured discovery sessions, and rapid feedback loops.",
     },
     {
-      point: "Skilled in delivering presentations, leading workshops, and influencing product strategy.",
+      point: "Lead executive presentations and stakeholder workshops that drive product vision, prioritization, and roadmap decisions.",
     },
     {
-      point: "Drive continuous improvement with AI-driven insights and cross-functional collaboration.",
+      point: "Foster a culture of cross-functional collaboration, continuous improvement, and transparent decision-making within Agile environments.",
     }
   ];
 
