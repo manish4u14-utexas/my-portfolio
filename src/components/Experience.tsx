@@ -52,7 +52,7 @@ const Experience: React.FC = () => {
 
   const experiences: Omit<ExperienceItemProps, 'index'>[] = [
     {
-      title: "Sr. Business Analyst",
+      title: "Sr. Business Analyst - AI & Web Platform",
       company: "Align Technology",
       location: "Morrisville, NC",
       dates: "December 2021 – Present",
@@ -61,9 +61,15 @@ const Experience: React.FC = () => {
         "Pioneered the use of Generative AI for requirement gathering, user story creation, and documentation, achieving a 40% reduction in manual effort and accelerating project timelines.",
         "Created AI-powered mockups, technical architecture diagrams, and workflow visualizations using Visily.ai, enhancing clarity and stakeholder alignment.",
         "Implemented AI-driven sprint planning and estimation with Atlassian AI, resulting in a 25% improvement in sprint accuracy and more effective backlog prioritization.",
+        "Led multiple Scrum teams, expertly facilitating Agile ceremonies and leveraging AI-assisted retrospective analysis to optimize team performance and continuous improvement.",
+        "Utilized AI-based monitoring tools (New Relic, Bug Snag, Kibana) to proactively analyze website performance, identify optimization opportunities, and ensure system stability.",
+        "Developed comprehensive low-level designs and API documentation using Confluence & Chalk, enriched with AI-based enhancements for improved clarity and maintainability.",
+        "Deployed and expertly managed Heroku applications, configuring dynos, tracking key performance metrics, and integrating add-ons (New Relic, Bug Snag, Pingdom) to ensure high availability and performance.",
+        "Automated critical reporting and data visualization processes using EazyBI Analytics, significantly increasing visibility into sprint progress and team velocity by 30%.",
+        "Integrated Contentful CMS to streamline content management processes and support global market localization efforts effectively."
         // Shortened for brevity in this example, full content is in resume
       ],
-      technologies: "Generative AI (ChatGPT, Bard), AI-driven automation, Web API, Salesforce Sales Cloud, Heroku, Figma, Postman, Node.js, Bash, Jira, Confluence, Chalk, New Relic, Kibana, Bug Snag, SQL Server, Microsoft Project, Contentful CMS, Lucid Chart, MS Visio, Balsamiq."
+      technologies: "Generative AI (ChatGPT, Bard, Copilot), AI-driven automation (Power Automate, Manus AI), Vibe Coding(Replit, Cursor, Bolt.ai), Salesforce Sales Cloud, Heroku, Figma, Postman, Jira, Confluence, Chalk, New Relic, Kibana, Bug Snag, SQL Server, Microsoft Project, Contentful CMS, Lucid Chart, MS Visio."
     },
     {
       title: "Sr. Business Analyst & Scrum Master",
@@ -73,9 +79,12 @@ const Experience: React.FC = () => {
       responsibilities: [
         "Led cross-functional teams in the technical implementation and enhancement of critical web applications for consumer and provider portals, ensuring alignment with business goals.",
         "Designed highly interactive wireframes and UI prototypes in Figma, facilitating user-centric design for front-end applications and improving usability.",
+        "Leveraged Salesforce CRM for comprehensive management of lead pipelines, execution of marketing campaigns, and in-depth sales analytics.",
+        "Managed Heroku-based applications, diligently tracking uptime, downtime, and performance metrics, and optimizing dyno configurations for cost-efficiency and reliability.",
+        "Championed Agile workflows by implementing Jira automation and best practices, significantly enhancing project management efficiency and team productivity."
         // Shortened
       ],
-      technologies: "Salesforce CRM, SOQL, Heroku, AI-driven backlog management, Web API, MongoDB, Figma, Postman, Node.js, Bash, Jira, Confluence, SQL Server, Kibana, Splunk."
+      technologies: "Atlassian Suites, Office 365 suites, Eazy BI, Salesforce CRM, Heroku, Figma, Postman, Jira, Confluence, SQL Server, Kibana, Splunk."
     },
     {
       title: "Business Analyst/SQA",
@@ -84,9 +93,12 @@ const Experience: React.FC = () => {
       dates: "June 2013 – August 2018",
       responsibilities: [
         "Collaborated effectively with diverse stakeholders to gather, define, and document project requirements, ensuring precise alignment with overarching business objectives.",
+        "Developed comprehensive project documentation, including detailed functional specifications and user stories, which served as a critical blueprint for development teams.",
+        "Led and executed user acceptance testing (UAT) phases, contributing to successful project go-lives with minimal post-launch issues and high user satisfaction.",
+        "Systematically identified, documented, and tracked defects using Visual Studio Team Services (now Azure DevOps), ensuring timely resolution and thorough retesting for quality assurance."
         // Shortened
       ],
-      technologies: "Visual Studio Team Services, SQL Server, Jira, Confluence, AI-powered documentation tools (early adoption), Microsoft Visio, Lucid Chart."
+      technologies: "Visual Studio Team Services, SQL Server, Jira, Confluence, Microsoft Visio, Lucid Chart, SharePoint."
     }
   ];
 
