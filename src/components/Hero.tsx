@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import Typewriter from 'typewriter-effect'; // We'll need to install this package
 
 const Hero: React.FC = () => {
   const { ref: heroRef, inView: heroInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const roles = [
+    "Sr. Business Analyst",
+    "Technical Business Analyst",
+    "AI Business Analyst",
+    "Agile Project Delivery",
+    "Technical Business Analyst Specializing in AI Solutions"
+  ];
 
   return (
     <section 
@@ -15,8 +24,8 @@ const Hero: React.FC = () => {
     >
       <div className="absolute inset-0 opacity-10 bg-grid-slate-700 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
-        {/* Profile Photo - Always centered above text */}
-        <div className={`mb-8 transition-all duration-700 ease-out ${heroInView ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+        {/* Profile Photo - Moved up with more space */}
+        <div className={`mb-12 transition-all duration-700 ease-out ${heroInView ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
           <img 
             src="/my-portfolio/profile-photo.jpg" 
             alt="Manish Chaudhari" 
@@ -24,41 +33,56 @@ const Hero: React.FC = () => {
           />
         </div>
         
-        {/* Text Content - Always centered below photo */}
-        <div className="text-center w-full">
-          <h1 
-            className={`text-5xl md:text-7xl font-bold mb-4 transition-all duration-1000 ease-out ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        {/* Name */}
+        <h1 
+          className={`text-5xl md:text-7xl font-bold mb-2 transition-all duration-1000 ease-out ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          Hi, I'm <span className="text-sky-400">Manish Chaudhari</span>.
+        </h1>
+
+        {/* Education - Moved up right below name */}
+        <p 
+          className={`text-md md:text-lg italic text-sky-300 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          M.S. in Artificial Intelligence (In Progress), University of Texas at Austin
+        </p>
+        
+        {/* Animated Roles */}
+        <div 
+          className={`h-12 text-xl md:text-2xl mb-10 transition-all duration-1000 ease-out delay-500 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          <Typewriter
+            options={{
+              strings: roles,
+              autoStart: true,
+              loop: true,
+              delay: 50,
+              deleteSpeed: 30,
+              pauseFor: 1500,
+              wrapperClassName: "text-sky-300",
+              cursorClassName: "text-sky-300"
+            }}
+          />
+        </div>
+        
+        {/* Buttons */}
+        <div 
+          className={`space-x-4 transition-opacity duration-1000 ease-out delay-700 ${heroInView ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <a 
+            href="#contact" 
+            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
           >
-            Hi, I'm <span className="text-sky-400">Manish Chaudhari</span>.
-          </h1>
-          <p 
-            className={`text-xl md:text-2xl mb-2 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            Contact Me
+          </a>
+          <a 
+            href="/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf"
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
           >
-            Senior AI Business Analyst | Technical System Integration | Agile Product Delivery
-          </p>
-          <p 
-            className={`text-md md:text-lg italic text-sky-300 mb-8 transition-all duration-1000 ease-out delay-500 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            M.S. in Artificial Intelligence (In Progress), University of Texas at Austin
-          </p>
-          <div 
-            className={`space-x-4 transition-opacity duration-1000 ease-out delay-700 ${heroInView ? 'opacity-100' : 'opacity-0'}`}
-          >
-            <a 
-              href="#contact" 
-              className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
-            >
-              Contact Me
-            </a>
-            <a 
-              href="/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
-            >
-              View Resume
-            </a>
-          </div>
+            View Resume
+          </a>
         </div>
       </div>
     </section>
