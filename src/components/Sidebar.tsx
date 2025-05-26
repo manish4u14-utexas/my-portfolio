@@ -7,11 +7,11 @@ const Sidebar: React.FC = () => {
   const navItems = [
     { name: 'Home', icon: <Home size={20} />, href: '#home', id: 'home' }, // Added Home
     { name: 'About', icon: <User size={20} />, href: '#about', id: 'about' },
-    { name: 'Experience', icon: <Briefcase size={20} />, href: '#experience', id: 'experience' },
-    { name: 'Projects', icon: <Code size={20} />, href: '#projects', id: 'projects' },
     { name: 'Skills', icon: <Award size={20} />, href: '#skills', id: 'skills' },
+    { name: 'Experience', icon: <Briefcase size={20} />, href: '#experience', id: 'experience' },
     { name: 'Education', icon: <GraduationCap size={20} />, href: '#education', id: 'education' },
     { name: 'Certifications', icon: <Award size={20} />, href: '#certifications', id: 'certifications' }, // Added Certifications
+    { name: 'Projects', icon: <Code size={20} />, href: '#projects', id: 'projects' },
     { name: 'Contact', icon: <Mail size={20} />, href: '#contact', id: 'contact' },
     { name: 'Resume', icon: <FileText size={20} />, href: '/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf', id: 'resume' } // Link to resume PDF
   ];
