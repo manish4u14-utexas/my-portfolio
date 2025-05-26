@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Typewriter from 'typewriter-effect'; // We'll need to install this package
 
