@@ -34,6 +34,9 @@ const About: React.FC = () => {
             Adept at Web API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
             A collaborative leader proficient in Agile methodologies, data analysis, and UAT support, currently advancing AI capabilities through an M.S. in Artificial Intelligence at the University of Texas at Austin.
           </p>
+           <p className="text-left pl-4 md:pl-6">
+            "Transitioning from traditional business analysis to AI-driven solution design while bridging technical and business stakeholders."
+          </p>
         </div>
         <div 
           ref={listRef}
