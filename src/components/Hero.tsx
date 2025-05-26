@@ -72,11 +72,11 @@ const Hero: React.FC = () => {
         
         {/* Buttons */}
         <div 
-          className={`space-x-4 transition-opacity duration-1000 ease-out delay-700 ${heroInView ? 'opacity-100' : 'opacity-0'}`}
+          className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:space-x-4 transition-opacity duration-1000 ease-out delay-700 ${heroInView ? 'opacity-100' : 'opacity-0'}`}
         >
           <a 
             href="#contact" 
-            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
+            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95 w-full sm:w-auto text-center"
           >
             Contact Me
           </a>
@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
             href="/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf"
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95"
+            className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95 w-full sm:w-auto text-center"
           >
             View Resume
           </a>
