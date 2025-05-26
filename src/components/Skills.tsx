@@ -65,7 +65,7 @@ const Skills: React.FC = () => {
 
   const businessSkills = [
     {
-      point: "Expertly gathering and translating business needs into actionable technical requirements, user stories, and process maps through comprehensive stakeholder collaboration.",
+      point: "Translate business needs into clear user stories, functional specs, and process maps.",
     },
     {
       point: "Developing detailed functional and non-functional requirements documentation, ensuring clarity and alignment with project objectives.",
@@ -86,62 +86,70 @@ const Skills: React.FC = () => {
       point: "Performing thorough web application analysis and optimization for both consumer and provider platforms, focusing on user experience and performance.",
     },
     {
-      point: "Proficiently managing Salesforce CRM for comprehensive lead generation, targeted campaign and event management, and meticulous contact and account management.",
+      point: "Proficiently managing Salesforce CRM for comprehensive lead generation, targeted campaign and event management, and account lifecycle workflows..",
     }
   ];
 
   const technicalSkills = [
+     {
+      title: "Web App Development",
+      description: "Skilled in end-to-end design, analysis, and optimization of large-scale web applications."
+    },
     {
       title: "API & Middleware",
-      description: "Designing, integrating, troubleshooting, and meticulously documenting Web APIs and middleware solutions."
+      description: "Design, test, and document APIs with Postman; troubleshoot middleware integrations."
     },
     {
       title: "Databases",
-      description: "Proficient in MongoDB, SQL Server, and Salesforce SOQL for complex data retrieval, analysis, and robust reporting on leads & campaigns."
+      description: "Advanced in SQL Server, MongoDB, and Salesforce SOQL for data extraction and reporting."
     },
     {
-      title: "AI-Powered Productivity",
-      description: "Strategically implementing Generative AI (ChatGPT, Claude, Bard) for AI-assisted user story writing, AI-driven workflow automation, and sophisticated prompt engineering to boost productivity."
+      title: "Generative AI Tools",
+      description: "Deep experience using ChatGPT, DeepSeek, Copilot, Gamini, Manus, and Claude for prompt engineering, workflow optimization, and agent creation."
+    },
+    {
+      title: "AI Agent Creation",
+      description: "Build AI agents using Microsoft Power Automate and Manus AI for business workflows and support automation."
+    },
+    {
+      title: "Automation Expertise",
+      description: "Expert in using Zapier, Power Automate, and JIRA Automation for workflow optimization."
     },
     {
       title: "Cloud Services (Heroku)",
       description: "Managing full lifecycle of Heroku applications including creation, environment variable configuration, proxy app setup, add-on integration (New Relic, Bug Snag, Pingdom), dyno scaling, and continuous performance monitoring."
     },
     {
-      title: "AI & Business Intelligence Tools",
-      description: "Utilizing Visily.ai for rapid AI-powered mockup creation, and employing EazyBI, Kibana, New Relic, Bug Snag, and Splunk for advanced analytics and system monitoring."
+      title: "CMS Systems",
+      description: "Advanced knowledge of Contentful CMS for scalable content management and localization workflows."
     },
     {
       title: "UI/UX Design Tools",
       description: "Creating intuitive user interfaces and clear process flows using Figma and Lucid Chart."
-    },
-    {
-      title: "Scripting & Development Acumen",
-      description: "Skilled in using Postman for API testing, with a strong understanding of Node.js and Bash; capable of reading, analyzing, and debugging code to facilitate technical discussions and solutions."
     }
   ];
   
   const projectManagementSkills = [
     {
-      point: "Utilizing Jira, Confluence, Chalk, Asana, and Microsoft Project for effective project planning, execution, and tracking.",
+      point: "Manage Agile delivery using Jira, Asana, Chalk, and Microsoft Project.",
     },
     {
-      point: "Employing Atlassian AI for enhanced planning accuracy and data-driven sprint estimation.",
+      point: "Design UI/UX wireframes and architecture diagrams using Figma, Lucidchart, Miro, Draw.io and Visily.ai.",
+    },
+    {
+      point: "Collaborate across teams to align business requirements with technical design and product execution.",
     }
   ];
   
   const softSkills = [
     {
-      point: "Exceptional communication, presentation, and problem-solving abilities.",
+      point: "Strong communicator with proven stakeholder engagement across technical and business units.",
     },
     {
-      point: "Proven stakeholder engagement and cross-functional team collaboration.",
+      point: "Skilled in delivering presentations, leading workshops, and influencing product strategy.",
     },
     {
-      point: "Mastery of Agile & Scrum methodologies for adaptive and efficient project delivery.",
-    },
-    {
-      point: "Applying AI-driven insights for strategic decision-making and business process improvement.",
+      point: "Drive continuous improvement with AI-driven insights and cross-functional collaboration.",
     }
   ];
 
@@ -161,7 +169,7 @@ const Skills: React.FC = () => {
             ref={businessSkillsRef}
             className={`transition-all duration-700 ease-out ${businessSkillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
-            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Business & System Analysis (Agile & Technical Focus)</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Business Systems Analysis (AI & Agile Focus)</h3>
             <ul className="space-y-6">
               {businessSkills.map((skill, index) => (
                 <BulletPoint 
@@ -179,7 +187,7 @@ const Skills: React.FC = () => {
             ref={technicalSkillsRef}
             className={`transition-all duration-700 ease-out ${technicalSkillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
-            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Technical & AI Prowess</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Technical Proficiency & AI Integration</h3>
             <div className="space-y-6">
               {technicalSkills.map((skill, index) => (
                 <SkillCard 
