@@ -8,26 +8,29 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
-  return (
-   <div className="flex flex-col md:flex-row min-h-screen w-full bg-slate-900 font-sans overflow-x-hidden">
+ return (
+  <Router>
+    <div className="flex min-h-screen bg-slate-900 font-sans w-full overflow-hidden">
       <Sidebar />
-      <main className="flex-1 w-full md:pl-64 bg-slate-900 "> {/* Adjust pl based on sidebar width */}
+      <main className="flex-1 w-full md:pl-64"> {/* This adds padding on desktop to account for sidebar */}
         <Hero />
         <About />
         <Skills />
         <Experience />
+        <Projects />
         <Education />
         <Certifications />
-        <Projects />
         <Contact />
         <footer className="text-center py-8 bg-slate-900 text-white">
           <p>&copy; {new Date().getFullYear()} Manish Chaudhari. All rights reserved.</p>
         </footer>
       </main>
     </div>
-  );
+  </Router>
+);
 }
 
 export default App;
