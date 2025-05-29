@@ -20,9 +20,9 @@ function App() {
         <About />
         <Skills />
         <Experience />
-        <Projects />
         <Education />
         <Certifications />
+        <Projects />
         <Contact />
         <footer className="text-center py-8 bg-slate-900 text-white">
           <p>&copy; {new Date().getFullYear()} Manish Chaudhari. All rights reserved.</p>
