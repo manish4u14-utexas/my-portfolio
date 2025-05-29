@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+//import { useLocation } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +31,8 @@ const Sidebar: React.FC = () => {
       let currentSection = '';
       
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
+        //const sectionTop = section.offsetTop;
+        const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = section.clientHeight;
         
         if (window.scrollY >= sectionTop - 200 && 
