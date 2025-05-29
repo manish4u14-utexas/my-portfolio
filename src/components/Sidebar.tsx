@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-//import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  //const location = useLocation();
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('home');
 
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
@@ -32,8 +31,7 @@ const Sidebar: React.FC = () => {
       let currentSection = '';
       
       sections.forEach((section) => {
-        //const sectionTop = section.offsetTop;
-        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
         
         if (window.scrollY >= sectionTop - 200 && 
@@ -42,7 +40,9 @@ const Sidebar: React.FC = () => {
         }
       });
       
-      setActiveSection(currentSection);
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -57,7 +57,8 @@ const Sidebar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const closeSidebar = () => {
+  const handleNavClick = (id: string) => {
+    setActiveSection(id);
     setIsOpen(false);
   };
 
@@ -134,7 +135,7 @@ const Sidebar: React.FC = () => {
                 <li key={item.id}>
                   <a
                     href={item.href || `#${item.id}`}
-                    onClick={closeSidebar}
+                    onClick={() => item.href ? null : handleNavClick(item.id)}
                     target={item.href ? "_blank" : undefined}
                     rel={item.href ? "noopener noreferrer" : undefined}
                     className={`flex items-center px-4 py-3 rounded-lg transition-colors duration-200 ${
