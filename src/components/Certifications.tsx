@@ -1,63 +1,143 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-interface CertificationItemProps {
-  name: string;
+interface CertificationProps {
+  title: string;
   issuer: string;
-  date?: string; 
-  index: number; // For staggered animation
+  date: string;
+  description: string;
+  certificateImage: string;
+  verificationLink?: string;
+  index: number;
 }
 
-const CertificationItem: React.FC<CertificationItemProps> = ({ name, issuer, date, index }) => {
+const CertificationCard: React.FC<CertificationProps> = ({ 
+  title, 
+  issuer, 
+  date, 
+  description, 
+  certificateImage,
+  verificationLink,
+  index 
+}) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  const handleImageClick = (e: React.MouseEvent) => {
+    if (verificationLink) {
+      e.stopPropagation();
+      window.open(verificationLink, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div 
       ref={ref}
-      className={`bg-white p-4 rounded-lg shadow-xl hover:shadow-sky-500/30 transition-all duration-500 ease-out transform hover:-translate-y-1 text-center h-full flex flex-col justify-between ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`h-96 w-full perspective-1000 cursor-pointer transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
+      onClick={handleFlip}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div>
-        <div className={`w-16 h-16 bg-sky-700 rounded-full mx-auto mb-4 flex items-center justify-center text-sky-300 text-2xl font-semibold transition-all duration-300 ease-out ${inView ? 'scale-100' : 'scale-50'}`}>{name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase()}</div>
-        <h3 className="text-md font-bold text-sky-700 mb-1">{name}</h3>
-        <p className="text-sm text-gray-600 mb-1">{issuer}</p>
+      <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
+        {/* Front of Card */}
+        <div className="absolute w-full h-full backface-hidden bg-white rounded-lg shadow-lg p-6 flex flex-col">
+          <h3 className="text-xl font-bold text-sky-600 mb-2">{title}</h3>
+          <p className="text-gray-700 font-medium mb-1">{issuer}</p>
+          <p className="text-gray-500 text-sm mb-4">{date}</p>
+          <p className="text-gray-700 flex-grow">{description}</p>
+          
+          {/* Hover message - only shows when hovered and not flipped */}
+          <div className={`absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center rounded-lg transition-opacity duration-300 ${isHovered && !isFlipped ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-white text-lg font-semibold">Click to see the certificate</p>
+          </div>
+        </div>
+        
+        {/* Back of Card */}
+        <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center">
+          <img 
+            src={certificateImage} 
+            alt={`${title} Certificate`} 
+            className="max-w-full max-h-full object-contain rounded shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+            onClick={handleImageClick}
+          />
+          
+          {/* Hover message for certificate verification - only shows when hovered and flipped */}
+          {verificationLink && (
+            <div className={`absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center rounded-lg transition-opacity duration-300 ${isHovered && isFlipped ? 'opacity-100' : 'opacity-0'}`}>
+              <p className="text-white text-lg font-semibold">Click to validate the certificate</p>
+            </div>
+          )}
+        </div>
       </div>
-      {date && <p className="text-xs text-gray-400 mt-2">{date}</p>}
     </div>
   );
 };
-
 const Certifications: React.FC = () => {
-  const { ref: sectionTitleRef, inView: sectionTitleInView } = useInView({
+  const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
 
-  const certificationData: Omit<CertificationItemProps, 'index'>[] = [
-    { name: "Professional Scrum Product Owner (PSPO)", issuer: "Scrum.org" },
-    { name: "Professional Scrum Master (PSM)", issuer: "Scrum.org" },
-    { name: "Business Analysis Certification", issuer: "IIBA" },
-    { name: "Generative AI Certification", issuer: "Microsoft & LinkedIn" },
-    { name: "Deep Learning & AI Ethics", issuer: "University of Texas at Austin (Coursework)" },
-    { name: "JIRA Admin & Project Management", issuer: "Atlassian" },
-    { name: "Python PCEP Certification", issuer: "Python Institute" },
+  const certifications = [
+    {
+      title: "Professional Scrum Master I (PSM I)",
+      issuer: "Scrum.org",
+      date: "January 2023",
+      description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      certificateImage: "/my-portfolio/certificates/psm-certificate.jpg", // Add your certificate image path here
+      verificationLink: "https://www.credly.com/badges/83097d41-f796-4735-bb9a-e99c8b95aeb5"
+    },
+    {
+      title: "Deep Learning",
+      issuer: "University of Texas at Austin (Course Work)",
+      date: "January 2025",
+      description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      certificateImage: "/my-portfolio/certificates/Deep Learning.jpg", // Add your certificate image path here
+      verificationLink: "https://www.credly.com/badges/83097d41-f796-4735-bb9a-e99c8b95aeb5"
+    },
+    // Add your other certifications here
+    {
+      title: "Salesforce Certified Administrator",
+      issuer: "Salesforce",
+      date: "March 2022",
+      description: "Demonstrated ability to configure Salesforce, maintain the platform, and design custom applications to meet business requirements.",
+      certificateImage: "/my-portfolio/certificates/salesforce-admin.jpg", // Add your certificate image path here
+      verificationLink: "https://trailblazer.me/id/mchaudhari14" // Replace with actual verification link
+    },
+    // Add more certifications as needed
   ];
 
   return (
-    <section id="certifications" className="py-20 px-4 md:px-10 bg-slate-700 text-gray-200 overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+    <section id="certifications" className="py-20 px-4 md:px-10 bg-white text-slate-800 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
         <h2 
-          ref={sectionTitleRef}
-          className={`text-4xl font-bold text-center mb-16 text-sky-400 transition-all duration-700 ease-out ${sectionTitleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          ref={sectionRef}
+          className={`text-4xl font-bold text-center mb-16 text-sky-600 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          Certifications
+          Certifications & Professional Development
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {certificationData.map((cert, index) => (
-            <CertificationItem {...cert} key={index} index={index} />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {certifications.map((cert, index ) => (
+            <CertificationCard 
+              key={index}
+              title={cert.title}
+              issuer={cert.issuer}
+              date={cert.date}
+              description={cert.description}
+              certificateImage={cert.certificateImage}
+              verificationLink={cert.verificationLink}
+              index={index}
+            />
           ))}
         </div>
       </div>
@@ -66,4 +146,3 @@ const Certifications: React.FC = () => {
 };
 
 export default Certifications;
-
