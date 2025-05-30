@@ -49,7 +49,7 @@ const CertificationCard: React.FC<CertificationProps> = ({
     >
       <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
         {/* Front of Card */}
-        <div className="absolute w-full h-full backface-hidden bg-white rounded-lg shadow-lg p-6 flex flex-col">
+        <div className="absolute w-full h-full backface-hidden bg-gray-100 rounded-lg shadow-lg p-6 flex flex-col">
           <h3 className="text-xl font-bold text-sky-600 mb-2">{title}</h3>
           <p className="text-gray-700 font-medium mb-1">{issuer}</p>
           <p className="text-gray-500 text-sm mb-4">{date}</p>
@@ -93,7 +93,7 @@ const Certifications: React.FC = () => {
       issuer: "Scrum.org",
       date: "January 2023",
       description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
-      certificateImage: "/my-portfolio/certificates/psm-certificate.jpg", // Add your certificate image path here
+      certificateImage: "/my-portfolio/certificates/PSM.jpg", // Add your certificate image path here
       verificationLink: "https://www.credly.com/badges/83097d41-f796-4735-bb9a-e99c8b95aeb5"
     },
     {
@@ -102,7 +102,7 @@ const Certifications: React.FC = () => {
       date: "January 2025",
       description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
       certificateImage: "/my-portfolio/certificates/Deep Learning.jpg", // Add your certificate image path here
-      verificationLink: "https://www.credly.com/badges/83097d41-f796-4735-bb9a-e99c8b95aeb5"
+      verificationLink: "https://badgr.com/public/assertions/u5QxOdnzRYy6CYi69UZVUQ"
     },
     // Add your other certifications here
     {
