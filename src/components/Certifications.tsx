@@ -4,8 +4,8 @@ import { useInView } from 'react-intersection-observer';
 interface CertificationProps {
   title: string;
   issuer: string;
-  //date: string;
-  //description: string;
+  date: string;
+  description: string;
   certificateImage: string;
   verificationLink?: string;
   index: number;
@@ -14,8 +14,8 @@ interface CertificationProps {
 const CertificationCard: React.FC<CertificationProps> = ({ 
   title, 
   issuer, 
-  //date, 
-  //description, 
+  date, 
+  description, 
   certificateImage,
   verificationLink,
   index 
@@ -91,64 +91,64 @@ const Certifications: React.FC = () => {
     {
       title: "Deep Learning",
       issuer: "University of Texas at Austin (Course Work)",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/Deep Learning.jpg", // Add your certificate image path here
       verificationLink: "https://badgr.com/public/assertions/u5QxOdnzRYy6CYi69UZVUQ"
     },
     {
       title: "Certified Python Programmer (PCEP)",
       issuer: "Python Institute",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/PCEP.jpg", // Add your certificate image path here
       verificationLink: "https://verify.openedg.org/?id=iZbd.EdJr.cjY1"
     },
     {
       title: "AI For Product Management (AIPM)",
       issuer: "Pendo",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/AIPM.jpg", // Add your certificate image path here
       verificationLink: "https://www.credly.com/badges/5884cfe2-dc9b-4f27-bc5c-9ec9a7118cc0/linked_in_profi"
     },
     {
       title: "Power Platform",
       issuer: "Microsoft",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/Power platform.jpg", // Add your certificate image path here
       verificationLink: "https://www.credly.com/badges/a188fdf8-cd13-4eea-8ac8-b3c2ca419488/"
     },
     {
       title: "JIRA Automation for Admin",
       issuer: "Atlassian",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/JIRA Automation.jpg", // Add your certificate image path here
       verificationLink: "https://university.atlassian.com/student/award/arcaft2tezPFZhBUPexhjBxs"
     },
     {
       title: "JQL for Admin",
       issuer: "Atlassian",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/JQL.jpg", // Add your certificate image path here
       verificationLink: "https://university.atlassian.com/student/award/yP4wzbvA63CYcpfB1tocwBij"
     },
     {
       title: "Professionla Scrum Product Owner (PSPO I & II)",
       issuer: "Scrum.org",
-      //date: "January 2025",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/PSPO 2.jpg", // Add your certificate image path here
       verificationLink: "https://www.credly.com/badges/c11ccf7e-e601-443f-9e5b-32fceeddea2f"
     },
     {
       title: "Professional Scrum Master I (PSM I)",
       issuer: "Scrum.org",
-      //date: "January 2023",
-      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      date: "",
+      description: "",
       certificateImage: "/my-portfolio/certificates/PSM.jpg", // Add your certificate image path here
       verificationLink: "https://www.credly.com/badges/83097d41-f796-4735-bb9a-e99c8b95aeb5"
     },
