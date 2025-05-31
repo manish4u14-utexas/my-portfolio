@@ -56,8 +56,8 @@ const CertificationCard: React.FC<CertificationProps> = ({
           <p className="text-gray-700 flex-grow">{description}</p>
           
           {/* Hover message - only shows when hovered and not flipped */}
-          <div className={`absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center rounded-lg transition-opacity duration-300 ${isHovered && !isFlipped ? 'opacity-100' : 'opacity-0'}`}>
-            <p className="text-white text-lg font-semibold">Click to see the certificate</p>
+          <div className={`absolute inset-0 bg-gray-100 bg-opacity-70 flex items-center justify-center rounded-lg transition-opacity duration-300 ${isHovered && !isFlipped ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-gray-500 text-lg font-semibold">Click to see the certificate</p>
           </div>
         </div>
         
@@ -72,8 +72,8 @@ const CertificationCard: React.FC<CertificationProps> = ({
           
           {/* Hover message for certificate verification - only shows when hovered and flipped */}
           {verificationLink && (
-            <div className={`absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center rounded-lg transition-opacity duration-300 ${isHovered && isFlipped ? 'opacity-100' : 'opacity-0'}`}>
-              <p className="text-white text-lg font-semibold">Click to validate the certificate</p>
+            <div className={`absolute inset-0 bg-gray-100 bg-opacity-70 flex items-center justify-center rounded-lg transition-opacity duration-300 ${isHovered && isFlipped ? 'opacity-100' : 'opacity-0'}`}>
+              <p className="text-gray-500 text-lg font-semibold">Click to validate the certificate</p>
             </div>
           )}
         </div>
