@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+//import { useLocation } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [scrolling, setScrolling] = useState(false);
 
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
@@ -24,97 +24,43 @@ const Sidebar: React.FC = () => {
     };
   }, []);
 
-  // Improved scroll detection with debouncing and position calculation
+  // Update active section based on scroll position
   useEffect(() => {
-    let scrollTimeout: number | null = null;
-    
     const handleScroll = () => {
-      if (scrollTimeout !== null) {
-        return; // Skip if we're already waiting for a timeout
-      }
+      const sections = document.querySelectorAll('section[id]');
+      let currentSection = '';
       
-      setScrolling(true);
-      
-      // Use a timeout to debounce the scroll events
-      scrollTimeout = window.setTimeout(() => {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollPosition = window.scrollY + window.innerHeight / 3;
+      sections.forEach((section) => {
+        //const sectionTop = section.offsetTop;
+        const sectionTop = (section as HTMLElement).offsetTop;
+        const sectionHeight = section.clientHeight;
         
-        // Find the section that contains the current scroll position
-        let currentSection = '';
-        let closestDistance = Infinity;
-        
-        sections.forEach((section) => {
-          const sectionElement = section as HTMLElement;
-          const sectionTop = sectionElement.offsetTop;
-          const sectionHeight = sectionElement.offsetHeight;
-          const sectionBottom = sectionTop + sectionHeight;
-          
-          // Check if scroll position is within this section
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            currentSection = section.getAttribute('id') || '';
-          } else {
-            // If not within any section, find the closest one
-            const distanceToSection = Math.min(
-              Math.abs(scrollPosition - sectionTop),
-              Math.abs(scrollPosition - sectionBottom)
-            );
-            
-            if (distanceToSection < closestDistance) {
-              closestDistance = distanceToSection;
-              // Only update if we're really close to avoid jumps
-              if (closestDistance < 300) {
-                currentSection = section.getAttribute('id') || '';
-              }
-            }
-          }
-        });
-        
-        if (currentSection && currentSection !== activeSection && !scrolling) {
-          setActiveSection(currentSection);
+        if (window.scrollY >= sectionTop - 200 && 
+            window.scrollY < sectionTop + sectionHeight - 200) {
+          currentSection = section.getAttribute('id') || '';
         }
-        
-        setScrolling(false);
-        scrollTimeout = null;
-      }, 100); // Debounce time in ms
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    
-    // Initial check after a short delay to ensure DOM is fully loaded
-    const initialCheckTimeout = setTimeout(() => {
-      handleScroll();
-    }, 300);
+    handleScroll(); // Initial check
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout !== null) {
-        window.clearTimeout(scrollTimeout);
-      }
-      clearTimeout(initialCheckTimeout);
     };
-  }, [activeSection, scrolling]);
+  }, []);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   const handleNavClick = (id: string) => {
-    // Set a flag to prevent scroll detection from changing the active section
-    setScrolling(true);
     setActiveSection(id);
     setIsOpen(false);
-    
-    // Smooth scroll to section
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      
-      // Reset the scrolling flag after the scroll animation is likely complete
-      setTimeout(() => {
-        setScrolling(false);
-      }, 1000);
-    }
   };
 
   const navItems = [
