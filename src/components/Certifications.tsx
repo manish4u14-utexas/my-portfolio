@@ -127,7 +127,7 @@ const Certifications: React.FC = () => {
       issuer: "Atlassian",
       certificateImage: "/my-portfolio/certificates/JQL.jpg",
       verificationLink: "https://university.atlassian.com/student/award/yP4wzbvA63CYcpfB1tocwBij"
-    }
+    },
     {
       title: "Professional Scrum Master (PSM I)",
       issuer: "Scrum.org",
