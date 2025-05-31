@@ -4,8 +4,8 @@ import { useInView } from 'react-intersection-observer';
 interface CertificationProps {
   title: string;
   issuer: string;
-  date: string;
-  description: string;
+  //date: string;
+  //description: string;
   certificateImage: string;
   verificationLink?: string;
   index: number;
@@ -14,8 +14,8 @@ interface CertificationProps {
 const CertificationCard: React.FC<CertificationProps> = ({ 
   title, 
   issuer, 
-  date, 
-  description, 
+  //date, 
+  //description, 
   certificateImage,
   verificationLink,
   index 
@@ -91,8 +91,8 @@ const Certifications: React.FC = () => {
     {
       title: "Deep Learning",
       issuer: "University of Texas at Austin (Course Work)",
-      date: "January 2025",
-      description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      //date: "January 2025",
+      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
       certificateImage: "/my-portfolio/certificates/Deep Learning.jpg", // Add your certificate image path here
       verificationLink: "https://badgr.com/public/assertions/u5QxOdnzRYy6CYi69UZVUQ"
     },
@@ -147,8 +147,8 @@ const Certifications: React.FC = () => {
     {
       title: "Professional Scrum Master I (PSM I)",
       issuer: "Scrum.org",
-      date: "January 2023",
-      description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
+      //date: "January 2023",
+      //description: "Validated knowledge of Scrum framework and ability to apply Scrum principles in team environments to deliver high-value products.",
       certificateImage: "/my-portfolio/certificates/PSM.jpg", // Add your certificate image path here
       verificationLink: "https://www.credly.com/badges/83097d41-f796-4735-bb9a-e99c8b95aeb5"
     },
