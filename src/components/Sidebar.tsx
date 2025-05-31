@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import { useLocation } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,35 +23,73 @@ const Sidebar: React.FC = () => {
     };
   }, []);
 
-  // Update active section based on scroll position
+  // Improved scroll detection using Intersection Observer
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      let currentSection = '';
+    // Create an observer with options
+    const observerOptions = {
+      root: null, // viewport is used as the root
+      rootMargin: '-20% 0px -20% 0px', // gives 20% margin at top and bottom
+      threshold: 0.3 // trigger when 30% of the element is visible
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      // Find the section that is most visible (largest intersection ratio)
+      const visibleSections = entries.filter(entry => entry.isIntersecting);
+      
+      if (visibleSections.length > 0) {
+        // Sort by intersection ratio (most visible first)
+        visibleSections.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        const mostVisibleSection = visibleSections[0];
+        const sectionId = mostVisibleSection.target.getAttribute('id');
+        
+        if (sectionId && sectionId !== activeSection) {
+          setActiveSection(sectionId);
+        }
+      }
+    }, observerOptions);
+
+    // Observe all sections
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // Fallback for initial load - check which section is in view
+    const checkInitialSection = () => {
+      const viewportHeight = window.innerHeight;
+      const viewportMiddle = window.scrollY + (viewportHeight / 2);
+      
+      let closestSection = null;
+      let closestDistance = Infinity;
       
       sections.forEach((section) => {
-        //const sectionTop = section.offsetTop;
-        const sectionTop = (section as HTMLElement).offsetTop;
-        const sectionHeight = section.clientHeight;
+        const sectionElement = section as HTMLElement;
+        const sectionTop = sectionElement.offsetTop;
+        const sectionHeight = sectionElement.offsetHeight;
+        const sectionMiddle = sectionTop + (sectionHeight / 2);
+        const distance = Math.abs(viewportMiddle - sectionMiddle);
         
-        if (window.scrollY >= sectionTop - 200 && 
-            window.scrollY < sectionTop + sectionHeight - 200) {
-          currentSection = section.getAttribute('id') || '';
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = section.getAttribute('id') || '';
         }
       });
       
-      if (currentSection) {
-        setActiveSection(currentSection);
+      if (closestSection) {
+        setActiveSection(closestSection);
       }
     };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
     
+    // Run initial check after a short delay to ensure DOM is fully loaded
+    setTimeout(checkInitialSection, 300);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      // Clean up observer
+      sections.forEach(section => {
+        sectionObserver.unobserve(section);
+      });
     };
-  }, []);
+  }, [activeSection]); // Re-run if activeSection changes
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -61,6 +98,12 @@ const Sidebar: React.FC = () => {
   const handleNavClick = (id: string) => {
     setActiveSection(id);
     setIsOpen(false);
+    
+    // Smooth scroll to section
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const navItems = [
