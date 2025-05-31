@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [scrolling, setScrolling] = useState(false);
 
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
@@ -23,79 +24,84 @@ const Sidebar: React.FC = () => {
     };
   }, []);
 
-  // Improved scroll detection using Intersection Observer
+  // Improved scroll detection with debouncing and position calculation
   useEffect(() => {
-    // Create an observer with options
-    const observerOptions = {
-      root: null, // viewport is used as the root
-      rootMargin: '-20% 0px -20% 0px', // gives 20% margin at top and bottom
-      threshold: 0.3 // trigger when 30% of the element is visible
-    };
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      // Find the section that is most visible (largest intersection ratio)
-      const visibleSections = entries.filter(entry => entry.isIntersecting);
-      
-      if (visibleSections.length > 0) {
-        // Sort by intersection ratio (most visible first)
-        visibleSections.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        const mostVisibleSection = visibleSections[0];
-        const sectionId = mostVisibleSection.target.getAttribute('id');
-        
-        if (sectionId && sectionId !== activeSection) {
-          setActiveSection(sectionId);
-        }
-      }
-    }, observerOptions);
-
-    // Observe all sections
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach(section => {
-      sectionObserver.observe(section);
-    });
-
-    // Fallback for initial load - check which section is in view
-    const checkInitialSection = () => {
-      const viewportHeight = window.innerHeight;
-      const viewportMiddle = window.scrollY + (viewportHeight / 2);
-      
-      let closestSection = null;
-      let closestDistance = Infinity;
-      
-      sections.forEach((section) => {
-        const sectionElement = section as HTMLElement;
-        const sectionTop = sectionElement.offsetTop;
-        const sectionHeight = sectionElement.offsetHeight;
-        const sectionMiddle = sectionTop + (sectionHeight / 2);
-        const distance = Math.abs(viewportMiddle - sectionMiddle);
-        
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestSection = section.getAttribute('id') || '';
-        }
-      });
-      
-      if (closestSection) {
-        setActiveSection(closestSection);
-      }
-    };
+    let scrollTimeout: number | null = null;
     
-    // Run initial check after a short delay to ensure DOM is fully loaded
-    setTimeout(checkInitialSection, 300);
-
-    return () => {
-      // Clean up observer
-      sections.forEach(section => {
-        sectionObserver.unobserve(section);
-      });
+    const handleScroll = () => {
+      if (scrollTimeout !== null) {
+        return; // Skip if we're already waiting for a timeout
+      }
+      
+      setScrolling(true);
+      
+      // Use a timeout to debounce the scroll events
+      scrollTimeout = window.setTimeout(() => {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
+        
+        // Find the section that contains the current scroll position
+        let currentSection = '';
+        let closestDistance = Infinity;
+        
+        sections.forEach((section) => {
+          const sectionElement = section as HTMLElement;
+          const sectionTop = sectionElement.offsetTop;
+          const sectionHeight = sectionElement.offsetHeight;
+          const sectionBottom = sectionTop + sectionHeight;
+          
+          // Check if scroll position is within this section
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = section.getAttribute('id') || '';
+          } else {
+            // If not within any section, find the closest one
+            const distanceToSection = Math.min(
+              Math.abs(scrollPosition - sectionTop),
+              Math.abs(scrollPosition - sectionBottom)
+            );
+            
+            if (distanceToSection < closestDistance) {
+              closestDistance = distanceToSection;
+              // Only update if we're really close to avoid jumps
+              if (closestDistance < 300) {
+                currentSection = section.getAttribute('id') || '';
+              }
+            }
+          }
+        });
+        
+        if (currentSection && currentSection !== activeSection && !scrolling) {
+          setActiveSection(currentSection);
+        }
+        
+        setScrolling(false);
+        scrollTimeout = null;
+      }, 100); // Debounce time in ms
     };
-  }, [activeSection]); // Re-run if activeSection changes
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check after a short delay to ensure DOM is fully loaded
+    const initialCheckTimeout = setTimeout(() => {
+      handleScroll();
+    }, 300);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout !== null) {
+        window.clearTimeout(scrollTimeout);
+      }
+      clearTimeout(initialCheckTimeout);
+    };
+  }, [activeSection, scrolling]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   const handleNavClick = (id: string) => {
+    // Set a flag to prevent scroll detection from changing the active section
+    setScrolling(true);
     setActiveSection(id);
     setIsOpen(false);
     
@@ -103,6 +109,11 @@ const Sidebar: React.FC = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      
+      // Reset the scrolling flag after the scroll animation is likely complete
+      setTimeout(() => {
+        setScrolling(false);
+      }, 1000);
     }
   };
 
