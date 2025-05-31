@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [clickedSection, setClickedSection] = useState<string | null>(null);
+  const [scrolling, setScrolling] = useState(false);
 
   // Close sidebar when clicking outside on mobile
   useEffect(() => {
@@ -24,23 +24,25 @@ const Sidebar: React.FC = () => {
     };
   }, []);
 
-  // Improved scroll detection with debouncing
+  // Improved scroll detection with debouncing and position calculation
   useEffect(() => {
     let scrollTimeout: number | null = null;
     
     const handleScroll = () => {
-      // Clear any existing timeout to debounce the scroll events
       if (scrollTimeout !== null) {
-        window.clearTimeout(scrollTimeout);
+        return; // Skip if we're already waiting for a timeout
       }
       
-      // Set a new timeout
+      setScrolling(true);
+      
+      // Use a timeout to debounce the scroll events
       scrollTimeout = window.setTimeout(() => {
         const sections = document.querySelectorAll('section[id]');
         const scrollPosition = window.scrollY + window.innerHeight / 3;
         
         // Find the section that contains the current scroll position
-        let newSection = '';
+        let currentSection = '';
+        let closestDistance = Infinity;
         
         sections.forEach((section) => {
           const sectionElement = section as HTMLElement;
@@ -50,24 +52,29 @@ const Sidebar: React.FC = () => {
           
           // Check if scroll position is within this section
           if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            newSection = section.getAttribute('id') || '';
+            currentSection = section.getAttribute('id') || '';
+          } else {
+            // If not within any section, find the closest one
+            const distanceToSection = Math.min(
+              Math.abs(scrollPosition - sectionTop),
+              Math.abs(scrollPosition - sectionBottom)
+            );
+            
+            if (distanceToSection < closestDistance) {
+              closestDistance = distanceToSection;
+              // Only update if we're really close to avoid jumps
+              if (closestDistance < 300) {
+                currentSection = section.getAttribute('id') || '';
+              }
+            }
           }
         });
         
-        // Only update if we found a valid section and it's different from current
-        if (newSection && newSection !== activeSection) {
-          setActiveSection(newSection);
-          
-          // If this was triggered by scrolling (not clicking), clear the clicked section
-          if (clickedSection) {
-            // Only clear clicked section after the protection period
-            const timeSinceClick = Date.now() - Number(clickedSection.split('_')[1]);
-            if (timeSinceClick > 1000) {
-              setClickedSection(null);
-            }
-          }
+        if (currentSection && currentSection !== activeSection && !scrolling) {
+          setActiveSection(currentSection);
         }
         
+        setScrolling(false);
         scrollTimeout = null;
       }, 100); // Debounce time in ms
     };
@@ -86,26 +93,27 @@ const Sidebar: React.FC = () => {
       }
       clearTimeout(initialCheckTimeout);
     };
-  }, [activeSection, clickedSection]);
+  }, [activeSection, scrolling]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   const handleNavClick = (id: string) => {
-    // Set the active section immediately
+    // Set a flag to prevent scroll detection from changing the active section
+    setScrolling(true);
     setActiveSection(id);
-    
-    // Store the clicked section with a timestamp to protect it briefly
-    setClickedSection(`${id}_${Date.now()}`);
-    
-    // Close mobile sidebar if open
     setIsOpen(false);
     
     // Smooth scroll to section
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      
+      // Reset the scrolling flag after the scroll animation is likely complete
+      setTimeout(() => {
+        setScrolling(false);
+      }, 1000);
     }
   };
 
