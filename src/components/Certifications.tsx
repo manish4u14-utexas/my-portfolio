@@ -99,6 +99,12 @@ const Certifications: React.FC = () => {
       verificationLink: "https://badgr.com/public/assertions/u5QxOdnzRYy6CYi69UZVUQ"
     },
     {
+      title: "Advance Deep Learning",
+      issuer: "University of Texas at Austin (Course Work )",
+      certificateImage: "/my-portfolio/certificates/ADL.jpg",
+      verificationLink: "https://badgr.com/public/assertions/8sgFgi0rQo-pSedtsLuZ9Q"
+    },
+    {
       title: "Certified Python Programmer (PCEP)",
       issuer: "Python Institute",
       certificateImage: "/my-portfolio/certificates/PCEP.jpg",
