@@ -105,6 +105,18 @@ const Certifications: React.FC = () => {
       verificationLink: "https://badgr.com/public/assertions/8sgFgi0rQo-pSedtsLuZ9Q"
     },
     {
+      title: "Ethics in AI",
+      issuer: "University of Texas at Austin (Course Work)",
+      certificateImage: "/my-portfolio/certificates/Ethics in AI.jpg",
+      verificationLink: "https://badgr.com/public/assertions/J0vFAk1JRJSf33qItyXlSg"
+    },
+    {
+      title: "Reinforcement Learning(RL)",
+      issuer: "University of Texas at Austin (Course Work)",
+      certificateImage: "/my-portfolio/certificates/RL.jpg",
+      verificationLink: "https://utexas.badgr.com/public/assertions/_Trf_exiSkeuRIvwa2zq7g"
+    },
+    {
       title: "Certified Python Programmer (PCEP)",
       issuer: "Python Institute",
       certificateImage: "/my-portfolio/certificates/PCEP.jpg",
