@@ -17,14 +17,11 @@ jobs:
       with:
         node-version: '20'
         
-    - name: Clear npm cache
-      run: npm cache clean --force
-      
     - name: Install dependencies
-      run: npm install --no-package-lock
+      run: yarn install --frozen-lockfile || yarn install
       
     - name: Build
-      run: npm run build
+      run: yarn build
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
