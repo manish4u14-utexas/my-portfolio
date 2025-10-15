@@ -72,7 +72,7 @@ const Sidebar: React.FC = () => {
     { id: 'certifications', label: 'Certifications', icon: 'certificate' },
     { id: 'projects', label: 'Projects', icon: 'code' },
     { id: 'contact', label: 'Contact', icon: 'mail' },
-    { id: 'resume', label: 'Resume', icon: 'file-text', href: '/my-portfolio/Manish_Chaudhari_Resume_Updated.pdf' }
+    { id: 'resume', label: 'Resume', icon: 'file-text', href: '/my-portfolio/Manish_Chaudhari_Resume.pdf'}
   ];
 
   const renderIcon = (iconName: string) => {
