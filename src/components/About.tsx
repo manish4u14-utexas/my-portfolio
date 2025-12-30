@@ -6,8 +6,8 @@ const About: React.FC = () => {
     triggerOnce: true,
     threshold: 0.2,
   });
-
-  const { ref: listRef, inView: listInView } = useInView({
+  {/*const { ref: listRef, inView: listInView } = useInView*/}
+  const { inView: listInView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
     delay: 300, // Delay for the list to appear after the main text
