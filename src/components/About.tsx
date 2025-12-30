@@ -7,7 +7,7 @@ const About: React.FC = () => {
     threshold: 0.2,
   });
   {/*const { ref: listRef, inView: listInView } = useInView*/}
-  const { inView: listInView } = useInView({
+  const { ref: listRef,inView: listInView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
     delay: 300, // Delay for the list to appear after the main text
@@ -72,6 +72,7 @@ const About: React.FC = () => {
 
         {/* Current AI Tech Stack Section */}
         <div 
+          ref={listRef}
           className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <h3 className="text-2xl font-semibold mb-6 text-sky-600 flex items-center">
