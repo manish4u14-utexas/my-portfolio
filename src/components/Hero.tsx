@@ -40,12 +40,14 @@ const Hero: React.FC = () => {
           Hi, I'm <span className="text-sky-400">Manish Chaudhari</span>.
         </h1>
 
-        {/* Education - Moved up right below name */}
-        <p 
-          className={`text-md md:text-lg italic text-gray-300 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        >
-          I design and implement LLM-powered automation solutions for enterprise workflows. Currently focused on Generative AI, workflow optimization, and digital transformation. Pursuing M.S. in Artificial Intelligence at UT Austin.
-        </p>
+        <div className={`text-md md:text-lg italic text-gray-300 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className="mb-2">
+            I design and implement LLM-powered automation solutions for enterprise workflows. Currently focused on Generative AI, workflow optimization, and digital transformation.
+          </p>
+          <p>
+            Pursuing M.S. in Artificial Intelligence at UT Austin.
+          </p>
+        </div>
         
         {/* Animated Roles */}
         <div 
