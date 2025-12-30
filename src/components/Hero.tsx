@@ -10,10 +10,10 @@ const Hero: React.FC = () => {
 
   const roles = [
     "AI Solution Designer",
-    "Expert Technical Business Analyst",
-    "Web Application Expert",
-    "Agile/Scrum Project Delivery",
-    "AI Solution Architect"
+    "Automation Expert",
+    "Senior Technical Business Analyst (AI)",
+    "Enterprise Web Application Specialist",
+    "Agile/Scrum Leader",
   ];
 
   return (

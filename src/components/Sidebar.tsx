@@ -126,7 +126,7 @@ const Sidebar: React.FC = () => {
               />
             </div>
             <h2 className="text-xl font-bold">Manish Chaudhari</h2>
-            <p className="text-sky-400 text-sm">Senior AI Business Analyst</p>
+            <p className="text-sky-400 text-sm">AI Solutions Designer & Automation Expert</p>
           </div>
 
           {/* Navigation Links */}
