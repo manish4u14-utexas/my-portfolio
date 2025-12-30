@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
         <p 
           className={`text-md md:text-lg italic text-gray-300 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          M.S. in Artificial Intelligence (In Progress), University of Texas at Austin
+          I design and implement LLM-powered automation solutions for enterprise workflows. Currently focused on Generative AI, workflow optimization, and digital transformation. Pursuing M.S. in Artificial Intelligence at UT Austin.
         </p>
         
         {/* Animated Roles */}
