@@ -27,18 +27,89 @@ const About: React.FC = () => {
         </h2>
         <div className={`text-lg leading-relaxed space-y-6 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-left pl-4 md:pl-6">
-            A results-driven Senior Business Systems Analyst with over 10 years of experience, spearheading AI-driven business transformation and delivering impactful system solutions. 
-            Proven expertise in optimizing workflows through AI, achieving up to 40% reduction in manual effort for documentation and a 25% improvement in sprint accuracy. 
+            I am an AI Solution Designer & Architect with over 10 years of experience spearheading technical business transformations.
+            My career is defined by bridging the gap between complex business requirements and production-ready Generative AI solutions. 
+            Currently, I am advancing my technical depth through an M.S. in Artificial Intelligence at the University of Texas at Austin, focusing on LLMs, Agentic AI, and Deep Learning.
+          </p>
+          <p className="text-left pl-4 md:pl-6">
+            I don't just analyze workflows; I automate them using a "vibe coding" approach—leveraging cutting-edge tools like GitHub Copilot, Amazon Q, and Cursor to accelerate development velocity. 
+            My mission is to transform traditional enterprise processes into intelligent, self-optimizing systems.
           </p>
           <p className="text-left pl-4 md:pl-6">
             Expert in Web application development and API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
-            A collaborative leader proficient in Agile methodologies, data analysis, and UAT support, currently advancing AI capabilities through an M.S. in Artificial Intelligence at the University of Texas at Austin.
+            A collaborative leader proficient in Agile methodologies.
           </p>
            <p className="text-left pl-4 md:pl-6">
             "Transitioning from traditional business analysis to AI-driven solution design while bridging technical and business stakeholders."
           </p>
         </div>
+                {/* New AI Impacts Section */}
         <div 
+          className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          <h3 className="text-2xl font-semibold mb-6 text-sky-600 flex items-center">
+            <span className="mr-2">🚀</span>Signature AI Impacts
+          </h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-700 pl-4 md:pl-6">
+            <div className="space-y-4">
+              <div className="bg-slate-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-sky-700 mb-2">AI Documentation Architect</h4>
+                <p className="text-sm">Designed a full-stack web application using Azure OpenAI that reduced technical documentation time by 85%, resulting in $200,000+ in annual cost savings.</p>
+              </div>
+              <div className="bg-slate-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-sky-700 mb-2">Deep Learning Researcher</h4>
+                <p className="text-sm">Developed an LSTM model achieving 83% accuracy and an 0.89 AUC for Hindi fake news detection, outperforming traditional machine learning models.</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-slate-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-sky-700 mb-2">Automation Lead</h4>
+                <p className="text-sm">Engineered an end-to-end support triage system using the GPT-5 API and Power Automate, reducing email processing time to just 1–2 minutes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Current AI Tech Stack Section */}
+        <div 
+          className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        >
+          <h3 className="text-2xl font-semibold mb-6 text-sky-600 flex items-center">
+            <span className="mr-2">🛠️</span>Current AI Tech Stack
+          </h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-700 pl-4 md:pl-6">
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
+                  <span className="text-sky-600 mr-2">•</span>Models & Frameworks
+                </h4>
+                <p className="text-sm ml-4">Azure OpenAI (GPT-4/3.5), Agentic AI, LSTM, NLP (Tokenization, TF-IDF)</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
+                  <span className="text-sky-600 mr-2">•</span>Low-Code & Automation
+                </h4>
+                <p className="text-sm ml-4">Power Automate, Power Apps, AI Builder, Dataverse, SharePoint</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
+                  <span className="text-sky-600 mr-2">•</span>Pro-Code & Scripting
+                </h4>
+                <p className="text-sm ml-4">Python (Pandas, NumPy, Scikit-learn), Flask, Bash, SQL</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
+                  <span className="text-sky-600 mr-2">•</span>Observability & Agile
+                </h4>
+                <p className="text-sm ml-4">New Relic, Splunk, Kibana, JIRA Automation, Atlassian AI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/*<div 
           ref={listRef}
           className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
@@ -65,7 +136,7 @@ const About: React.FC = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </div>*/}
       </div>
     </section>
   );
