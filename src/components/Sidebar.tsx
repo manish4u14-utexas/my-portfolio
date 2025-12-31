@@ -24,32 +24,34 @@ const Sidebar: React.FC = () => {
     };
   }, []);
 
-  // Update active section based on scroll position
+  // Update active section based on scroll position using Intersection Observer
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      const scrollPos = window.scrollY + window.innerHeight / 3;
-      
-      let currentSection = 'home'; // Default to home
-      
-      sections.forEach((section) => {
-        const element = section as HTMLElement;
-        const sectionTop = element.offsetTop;
-        const sectionBottom = sectionTop + element.offsetHeight;
-        
-        if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
-          currentSection = element.id;
-        }
-      });
-      
-      setActiveSection(currentSection);
+    const sections = document.querySelectorAll('section[id]');
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -80% 0px', // Trigger when section is 20% from top
+      threshold: 0
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.getAttribute('id');
+          if (sectionId) {
+            setActiveSection(sectionId);
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
     };
   }, []);
 
