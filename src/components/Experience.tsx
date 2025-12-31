@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 interface RoadmapMilestone {
@@ -18,8 +18,9 @@ interface RoadmapMilestone {
 }
 
 const Experience: React.FC = () => {
-  const [activeMilestone, setActiveMilestone] = useState<string>('current'); // Start with latest
+  const [activeMilestone, setActiveMilestone] = useState<string>('current');
   const [pathProgress, setPathProgress] = useState(0);
+  const roadmapRef = useRef<HTMLDivElement>(null);
   const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -151,11 +152,24 @@ const Experience: React.FC = () => {
     }
   }, [sectionInView]);
 
-  // Smart popup positioning to avoid overlaps
+  // Click outside to close popup
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (roadmapRef.current && !roadmapRef.current.contains(event.target as Node)) {
+        setActiveMilestone('');
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Smart popup positioning with better bottom positioning
   const getPopupPosition = (milestone: RoadmapMilestone) => {
     const { x, y } = milestone.position;
     
-    // Determine best position based on waypoint location
     let popupClass = '';
     let transform = '';
     
@@ -171,9 +185,9 @@ const Experience: React.FC = () => {
       // Top area - popup below
       popupClass = 'top-16 left-1/2';
       transform = 'transform -translate-x-1/2';
-    } else if (y > 70) {
-      // Bottom area - popup above
-      popupClass = 'bottom-16 left-1/2';
+    } else if (y > 60) {
+      // Bottom area - popup above with more clearance
+      popupClass = 'bottom-20 left-1/2';
       transform = 'transform -translate-x-1/2';
     } else {
       // Center area - popup below
@@ -184,7 +198,8 @@ const Experience: React.FC = () => {
     return { popupClass, transform };
   };
 
-  const handleMilestoneClick = (milestoneId: string) => {
+  const handleMilestoneClick = (milestoneId: string, event: React.MouseEvent) => {
+    event.stopPropagation();
     setActiveMilestone(activeMilestone === milestoneId ? '' : milestoneId);
   };
 
@@ -204,7 +219,10 @@ const Experience: React.FC = () => {
         </div>
 
         {/* Interactive Roadmap */}
-        <div className="relative h-screen max-h-[700px] bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-3xl p-8 backdrop-blur-sm border border-white/10 overflow-visible">
+        <div 
+          ref={roadmapRef}
+          className="relative h-screen max-h-[700px] bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-3xl p-8 backdrop-blur-sm border border-white/10 overflow-visible mb-8"
+        >
           {/* Animated Path */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -254,7 +272,7 @@ const Experience: React.FC = () => {
                 {/* Waypoint Marker */}
                 <div 
                   className={`relative cursor-pointer group ${activeMilestone === milestone.id ? 'z-50' : 'z-10'}`}
-                  onClick={() => handleMilestoneClick(milestone.id)}
+                  onClick={(e) => handleMilestoneClick(milestone.id, e)}
                 >
                   {/* Pulsing Ring for Active Step */}
                   {activeMilestone === milestone.id && (
@@ -274,39 +292,47 @@ const Experience: React.FC = () => {
                     <span className="text-white">{milestone.icon}</span>
                   </div>
 
-                  {/* Year Label */}
+                  {/* Enhanced Year Label with Highlight */}
                   <div 
-                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap bg-black/50 backdrop-blur-sm"
+                    className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-md text-xs font-bold text-white whitespace-nowrap transition-all duration-300 ${
+                      activeMilestone === milestone.id 
+                        ? 'bg-white text-gray-800 scale-110 shadow-lg' 
+                        : 'bg-black/50 backdrop-blur-sm'
+                    }`}
                   >
                     {milestone.period}
                   </div>
 
                   {/* Company Badge */}
                   <div 
-                    className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap"
+                    className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap transition-all duration-300 ${
+                      activeMilestone === milestone.id ? 'scale-110' : ''
+                    }`}
                     style={{ backgroundColor: milestone.color }}
                   >
                     {milestone.company}
                   </div>
 
                   {/* Detailed Info Card with Smart Positioning */}
-                  <div className={`absolute ${popupClass} w-72 bg-white rounded-2xl shadow-2xl border-2 transition-all duration-500 ${transform} ${
-                    activeMilestone === milestone.id
-                      ? 'opacity-100 visible scale-100' 
-                      : 'opacity-0 invisible scale-95'
-                  }`}
-                  style={{ borderColor: milestone.color }}
+                  <div 
+                    className={`absolute ${popupClass} w-72 bg-white rounded-2xl shadow-2xl border-2 transition-all duration-500 ${transform} ${
+                      activeMilestone === milestone.id
+                        ? 'opacity-100 visible scale-100' 
+                        : 'opacity-0 invisible scale-95'
+                    }`}
+                    style={{ borderColor: milestone.color }}
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-5 text-gray-800">
-                      {/* Header */}
+                      {/* Header with Period Highlight */}
                       <div className="text-center mb-4">
                         <div className="flex items-center justify-center mb-2">
                           <span className="text-2xl mr-2">{milestone.icon}</span>
                           <div 
-                            className="px-3 py-1 rounded-full text-white font-semibold text-xs"
+                            className="px-4 py-2 rounded-full text-white font-bold text-sm"
                             style={{ backgroundColor: milestone.color }}
                           >
-                            {milestone.type === 'education' ? 'Education' : 'Professional'}
+                            {milestone.period} • {milestone.type === 'education' ? 'Education' : 'Professional'}
                           </div>
                         </div>
                         <h3 className="text-lg font-bold mb-1">{milestone.title}</h3>
@@ -350,6 +376,14 @@ const Experience: React.FC = () => {
                           ))}
                         </div>
                       </div>
+
+                      {/* Close Button */}
+                      <button
+                        onClick={() => setActiveMilestone('')}
+                        className="absolute top-2 right-2 w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-600 text-xs transition-colors"
+                      >
+                        ✕
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -365,14 +399,14 @@ const Experience: React.FC = () => {
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   activeMilestone === milestone.id ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
                 }`}
-                onClick={() => handleMilestoneClick(milestone.id)}
+                onClick={(e) => handleMilestoneClick(milestone.id, e)}
               />
             ))}
           </div>
         </div>
 
         {/* Career Stats */}
-        <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ease-out delay-2000 ${
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-700 ease-out delay-2000 ${
           sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           {[
