@@ -94,41 +94,102 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Current AI Tech Stack Section */}
+          {/* Technical Competencies Section */}
         <div 
           ref={listRef}
           className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <h3 className="text-2xl font-semibold mb-6 text-sky-600 flex items-center">
-            <span className="mr-2">🛠️</span>Current AI Tech Stack
+          <h3 className="text-2xl font-semibold mb-8 text-sky-600 flex items-center">
+            <span className="mr-2">⚡</span>Technical Competencies & Expertise
           </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-700 pl-4 md:pl-6">
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
-                  <span className="text-sky-600 mr-2">•</span>Models & Frameworks
-                </h4>
-                <p className="text-sm ml-4">Azure OpenAI (GPT-4/3.5), Agentic AI, LSTM, NLP (Tokenization, TF-IDF)</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
-                  <span className="text-sky-600 mr-2">•</span>Low-Code & Automation
-                </h4>
-                <p className="text-sm ml-4">Power Automate, Power Apps, AI Builder, Dataverse, SharePoint</p>
-              </div>
+          
+          {/* Core AI Competencies */}
+          <div className="mb-8">
+            <h4 className="text-lg font-semibold text-sky-700 mb-4 flex items-center">
+              <span className="mr-2">🧠</span>Core AI & Leadership Expertise
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 pl-4 md:pl-6">
+              {[
+                "Generative AI & LLM Architecture (GPT-4/5)",
+                "Agentic AI & Prompt Engineering",
+                "Full-Stack AI Application Development",
+                "Deep Learning & NLP Research (LSTM)",
+                "AI-Powered Workflow Automation",
+                "Agile & Scrum Leadership (PSPO/PSM)",
+                "SDLC Optimization (85% Documentation Gain)",
+                "Enterprise AI Adoption & Strategy"
+              ].map((skill, index) => (
+                <div 
+                  key={index}
+                  className={`bg-gradient-to-r from-sky-50 to-blue-50 p-3 rounded-lg border-l-3 border-sky-400 text-sm font-medium text-slate-700 transition-all duration-500 ease-out hover:shadow-md ${listInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${listInView ? index * 100 : 0}ms` }}
+                >
+                  <span className="text-sky-600 mr-2">✦</span>{skill}
+                </div>
+              ))}
             </div>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
-                  <span className="text-sky-600 mr-2">•</span>Pro-Code & Scripting
-                </h4>
-                <p className="text-sm ml-4">Python (Pandas, NumPy, Scikit-learn), Flask, Bash, SQL</p>
+          </div>
+
+          {/* Technology Stack */}
+          <div>
+            <h4 className="text-lg font-semibold text-sky-700 mb-4 flex items-center">
+              <span className="mr-2">🛠️</span>Technology Stack & Tools
+            </h4>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pl-4 md:pl-6">
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
+                    <span className="w-2 h-2 bg-sky-500 rounded-full mr-2"></span>AI Models & Frameworks
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {["Azure OpenAI", "GPT-4/3.5", "Agentic AI", "LSTM", "NLP", "TF-IDF"].map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-sky-100 text-sky-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
+                    <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Programming & Development
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {["Python", "Flask", "Pandas", "NumPy", "Scikit-learn", "Bash", "SQL"].map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold text-sky-700 mb-2 flex items-center">
-                  <span className="text-sky-600 mr-2">•</span>Observability & Agile
-                </h4>
-                <p className="text-sm ml-4">New Relic, Splunk, Kibana, JIRA Automation, Atlassian AI</p>
+              
+              <div className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Low-Code & Automation
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {["Power Automate", "Power Apps", "AI Builder", "Dataverse", "SharePoint"].map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
+                    <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Observability & DevOps
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {["New Relic", "Splunk", "Kibana", "JIRA", "Atlassian AI"].map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
