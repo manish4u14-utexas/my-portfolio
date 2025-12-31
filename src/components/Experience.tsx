@@ -151,25 +151,6 @@ const Experience: React.FC = () => {
     }
   }, [sectionInView]);
 
-  // Auto-progression in reverse order after path is drawn
-  useEffect(() => {
-    if (sectionInView && pathProgress === 100) {
-      let currentIndex = milestones.length - 1; // Start from latest (current)
-      
-      const showNextMilestone = () => {
-        if (currentIndex >= 0) {
-          setActiveMilestone(milestones[currentIndex].id);
-          currentIndex--;
-          if (currentIndex >= 0) {
-            setTimeout(showNextMilestone, 2500); // Show each for 2.5 seconds
-          }
-        }
-      };
-      
-      setTimeout(showNextMilestone, 500); // Start after path animation
-    }
-  }, [sectionInView, pathProgress, milestones]);
-
   // Smart popup positioning to avoid overlaps
   const getPopupPosition = (milestone: RoadmapMilestone) => {
     const { x, y } = milestone.position;
@@ -267,7 +248,7 @@ const Experience: React.FC = () => {
                 style={{ 
                   left: `${milestone.position.x}%`, 
                   top: `${milestone.position.y}%`,
-                  transitionDelay: `${sectionInView ? index * 400 : 0}ms`
+                  transitionDelay: `${sectionInView ? index * 200 : 0}ms`
                 }}
               >
                 {/* Waypoint Marker */}
