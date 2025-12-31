@@ -31,15 +31,32 @@ const Sidebar: React.FC = () => {
       let currentSection = '';
       
       sections.forEach((section) => {
-        //const sectionTop = section.offsetTop;
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = section.clientHeight;
+        const scrollPosition = window.scrollY + 100; // Add offset for better detection
         
-        if (window.scrollY >= sectionTop - 200 && 
-            window.scrollY < sectionTop + sectionHeight - 200) {
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           currentSection = section.getAttribute('id') || '';
         }
       });
+      
+      // Fallback: if no section detected, find the closest one
+      if (!currentSection) {
+        let closestSection = '';
+        let closestDistance = Infinity;
+        
+        sections.forEach((section) => {
+          const sectionTop = (section as HTMLElement).offsetTop;
+          const distance = Math.abs(window.scrollY + 100 - sectionTop);
+          
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestSection = section.getAttribute('id') || '';
+          }
+        });
+        
+        currentSection = closestSection;
+      }
       
       if (currentSection) {
         setActiveSection(currentSection);
