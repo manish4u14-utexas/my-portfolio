@@ -17,7 +17,7 @@ const About: React.FC = () => {
     <section 
       id="about" 
       ref={sectionRef}
-      className="py-20 px-4 md:px-10 bg-white text-slate-800 overflow-hidden" 
+      className="py-20 px-4 md:px-10 bg-gradient-to-br from-gray-50 via-white to-sky-50 text-slate-800 overflow-hidden relative"
     >
       <div className="max-w-4xl mx-auto">
         <h2 
