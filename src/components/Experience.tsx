@@ -18,9 +18,8 @@ interface RoadmapMilestone {
 }
 
 const Experience: React.FC = () => {
-  const [activeMilestone, setActiveMilestone] = useState<string | null>(null);
+  const [activeMilestone, setActiveMilestone] = useState<string>('current'); // Start with latest
   const [pathProgress, setPathProgress] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
   const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -104,7 +103,7 @@ const Experience: React.FC = () => {
     },
     {
       id: 'education-start',
-      period: '2023',
+      period: '2024',
       title: 'Started M.S. in AI',
       company: 'UT Austin',
       type: 'education',
@@ -152,15 +151,61 @@ const Experience: React.FC = () => {
     }
   }, [sectionInView]);
 
-  // Auto-progress through milestones
+  // Auto-progression in reverse order after path is drawn
   useEffect(() => {
     if (sectionInView && pathProgress === 100) {
-      const interval = setInterval(() => {
-        setCurrentStep((prev) => (prev + 1) % milestones.length);
-      }, 3000);
-      return () => clearInterval(interval);
+      let currentIndex = milestones.length - 1; // Start from latest (current)
+      
+      const showNextMilestone = () => {
+        if (currentIndex >= 0) {
+          setActiveMilestone(milestones[currentIndex].id);
+          currentIndex--;
+          if (currentIndex >= 0) {
+            setTimeout(showNextMilestone, 2500); // Show each for 2.5 seconds
+          }
+        }
+      };
+      
+      setTimeout(showNextMilestone, 500); // Start after path animation
     }
-  }, [sectionInView, pathProgress, milestones.length]);
+  }, [sectionInView, pathProgress, milestones]);
+
+  // Smart popup positioning to avoid overlaps
+  const getPopupPosition = (milestone: RoadmapMilestone) => {
+    const { x, y } = milestone.position;
+    
+    // Determine best position based on waypoint location
+    let popupClass = '';
+    let transform = '';
+    
+    if (x < 30) {
+      // Left side - popup to the right
+      popupClass = 'left-16 top-1/2';
+      transform = 'transform -translate-y-1/2';
+    } else if (x > 70) {
+      // Right side - popup to the left
+      popupClass = 'right-16 top-1/2';
+      transform = 'transform -translate-y-1/2';
+    } else if (y < 30) {
+      // Top area - popup below
+      popupClass = 'top-16 left-1/2';
+      transform = 'transform -translate-x-1/2';
+    } else if (y > 70) {
+      // Bottom area - popup above
+      popupClass = 'bottom-16 left-1/2';
+      transform = 'transform -translate-x-1/2';
+    } else {
+      // Center area - popup below
+      popupClass = 'top-16 left-1/2';
+      transform = 'transform -translate-x-1/2';
+    }
+    
+    return { popupClass, transform };
+  };
+
+  const handleMilestoneClick = (milestoneId: string) => {
+    setActiveMilestone(activeMilestone === milestoneId ? '' : milestoneId);
+  };
 
   return (
     <section id="experience" className="py-20 px-4 md:px-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
@@ -178,7 +223,7 @@ const Experience: React.FC = () => {
         </div>
 
         {/* Interactive Roadmap */}
-        <div className="relative h-screen max-h-[700px] bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-3xl p-8 backdrop-blur-sm border border-white/10">
+        <div className="relative h-screen max-h-[700px] bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-3xl p-8 backdrop-blur-sm border border-white/10 overflow-visible">
           {/* Animated Path */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -210,141 +255,136 @@ const Experience: React.FC = () => {
           </svg>
 
           {/* Milestone Waypoints */}
-          {milestones.map((milestone, index) => (
-            <div
-              key={milestone.id}
-              className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-out ${
-                sectionInView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-              } ${currentStep === index ? 'z-50' : 'z-10'}`}
-              style={{ 
-                left: `${milestone.position.x}%`, 
-                top: `${milestone.position.y}%`,
-                transitionDelay: `${sectionInView ? index * 400 : 0}ms`
-              }}
-            >
-              {/* Waypoint Marker */}
-              <div 
-                className={`relative cursor-pointer group ${activeMilestone === milestone.id || currentStep === index ? 'z-50' : 'z-10'}`}
-                onClick={() => setActiveMilestone(activeMilestone === milestone.id ? null : milestone.id)}
+          {milestones.map((milestone, index) => {
+            const { popupClass, transform } = getPopupPosition(milestone);
+            
+            return (
+              <div
+                key={milestone.id}
+                className={`absolute transition-all duration-700 ease-out ${
+                  sectionInView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                } ${activeMilestone === milestone.id ? 'z-50' : 'z-10'}`}
+                style={{ 
+                  left: `${milestone.position.x}%`, 
+                  top: `${milestone.position.y}%`,
+                  transitionDelay: `${sectionInView ? index * 400 : 0}ms`
+                }}
               >
-                {/* Pulsing Ring for Active Step */}
-                {currentStep === index && (
+                {/* Waypoint Marker */}
+                <div 
+                  className={`relative cursor-pointer group ${activeMilestone === milestone.id ? 'z-50' : 'z-10'}`}
+                  onClick={() => handleMilestoneClick(milestone.id)}
+                >
+                  {/* Pulsing Ring for Active Step */}
+                  {activeMilestone === milestone.id && (
+                    <div 
+                      className="absolute inset-0 rounded-full animate-ping opacity-40"
+                      style={{ backgroundColor: milestone.color, width: '60px', height: '60px', left: '-24px', top: '-24px' }}
+                    ></div>
+                  )}
+                  
+                  {/* Main Waypoint */}
                   <div 
-                    className="absolute inset-0 rounded-full animate-ping opacity-40"
-                    style={{ backgroundColor: milestone.color, width: '60px', height: '60px', left: '-15px', top: '-15px' }}
-                  ></div>
-                )}
-                
-                {/* Main Waypoint */}
-                <div 
-                  className={`w-12 h-12 rounded-full border-4 border-white shadow-2xl transition-all duration-300 flex items-center justify-center text-lg group-hover:scale-125 ${
-                    activeMilestone === milestone.id || currentStep === index ? 'scale-150 shadow-3xl' : ''
+                    className={`w-12 h-12 rounded-full border-4 border-white shadow-2xl transition-all duration-300 flex items-center justify-center text-lg group-hover:scale-125 transform -translate-x-1/2 -translate-y-1/2 ${
+                      activeMilestone === milestone.id ? 'scale-150 shadow-3xl' : ''
+                    }`}
+                    style={{ backgroundColor: milestone.color }}
+                  >
+                    <span className="text-white">{milestone.icon}</span>
+                  </div>
+
+                  {/* Year Label */}
+                  <div 
+                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap bg-black/50 backdrop-blur-sm"
+                  >
+                    {milestone.period}
+                  </div>
+
+                  {/* Company Badge */}
+                  <div 
+                    className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap"
+                    style={{ backgroundColor: milestone.color }}
+                  >
+                    {milestone.company}
+                  </div>
+
+                  {/* Detailed Info Card with Smart Positioning */}
+                  <div className={`absolute ${popupClass} w-72 bg-white rounded-2xl shadow-2xl border-2 transition-all duration-500 ${transform} ${
+                    activeMilestone === milestone.id
+                      ? 'opacity-100 visible scale-100' 
+                      : 'opacity-0 invisible scale-95'
                   }`}
-                  style={{ backgroundColor: milestone.color }}
-                >
-                  <span className="text-white">{milestone.icon}</span>
-                </div>
+                  style={{ borderColor: milestone.color }}
+                  >
+                    <div className="p-5 text-gray-800">
+                      {/* Header */}
+                      <div className="text-center mb-4">
+                        <div className="flex items-center justify-center mb-2">
+                          <span className="text-2xl mr-2">{milestone.icon}</span>
+                          <div 
+                            className="px-3 py-1 rounded-full text-white font-semibold text-xs"
+                            style={{ backgroundColor: milestone.color }}
+                          >
+                            {milestone.type === 'education' ? 'Education' : 'Professional'}
+                          </div>
+                        </div>
+                        <h3 className="text-lg font-bold mb-1">{milestone.title}</h3>
+                        <p className="text-sky-600 font-semibold text-sm">{milestone.company}</p>
+                      </div>
 
-                {/* Year Label */}
-                <div 
-                  className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap bg-black/50 backdrop-blur-sm"
-                >
-                  {milestone.period}
-                </div>
+                      {/* Impact */}
+                      <div className="mb-4 p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border-l-4 border-green-400">
+                        <h4 className="font-bold text-green-800 text-xs mb-1">Key Impact</h4>
+                        <p className="text-green-700 text-xs">{milestone.details.impact}</p>
+                      </div>
 
-                {/* Company Badge */}
-                <div 
-                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap"
-                  style={{ backgroundColor: milestone.color }}
-                >
-                  {milestone.company}
-                </div>
+                      {/* Achievements */}
+                      <div className="mb-4">
+                        <h4 className="font-semibold mb-2 text-xs flex items-center">
+                          <span className="mr-1">🎯</span>Achievements
+                        </h4>
+                        <ul className="space-y-1">
+                          {milestone.details.achievements.map((achievement, idx) => (
+                            <li key={idx} className="text-xs text-gray-600 flex items-start">
+                              <span className="text-sky-500 mr-1 mt-0.5 flex-shrink-0">•</span>
+                              {achievement}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                {/* Detailed Info Card */}
-                <div className={`absolute top-16 left-1/2 transform -translate-x-1/2 w-72 bg-white rounded-2xl shadow-2xl border-2 transition-all duration-500 ${
-                  activeMilestone === milestone.id || currentStep === index
-                    ? 'opacity-100 visible translate-y-0 scale-100' 
-                    : 'opacity-0 invisible translate-y-4 scale-95'
-                }`}
-                style={{ borderColor: milestone.color }}
-                >
-                  <div className="p-5 text-gray-800">
-                    {/* Header */}
-                    <div className="text-center mb-4">
-                      <div className="flex items-center justify-center mb-2">
-                        <span className="text-2xl mr-2">{milestone.icon}</span>
-                        <div 
-                          className="px-3 py-1 rounded-full text-white font-semibold text-xs"
-                          style={{ backgroundColor: milestone.color }}
-                        >
-                          {milestone.type === 'education' ? 'Education' : 'Professional'}
+                      {/* Technologies */}
+                      <div>
+                        <h4 className="font-semibold mb-2 text-xs flex items-center">
+                          <span className="mr-1">🛠️</span>Technologies
+                        </h4>
+                        <div className="flex flex-wrap gap-1">
+                          {milestone.details.technologies.map((tech, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
-                      <h3 className="text-lg font-bold mb-1">{milestone.title}</h3>
-                      <p className="text-sky-600 font-semibold text-sm">{milestone.company}</p>
                     </div>
-
-                    {/* Impact */}
-                    <div className="mb-4 p-3 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border-l-4 border-green-400">
-                      <h4 className="font-bold text-green-800 text-xs mb-1">Key Impact</h4>
-                      <p className="text-green-700 text-xs">{milestone.details.impact}</p>
-                    </div>
-
-                    {/* Achievements */}
-                    <div className="mb-4">
-                      <h4 className="font-semibold mb-2 text-xs flex items-center">
-                        <span className="mr-1">🎯</span>Achievements
-                      </h4>
-                      <ul className="space-y-1">
-                        {milestone.details.achievements.map((achievement, idx) => (
-                          <li key={idx} className="text-xs text-gray-600 flex items-start">
-                            <span className="text-sky-500 mr-1 mt-0.5 flex-shrink-0">•</span>
-                            {achievement}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Technologies */}
-                    <div>
-                      <h4 className="font-semibold mb-2 text-xs flex items-center">
-                        <span className="mr-1">🛠️</span>Technologies
-                      </h4>
-                      <div className="flex flex-wrap gap-1">
-                        {milestone.details.technologies.map((tech, idx) => (
-                          <span 
-                            key={idx}
-                            className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Arrow */}
-                    <div 
-                      className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 rotate-45 border-l-2 border-t-2"
-                      style={{ 
-                        backgroundColor: 'white',
-                        borderColor: milestone.color
-                      }}
-                    ></div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {/* Navigation Controls */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            {milestones.map((_, index) => (
+            {milestones.map((milestone, index) => (
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentStep === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
+                  activeMilestone === milestone.id ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
                 }`}
-                onClick={() => setCurrentStep(index)}
+                onClick={() => handleMilestoneClick(milestone.id)}
               />
             ))}
           </div>
