@@ -27,21 +27,18 @@ const About: React.FC = () => {
         </h2>
         <div className={`text-lg leading-relaxed space-y-6 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-left pl-4 md:pl-6">
-            I am an AI Solution Designer & Architect with over 10 years of experience spearheading technical business transformations.
-            My career is defined by bridging the gap between complex business requirements and production-ready Generative AI solutions. 
-            Currently, I am advancing my technical depth through an M.S. in Artificial Intelligence at the University of Texas at Austin, focusing on LLMs, Agentic AI, and Deep Learning.
+            I am an <strong className="text-sky-700">AI Solution Designer & Architect</strong> with over <strong className="text-sky-700">10 years of experience</strong> spearheading technical business transformations.
+            My career is defined by bridging the gap between complex business requirements and <strong className="text-sky-700">production-ready Generative AI solutions</strong>. 
+            Currently, I am advancing my technical depth through an <strong className="text-sky-700">M.S. in Artificial Intelligence at the University of Texas at Austin</strong>, focusing on <strong>LLMs, Agentic AI, and Deep Learning</strong>.
           </p>
           <p className="text-left pl-4 md:pl-6">
-            I don't just analyze workflows; I automate them using a "vibe coding" approach—leveraging cutting-edge tools like GitHub Copilot, Amazon Q, and Cursor to accelerate development velocity. 
-            My mission is to transform traditional enterprise processes into intelligent, self-optimizing systems.
+            I don't just analyze workflows; I <strong className="text-sky-700">automate them</strong> using a <strong>"vibe coding" approach</strong>—leveraging cutting-edge tools like <strong>GitHub Copilot, Amazon Q, and Cursor</strong> to accelerate development velocity. 
+            My mission is to transform traditional enterprise processes into <strong className="text-sky-700">intelligent, self-optimizing systems</strong>.
           </p>
           <p className="text-left pl-4 md:pl-6">
-            Expert in Web application development and API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
-            A collaborative leader proficient in Agile methodologies.
+            Expert in <strong>Web application development and API integration</strong>, <strong>Salesforce CRM optimization</strong>, and <strong>Heroku cloud management</strong>, consistently enhancing <strong className="text-green-600">operational efficiency and user experience</strong> for consumer and provider-facing web applications. 
+            A collaborative leader proficient in <strong>Agile methodologies</strong>.
           </p>
-           {/*<p className="text-left pl-4 md:pl-6">
-            "Transitioning from traditional business analysis to AI-driven solution design while bridging technical and business stakeholders."
-          </p>*/}
         </div>
                 {/* New AI Impacts Section */}
         <div 
