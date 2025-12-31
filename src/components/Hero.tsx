@@ -40,13 +40,19 @@ const Hero: React.FC = () => {
           Hi, I'm <span className="text-sky-400">Manish Chaudhari</span>.
         </h1>
 
-        <div className={`text-md md:text-lg italic text-gray-300 mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="mb-2">
+        {/* Introduction and Education */}
+        <div className={`text-center mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className="text-md md:text-lg text-gray-300 mb-4 leading-relaxed">
             I design and implement LLM-powered automation solutions for enterprise workflows. Currently focused on Generative AI, workflow optimization, and digital transformation.
           </p>
-          <p>
-            Pursuing M.S. in Artificial Intelligence at UT Austin.
-          </p>
+          
+          {/* Education Badge */}
+          <div className="inline-flex items-center bg-gradient-to-r from-sky-600/20 to-blue-600/20 backdrop-blur-sm border border-sky-400/30 rounded-full px-4 py-2 mt-2">
+            <span className="text-sky-300 mr-2">🎓</span>
+            <span className="text-sm md:text-base text-sky-200 font-medium">
+              Pursuing M.S. in Artificial Intelligence at UT Austin
+            </span>
+          </div>
         </div>
         
         {/* Animated Roles */}
