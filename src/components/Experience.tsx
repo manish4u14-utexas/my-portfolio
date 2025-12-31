@@ -211,7 +211,7 @@ const Experience: React.FC = () => {
           className={`text-center mb-16 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <h2 className="text-5xl font-bold bg-gradient-to-r from-sky-400 to-blue-400 bg-clip-text text-transparent mb-4">
-            Interactive Career Roadmap
+            Professional journey
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
             Follow my professional journey through an animated career path. Click on any waypoint to explore details.
