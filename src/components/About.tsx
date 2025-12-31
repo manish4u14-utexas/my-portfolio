@@ -39,9 +39,9 @@ const About: React.FC = () => {
             Expert in Web application development and API integration, Salesforce CRM optimization, and Heroku cloud management, consistently enhancing operational efficiency and user experience for consumer and provider-facing web applications. 
             A collaborative leader proficient in Agile methodologies.
           </p>
-           <p className="text-left pl-4 md:pl-6">
+           {/*<p className="text-left pl-4 md:pl-6">
             "Transitioning from traditional business analysis to AI-driven solution design while bridging technical and business stakeholders."
-          </p>
+          </p>*/}
         </div>
                 {/* New AI Impacts Section */}
         <div 
@@ -51,20 +51,47 @@ const About: React.FC = () => {
             <span className="mr-2">🚀</span>Signature AI Impacts
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-gray-700 pl-4 md:pl-6">
-            <div className="space-y-4">
-              <div className="bg-slate-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-sky-700 mb-2">AI Documentation Architect</h4>
-                <p className="text-sm">Designed a full-stack web application using Azure OpenAI that reduced technical documentation time by 85%, resulting in $200,000+ in annual cost savings.</p>
+            <div className="space-y-6">
+              <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-sky-500">
+                <h4 className="font-bold text-sky-700 mb-3 text-base">Enterprise AI Documentation Architect</h4>
+                <p className="text-sm mb-2">
+                  Architected a web application using <strong>Azure OpenAI (GPT-4)</strong> and <strong>Flask</strong> that automates the generation of user stories and test cases.
+                </p>
+                <p className="text-sm text-green-700 font-medium">
+                  <strong>Impact:</strong> Reduced manual documentation time by <strong>85%</strong> (7 hours down to 1) with a projected annual cost savings of <strong>$200,000+</strong>.
+                </p>
               </div>
-              <div className="bg-slate-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-sky-700 mb-2">Deep Learning Researcher</h4>
-                <p className="text-sm">Developed an LSTM model achieving 83% accuracy and an 0.89 AUC for Hindi fake news detection, outperforming traditional machine learning models.</p>
+              
+              <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-sky-500">
+                <h4 className="font-bold text-sky-700 mb-3 text-base">AI-Driven Reporting & Compliance</h4>
+                <p className="text-sm mb-2">
+                  Engineered a <strong>Power Automate + AI Builder</strong> solution to synthesize weekly email communications into structured, week-stamped project summaries.
+                </p>
+                <p className="text-sm text-green-700 font-medium">
+                  <strong>Impact:</strong> Eliminated manual status tracking and created a traceable <strong>audit trail</strong> for project evidence.
+                </p>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="bg-slate-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-sky-700 mb-2">Automation Lead</h4>
-                <p className="text-sm">Engineered an end-to-end support triage system using the GPT-5 API and Power Automate, reducing email processing time to just 1–2 minutes.</p>
+            
+            <div className="space-y-6">
+              <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-sky-500">
+                <h4 className="font-bold text-sky-700 mb-3 text-base">Intelligent Support Automation Lead</h4>
+                <p className="text-sm mb-2">
+                  Developed an end-to-end support triage pipeline for the <strong>Doctor Locator platform</strong> using the <strong>GPT-5 API</strong> and <strong>Power Automate</strong>.
+                </p>
+                <p className="text-sm text-green-700 font-medium">
+                  <strong>Impact:</strong> Automated request classification <strong>(Region/Issue Type)</strong> for a global distribution list, ensuring processing within <strong>1–2 minutes</strong> and providing real-time dashboard analytics.
+                </p>
+              </div>
+              
+              <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-sky-500">
+                <h4 className="font-bold text-sky-700 mb-3 text-base">Deep Learning Research (NLP)</h4>
+                <p className="text-sm mb-2">
+                  Authored research on <strong>Hindi Fake News Detection</strong> utilizing <strong>LSTM Deep Learning</strong> networks.
+                </p>
+                <p className="text-sm text-green-700 font-medium">
+                  <strong>Impact:</strong> Achieved <strong>83.0% accuracy (0.89 AUC)</strong>, significantly outperforming traditional Machine Learning models <strong>(SVM/Logistic Regression)</strong>.
+                </p>
               </div>
             </div>
           </div>
