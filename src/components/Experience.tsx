@@ -44,6 +44,25 @@ const Experience: React.FC = () => {
       ]
     },
     {
+      id: 'ms-ai-education',
+      period: '2023 – Present',
+      title: 'M.S. in Artificial Intelligence (In Progress)',
+      company: 'University of Texas at Austin',
+      visualMetric: 'Academic Excellence',
+      color: '#BF5700',
+      companyLogo: '🎓',
+      specialAchievement: {
+        title: 'Full-Time Professional + Full-Time Student',
+        impact: 'Balancing demanding career while pursuing advanced AI degree'
+      },
+      highlights: [
+        'Pursuing advanced coursework in Machine Learning, Deep Learning, and NLP',
+        'Applying academic AI concepts directly to professional projects',
+        'Conducting research in LLM applications for enterprise automation',
+        'Maintaining full-time professional responsibilities while excelling academically'
+      ]
+    },
+    {
       id: 'ai-transition',
       period: '2021 – 2024',
       title: 'Sr. Technical Business Solution Analyst',
@@ -108,7 +127,7 @@ const Experience: React.FC = () => {
         {/* Vertical Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 via-blue-500 via-green-500 to-purple-500 rounded-full"></div>
+          <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 via-orange-500 via-blue-500 via-green-500 to-purple-500 rounded-full"></div>
 
           {/* Timeline Items */}
           <div className="space-y-12">
