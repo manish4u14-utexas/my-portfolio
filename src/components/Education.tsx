@@ -93,7 +93,7 @@ const Education: React.FC = () => {
   }, [sectionInView]);
 
   return (
-    <section id="education" className="py-20 px-4 md:px-10 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-white overflow-hidden">
+    <section id="education" className="py-20 px-4 md:px-10 bg-gradient-to-br from-slate-800 via-indigo-900 to-slate-800 text-white overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <h2 
           ref={sectionRef}
