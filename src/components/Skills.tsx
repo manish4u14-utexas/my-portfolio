@@ -1,242 +1,128 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-interface SkillCardProps {
-  title: string;
-  description: string;
-  index: number;
-}
-
-const SkillCard: React.FC<SkillCardProps> = ({ title, description, index }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  return (
-    <div 
-      ref={ref}
-      className={`bg-white rounded-lg shadow-md p-6 transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
-    >
-      <h3 className="text-xl font-bold text-sky-600 mb-4">{title}</h3>
-      <p className="text-gray-700 text-left">{description}</p>
-    </div>
-  );
-};
-
-const BulletPoint: React.FC<{point: string, index: number, inView: boolean}> = ({ point, index, inView }) => {
-  return (
-    <li 
-      className="bg-white rounded-lg shadow-md p-5 text-left flex items-start"
-      style={{ transitionDelay: `${inView ? index * 100 : 0}ms` }}
-    >
-      <span className="text-sky-500 mr-3 mt-1 flex-shrink-0">◆</span>
-      <p className="text-gray-700">{point}</p>
-    </li>
-  );
-};
-
 const Skills: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const { ref: businessSkillsRef, inView: businessSkillsInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const { ref: technicalSkillsRef, inView: technicalSkillsInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  const { ref: projectMgmtRef, inView: projectMgmtInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-  
-  const { ref: softSkillsRef, inView: softSkillsInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const businessSkills = [
+  const skillCategories = [
     {
-      point: "Translate business needs into clear user stories, functional specs, and process maps.",
+      id: 'ai-automation',
+      title: 'AI & Automation',
+      icon: '🤖',
+      color: 'from-blue-500 to-cyan-500',
+      skills: [
+        'Generative AI & LLM Architecture (GPT-4/5)',
+        'Agentic AI & Prompt Engineering',
+        'Power Automate & AI Builder',
+        'Workflow Optimization (85% efficiency gains)',
+        'Azure OpenAI Integration'
+      ]
     },
     {
-      point: "Developing detailed functional and non-functional requirements documentation, ensuring clarity and alignment with project objectives.",
+      id: 'technical',
+      title: 'Technical Development',
+      icon: '⚡',
+      color: 'from-green-500 to-emerald-500',
+      skills: [
+        'Full-Stack Web Development',
+        'API Design & Integration',
+        'Python, Flask, SQL',
+        'Cloud Services (Heroku)',
+        'Database Management'
+      ]
     },
     {
-      point: "Championing Agile & Scrum methodologies: Driving sprint planning, backlog grooming, daily stand-ups, and retrospectives to optimize team velocity and product delivery.",
+      id: 'business',
+      title: 'Business Analysis',
+      icon: '📊',
+      color: 'from-purple-500 to-pink-500',
+      skills: [
+        'Requirements Engineering',
+        'Process Mapping & Optimization',
+        'Stakeholder Management',
+        'User Story Development',
+        'System Analysis'
+      ]
     },
     {
-      point: "Leveraging Jira, Confluence, and Atlassian AI for advanced sprint estimation, strategic roadmap planning, and transparent progress tracking.",
-    },
-    {
-      point: "Conducting in-depth reverse engineering of existing systems to identify improvement opportunities and integration pathways.",
-    },
-    {
-      point: "Applying AI-powered requirement analysis and workflow optimization techniques to enhance efficiency and accuracy.",
-    },
-    {
-      point: "Performing thorough web application analysis and optimization for both consumer and provider platforms, focusing on user experience and performance.",
-    },
-    {
-      point: "Proficiently managing Salesforce CRM for comprehensive lead generation, targeted campaign and event management, and account lifecycle workflows.",
-    },
-    {
-      point: "Led and executed user acceptance testing (UAT) phases, contributing to successful project go-lives with minimal post-launch issues and high user satisfaction.",
-    }
-  ];
-
-  const technicalSkills = [
-     {
-      title: "Web App Development",
-      description: "Skilled in end-to-end design, analysis, and optimization of large-scale web applications."
-    },
-    {
-      title: "API & Middleware",
-      description: "Design, test, and document APIs with Postman; troubleshoot middleware integrations."
-    },
-    {
-      title: "Databases",
-      description: "Advanced in SQL Server, MongoDB, and Salesforce SOQL for data extraction and reporting."
-    },
-    {
-      title: "Generative AI & Agents",
-      description: "Deep experience using ChatGPT, DeepSeek, Copilot, Gamini, Manus, and Claude for prompt engineering, workflow optimization, and agent creation using Microsoft Power Automate and Manus AI for business workflows."
-    },
-    {
-      title: "Automation Expertise",
-      description: "Expert in using Zapier, Power Automate, and JIRA Automation for workflow optimization."
-    },
-    {
-      title: "Cloud Services (Heroku)",
-      description: "Managing full lifecycle of Heroku applications including creation, environment variable configuration, proxy app setup, add-on integration (New Relic, Bug Snag, Pingdom), dyno scaling, and continuous performance monitoring."
-    },
-    {
-      title: "CMS Systems",
-      description: "Advanced knowledge of Contentful CMS for scalable content management and localization workflows."
-    },
-    {
-      title: "UI/UX Design Tools",
-      description: "Creating intuitive user interfaces and clear process flows using Figma and Lucid Chart."
-    }
-  ];
-  
-  const projectManagementSkills = [
-    {
-      point: "Lead end-to-end Agile delivery cycles, from backlog grooming to sprint reviews, ensuring on-time feature rollout and continuous iteration.",
-    },
-    {
-      point: "Drive collaboration between product, engineering, and data teams to translate complex requirements into technical execution.",
-    },
-    {
-      point: "Champion cross-functional transparency by setting up automated progress tracking, sprint boards, and KPIs in tools like Asana and Microsoft Project.",
-    }
-  ];
-  
-  const softSkills = [
-    {
-      point: "Build alignment across technical and business teams through clear communication, structured discovery sessions, and rapid feedback loops.",
-    },
-    {
-      point: "Lead executive presentations and stakeholder workshops that drive product vision, prioritization, and roadmap decisions.",
-    },
-    {
-      point: "Foster a culture of cross-functional collaboration, continuous improvement, and transparent decision-making within Agile environments.",
+      id: 'leadership',
+      title: 'Agile Leadership',
+      icon: '🎯',
+      color: 'from-orange-500 to-red-500',
+      skills: [
+        'Scrum Master (PSM/PSPO)',
+        'Sprint Planning & Execution',
+        'Cross-functional Team Leadership',
+        'Continuous Improvement',
+        'Strategic Planning'
+      ]
     }
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 md:px-10 bg-gray-100 text-slate-800 overflow-hidden">
+    <section id="skills" className="py-20 px-4 md:px-10 bg-gradient-to-br from-slate-50 to-gray-100 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <h2 
-          className={`text-4xl font-bold text-center mb-16 text-sky-600 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        <div 
           ref={sectionRef}
+          className={`text-center mb-16 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          Core Competencies & AI Capabilities
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {/* Business & System Analysis */}
-          <div 
-            ref={businessSkillsRef}
-            className={`transition-all duration-700 ease-out ${businessSkillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Business Systems Analysis (AI & Agile Focus)</h3>
-            <ul className="space-y-6">
-              {businessSkills.map((skill, index) => (
-                <BulletPoint 
-                  key={index}
-                  point={skill.point}
-                  index={index}
-                  inView={businessSkillsInView}
-                />
-              ))}
-            </ul>
-          </div>
-
-          {/* Technical & AI Prowess */}
-          <div 
-            ref={technicalSkillsRef}
-            className={`transition-all duration-700 ease-out ${technicalSkillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Technical Proficiency & AI Integration</h3>
-            <div className="space-y-6">
-              {technicalSkills.map((skill, index) => (
-                <SkillCard 
-                  key={index}
-                  title={skill.title}
-                  description={skill.description}
-                  index={index}
-                />
-              ))}
-            </div>
-          </div>
+          <h2 className="text-4xl font-bold text-sky-600 mb-4">
+            Core Competencies & Expertise
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Transforming business challenges into AI-powered solutions through technical excellence and strategic leadership
+          </p>
         </div>
-        
-        {/* Project Management & Soft Skills Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Project Management & Collaboration */}
-          <div 
-            ref={projectMgmtRef}
-            className={`transition-all duration-700 ease-out ${projectMgmtInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Project Management & Collaboration</h3>
-            <ul className="space-y-6">
-              {projectManagementSkills.map((skill, index) => (
-                <BulletPoint 
-                  key={index}
-                  point={skill.point}
-                  index={index}
-                  inView={projectMgmtInView}
-                />
-              ))}
-            </ul>
-          </div>
 
-          {/* Strategic Soft Skills */}
-          <div 
-            ref={softSkillsRef}
-            className={`transition-all duration-700 ease-out ${softSkillsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          >
-            <h3 className="text-2xl font-bold text-center mb-8 text-sky-600">Strategic Soft Skills</h3>
-            <ul className="space-y-6">
-              {softSkills.map((skill, index) => (
-                <BulletPoint 
-                  key={index}
-                  point={skill.point}
-                  index={index}
-                  inView={softSkillsInView}
-                />
-              ))}
-            </ul>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillCategories.map((category, index) => (
+            <div
+              key={category.id}
+              className={`group cursor-pointer transition-all duration-500 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${sectionInView ? index * 150 : 0}ms` }}
+              onClick={() => setActiveCategory(activeCategory === category.id ? null : category.id)}
+            >
+              <div className={`relative overflow-hidden rounded-2xl bg-gradient-to-r ${category.color} p-1 hover:scale-105 transition-transform duration-300`}>
+                <div className="bg-white rounded-xl p-6 h-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-3xl">{category.icon}</span>
+                      <h3 className="text-xl font-bold text-gray-800">{category.title}</h3>
+                    </div>
+                    <div className={`transform transition-transform duration-300 ${activeCategory === category.id ? 'rotate-180' : ''}`}>
+                      <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    activeCategory === category.id ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                  }`}>
+                    <div className="space-y-3 pt-4 border-t border-gray-100">
+                      {category.skills.map((skill, skillIndex) => (
+                        <div 
+                          key={skillIndex}
+                          className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                        >
+                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color}`}></div>
+                          <span className="text-gray-700 text-sm font-medium">{skill}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {activeCategory !== category.id && (
+                    <p className="text-gray-500 text-sm mt-2">Click to explore skills</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
