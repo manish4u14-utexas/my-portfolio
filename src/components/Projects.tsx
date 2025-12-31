@@ -81,7 +81,7 @@ const Projects: React.FC = () => {
     : projects.filter(project => project.category === filterCategory);
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+    <section id="projects" className="py-20 px-4 md:px-10 bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 text-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <h2 
           ref={sectionRef}
