@@ -28,39 +28,21 @@ const Sidebar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id]');
-      let currentSection = '';
+      const scrollPos = window.scrollY + window.innerHeight / 3;
+      
+      let currentSection = 'home'; // Default to home
       
       sections.forEach((section) => {
-        const sectionTop = (section as HTMLElement).offsetTop;
-        const sectionHeight = section.clientHeight;
-        const scrollPosition = window.scrollY + 100; // Add offset for better detection
+        const element = section as HTMLElement;
+        const sectionTop = element.offsetTop;
+        const sectionBottom = sectionTop + element.offsetHeight;
         
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          currentSection = section.getAttribute('id') || '';
+        if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
+          currentSection = element.id;
         }
       });
       
-      // Fallback: if no section detected, find the closest one
-      if (!currentSection) {
-        let closestSection = '';
-        let closestDistance = Infinity;
-        
-        sections.forEach((section) => {
-          const sectionTop = (section as HTMLElement).offsetTop;
-          const distance = Math.abs(window.scrollY + 100 - sectionTop);
-          
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestSection = section.getAttribute('id') || '';
-          }
-        });
-        
-        currentSection = closestSection;
-      }
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
