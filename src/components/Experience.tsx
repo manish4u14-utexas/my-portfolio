@@ -221,7 +221,7 @@ const Experience: React.FC = () => {
         {/* Interactive Roadmap */}
         <div 
           ref={roadmapRef}
-          className="relative h-screen max-h-[700px] bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-3xl p-8 backdrop-blur-sm border border-white/10 overflow-visible mb-8"
+          className="relative h-[500px] sm:h-[600px] lg:h-screen max-h-[700px] bg-gradient-to-br from-slate-800/50 to-slate-700/50 rounded-3xl p-4 sm:p-8 backdrop-blur-sm border border-white/10 overflow-visible mb-8"
         >
           {/* Animated Path */}
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -284,7 +284,7 @@ const Experience: React.FC = () => {
                   
                   {/* Main Waypoint */}
                   <div 
-                    className={`w-12 h-12 rounded-full border-4 border-white shadow-2xl transition-all duration-300 flex items-center justify-center text-lg group-hover:scale-125 transform -translate-x-1/2 -translate-y-1/2 ${
+                    className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full border-2 sm:border-4 border-white shadow-2xl transition-all duration-300 flex items-center justify-center text-sm sm:text-lg group-hover:scale-125 transform -translate-x-1/2 -translate-y-1/2 ${
                       activeMilestone === milestone.id ? 'scale-150 shadow-3xl' : ''
                     }`}
                     style={{ backgroundColor: milestone.color }}
@@ -294,7 +294,7 @@ const Experience: React.FC = () => {
 
                   {/* Enhanced Year Label with Highlight */}
                   <div 
-                    className={`absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-md text-xs font-bold text-white whitespace-nowrap transition-all duration-300 ${
+                    className={`absolute -bottom-6 sm:-bottom-8 left-1/2 transform -translate-x-1/2 px-2 sm:px-3 py-1 rounded-md text-xs font-bold text-white whitespace-nowrap transition-all duration-300 ${
                       activeMilestone === milestone.id 
                         ? 'bg-white text-gray-800 scale-110 shadow-lg' 
                         : 'bg-black/50 backdrop-blur-sm'
@@ -305,7 +305,7 @@ const Experience: React.FC = () => {
 
                   {/* Company Badge */}
                   <div 
-                    className={`absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap transition-all duration-300 ${
+                    className={`absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded-md text-xs font-semibold text-white whitespace-nowrap transition-all duration-300 ${
                       activeMilestone === milestone.id ? 'scale-110' : ''
                     }`}
                     style={{ backgroundColor: milestone.color }}
@@ -315,7 +315,7 @@ const Experience: React.FC = () => {
 
                   {/* Detailed Info Card with Smart Positioning */}
                   <div 
-                    className={`absolute ${popupClass} w-72 bg-white rounded-2xl shadow-2xl border-2 transition-all duration-500 ${transform} ${
+                    className={`absolute ${popupClass} w-64 sm:w-72 bg-white rounded-2xl shadow-2xl border-2 transition-all duration-500 ${transform} ${
                       activeMilestone === milestone.id
                         ? 'opacity-100 visible scale-100' 
                         : 'opacity-0 invisible scale-95'
@@ -323,7 +323,7 @@ const Experience: React.FC = () => {
                     style={{ borderColor: milestone.color }}
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="p-5 text-gray-800">
+                    <div className="p-4 sm:p-5 text-gray-800">
                       {/* Header with Period Highlight */}
                       <div className="text-center mb-4">
                         <div className="flex items-center justify-center mb-2">
