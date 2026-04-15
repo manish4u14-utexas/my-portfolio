@@ -9,14 +9,19 @@ import Publications from './components/Publications';
 import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import ScrollProgress from './components/ScrollProgress';
+import LoadingScreen from './components/LoadingScreen';
+import BackToTop from './components/BackToTop';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
  return (
   <Router>
+    <LoadingScreen />
+    <ScrollProgress />
     <div className="flex min-h-screen bg-slate-900 font-sans w-full overflow-hidden">
       <Sidebar />
-      <main className="flex-1 w-full md:pl-64"> {/* This adds padding on desktop to account for sidebar */}
+      <main className="flex-1 w-full md:pl-64">
         <Hero />
         <About />
         <Skills />
@@ -30,6 +35,7 @@ function App() {
           <p>&copy; {new Date().getFullYear()} Manish Chaudhari. All rights reserved.</p>
         </footer>
       </main>
+      <BackToTop />
     </div>
   </Router>
 );

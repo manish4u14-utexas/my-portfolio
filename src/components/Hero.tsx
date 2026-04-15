@@ -66,13 +66,12 @@ const Hero: React.FC = () => {
               loop: true,
               delay: 50,
               deleteSpeed: 30,
-              //pauseFor: 1500,
               wrapperClassName: "text-white font-bold",
               cursorClassName: "text-sky-300"
             }}
             onInit={(typewriter) => {
               typewriter
-                .pauseFor(1500) // Add pause between cycles
+                .pauseFor(1500)
                 .start();
             }}
           />

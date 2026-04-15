@@ -7,7 +7,7 @@ interface ContactItemProps {
   label: string;
   value: string;
   href: string;
-  index: number; // For staggered animation
+  index: number;
 }
 
 const ContactItem: React.FC<ContactItemProps> = ({ icon, label, value, href, index }) => {
@@ -56,8 +56,8 @@ const Contact: React.FC = () => {
     {
       icon: <Linkedin size={28} className="text-sky-400 group-hover:text-sky-300 transition-colors duration-200" />,
       label: "LinkedIn",
-      value: "linkedin.com/in/mkchaudhari", // User to provide actual LinkedIn
-      href: "https://www.linkedin.com/in/mkchaudhari/", // Placeholder, user to provide actual LinkedIn
+      value: "linkedin.com/in/mkchaudhari",
+      href: "https://www.linkedin.com/in/mkchaudhari/",
     },
     {
       icon: <Github size={28} className="text-sky-400 group-hover:text-sky-300 transition-colors duration-200" />,
