@@ -17,11 +17,16 @@ jobs:
       with:
         node-version: '20'
         
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
     - name: Install dependencies
-      run: yarn install --frozen-lockfile || yarn install
+      run: pnpm install --frozen-lockfile
       
     - name: Build
-      run: yarn build
+      run: pnpm run build
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
