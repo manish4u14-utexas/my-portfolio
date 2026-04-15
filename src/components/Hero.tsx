@@ -35,21 +35,21 @@ const Hero: React.FC = () => {
         
         {/* Name */}
         <h1 
-          className={`text-5xl md:text-7xl font-bold mb-2 transition-all duration-1000 ease-out ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`text-3xl sm:text-5xl md:text-7xl font-bold mb-2 transition-all duration-1000 ease-out ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           Hi, I'm <span className="text-sky-400">Manish Chaudhari</span>.
         </h1>
 
         {/* Introduction and Education */}
-        <div className={`text-center mb-6 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-md md:text-lg text-gray-300 mb-4 leading-relaxed">
+        <div className={`text-center mb-6 px-2 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className="text-sm sm:text-md md:text-lg text-gray-300 mb-4 leading-relaxed">
             I design and implement LLM-powered automation solutions for enterprise workflows. Currently focused on Generative AI, workflow optimization, and digital transformation.
           </p>
           
           {/* Education Badge */}
-          <div className="inline-flex items-center bg-gradient-to-r from-sky-600/20 to-blue-600/20 backdrop-blur-sm border border-sky-400/30 rounded-full px-4 py-2 mt-2">
+          <div className="inline-flex items-center bg-gradient-to-r from-sky-600/20 to-blue-600/20 backdrop-blur-sm border border-sky-400/30 rounded-full px-3 sm:px-4 py-2 mt-2">
             <span className="text-sky-300 mr-2">🎓</span>
-            <span className="text-sm md:text-base text-sky-200 font-medium">
+            <span className="text-xs sm:text-sm md:text-base text-sky-200 font-medium">
               Pursuing M.S. in Artificial Intelligence at UT Austin
             </span>
           </div>
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
         
         {/* Animated Roles */}
         <div 
-          className={`h-12 text-xl md:text-2xl mb-10 transition-all duration-1000 ease-out delay-500 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`h-12 sm:h-14 text-lg sm:text-xl md:text-2xl mb-10 px-2 transition-all duration-1000 ease-out delay-500 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <Typewriter
             options={{
@@ -80,11 +80,11 @@ const Hero: React.FC = () => {
         
         {/* Buttons */}
         <div 
-          className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:space-x-4 transition-opacity duration-1000 ease-out delay-700 ${heroInView ? 'opacity-100' : 'opacity-0'}`}
+          className={`flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md px-4 transition-opacity duration-1000 ease-out delay-700 ${heroInView ? 'opacity-100' : 'opacity-0'}`}
         >
           <a 
             href="#contact" 
-            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95 w-full sm:w-auto text-center"
+            className="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-sky-400/50 active:scale-95 w-full sm:w-auto text-center touch-manipulation"
           >
             Contact Me
           </a>
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             href="/my-portfolio/Manish_Chaudhari_Resume.pdf"
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-sky-400/50 active:scale-95 w-full sm:w-auto text-center"
+            className="bg-transparent hover:bg-sky-700 text-sky-400 font-semibold hover:text-white py-3 px-8 border-2 border-sky-400 hover:border-transparent rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-sky-400/50 active:scale-95 w-full sm:w-auto text-center touch-manipulation"
           >
             View Resume
           </a>
