@@ -19,9 +19,9 @@ function App() {
   <Router>
     <LoadingScreen />
     <ScrollProgress />
-    <div className="flex min-h-screen bg-slate-900 font-sans w-full overflow-hidden">
+    <div className="flex min-h-screen bg-slate-900 font-sans w-full overflow-x-hidden">
       <Sidebar />
-      <main className="flex-1 w-full md:pl-64">
+      <main className="flex-1 w-full md:pl-64 pl-0">
         <Hero />
         <About />
         <Skills />

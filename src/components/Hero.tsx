@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
     <section 
       id="home" 
       ref={heroRef}
-      className="h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-white text-center p-4 relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-white text-center p-4 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-10 bg-grid-slate-700 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
