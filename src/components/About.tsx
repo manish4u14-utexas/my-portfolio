@@ -22,23 +22,23 @@ const About: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         <h2 
           className={`text-4xl font-bold text-center mb-12 text-sky-600 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-          style={{ color: '#0284c7' }}
+          style={{ color: '#0284c7 !important', fontSize: '2.25rem', fontWeight: '700' }}
         >
           About Me
         </h2>
-        <div className={`text-lg leading-relaxed space-y-6 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ color: '#1e293b' }}>
-          <p className="text-left pl-4 md:pl-6" style={{ color: '#1e293b' }}>
-            I am an <strong className="text-sky-700" style={{ color: '#0369a1' }}>AI Solution Designer & Architect</strong> with over <strong className="text-sky-700" style={{ color: '#0369a1' }}>10 years of experience</strong> spearheading technical business transformations.
-            My career is defined by bridging the gap between complex business requirements and <strong className="text-sky-700" style={{ color: '#0369a1' }}>production-ready Generative AI solutions</strong>. 
-            Currently, I am advancing my technical depth through an <strong className="text-sky-700" style={{ color: '#0369a1' }}>M.S. in Artificial Intelligence at the University of Texas at Austin</strong>, focusing on <strong style={{ color: '#1e293b' }}>LLMs, Agentic AI, and Deep Learning</strong>.
+        <div className={`text-lg leading-relaxed space-y-6 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ color: '#1e293b !important', fontSize: '1.125rem' }}>
+          <p className="text-left pl-4 md:pl-6" style={{ color: '#1e293b !important', fontSize: '1.125rem', lineHeight: '1.75rem' }}>
+            I am an <strong className="text-sky-700" style={{ color: '#0369a1 !important' }}>AI Solution Designer & Architect</strong> with over <strong className="text-sky-700" style={{ color: '#0369a1 !important' }}>10 years of experience</strong> spearheading technical business transformations.
+            My career is defined by bridging the gap between complex business requirements and <strong className="text-sky-700" style={{ color: '#0369a1 !important' }}>production-ready Generative AI solutions</strong>. 
+            Currently, I am advancing my technical depth through an <strong className="text-sky-700" style={{ color: '#0369a1 !important' }}>M.S. in Artificial Intelligence at the University of Texas at Austin</strong>, focusing on <strong style={{ color: '#1e293b !important' }}>LLMs, Agentic AI, and Deep Learning</strong>.
           </p>
-          <p className="text-left pl-4 md:pl-6" style={{ color: '#1e293b' }}>
-            I don't just analyze workflows; I <strong className="text-sky-700" style={{ color: '#0369a1' }}>automate them</strong> using a <strong style={{ color: '#1e293b' }}>"vibe coding" approach</strong>—leveraging cutting-edge tools like <strong style={{ color: '#1e293b' }}>GitHub Copilot, Amazon Q, and Cursor</strong> to accelerate development velocity. 
-            My mission is to transform traditional enterprise processes into <strong className="text-sky-700" style={{ color: '#0369a1' }}>intelligent, self-optimizing systems</strong>.
+          <p className="text-left pl-4 md:pl-6" style={{ color: '#1e293b !important', fontSize: '1.125rem', lineHeight: '1.75rem' }}>
+            I don't just analyze workflows; I <strong className="text-sky-700" style={{ color: '#0369a1 !important' }}>automate them</strong> using a <strong style={{ color: '#1e293b !important' }}>"vibe coding" approach</strong>—leveraging cutting-edge tools like <strong style={{ color: '#1e293b !important' }}>GitHub Copilot, Amazon Q, and Cursor</strong> to accelerate development velocity. 
+            My mission is to transform traditional enterprise processes into <strong className="text-sky-700" style={{ color: '#0369a1 !important' }}>intelligent, self-optimizing systems</strong>.
           </p>
-          <p className="text-left pl-4 md:pl-6" style={{ color: '#1e293b' }}>
-            Expert in <strong style={{ color: '#1e293b' }}>Web application development and API integration</strong>, <strong style={{ color: '#1e293b' }}>Salesforce CRM optimization</strong>, and <strong style={{ color: '#1e293b' }}>Heroku cloud management</strong>, consistently enhancing <strong className="text-green-600" style={{ color: '#16a34a' }}>operational efficiency and user experience</strong> for consumer and provider-facing web applications. 
-            A collaborative leader proficient in <strong style={{ color: '#1e293b' }}>Agile methodologies</strong>.
+          <p className="text-left pl-4 md:pl-6" style={{ color: '#1e293b !important', fontSize: '1.125rem', lineHeight: '1.75rem' }}>
+            Expert in <strong style={{ color: '#1e293b !important' }}>Web application development and API integration</strong>, <strong style={{ color: '#1e293b !important' }}>Salesforce CRM optimization</strong>, and <strong style={{ color: '#1e293b !important' }}>Heroku cloud management</strong>, consistently enhancing <strong className="text-green-600" style={{ color: '#16a34a !important' }}>operational efficiency and user experience</strong> for consumer and provider-facing web applications. 
+            A collaborative leader proficient in <strong style={{ color: '#1e293b !important' }}>Agile methodologies</strong>.
           </p>
         </div>
                 {/* New AI Impacts Section */}
