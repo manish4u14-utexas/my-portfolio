@@ -29,27 +29,23 @@ const Experience: React.FC = () => {
     {
       id: 'current',
       period: 'June 2024 - Present',
-      title: 'AI Solutions Designer / AI Integration & Automation',
-      company: 'Align Technology',
+      title: 'Product Manager & AI Solution Lead',
+      company: 'Align Technology (Consultant via TCS)',
       location: 'Morrisville, NC',
       type: 'work',
       color: '#F59E0B',
       icon: '🤖',
-      description: 'Leading enterprise AI solutions using Azure OpenAI, designing RAG-enabled assistants, prompt-driven workflows, and Python/API integrations for scalable AI adoption.',
+      description: 'Leading product strategy for Generative AI integration across enterprise workflows.',
       achievements: [
-        'Architected enterprise GenAI application on Azure OpenAI to transform raw requirements into user stories, test cases, and technical questionnaires using Python/Flask APIs and prompt-engineering',
-        'Integrated with JIRA via Flask backend for one-click story creation, achieving 85% reduction in documentation time and $200,000+ annual cost savings',
-        'Engineered Power Automate flow with GPT-5 API for Doctor Locator support automation, enabling automated detection of Region, Issue Type, and Status with real-time ticket management',
-        'Built AI-Driven Weekly Project Summary Generator using Power Automate and AI Builder Custom Prompt, eliminating manual status reporting',
-        'Supported responsible AI adoption through auditable workflows and human-in-the-loop validation',
-        'Acted as primary bridge between stakeholders and AI engineers, eliciting requirements for agentic AI initiatives',
-        'Optimized developer productivity by integrating GitHub Copilot and Amazon Q into daily coding workflows',
-        'Centralized performance/log monitoring for 20+ web applications with AI-driven error detection',
-        'Managed Agile ceremonies for multiple teams using Atlassian AI for sprint planning and EazyBI for velocity tracking'
+        'Architected a "Human-in-the-Loop" GenAI workflow on Azure OpenAI that translates raw business requirements into functional specs, reducing manual effort by 85%',
+        'Utilized AI-native development tools (Cursor, Claude, Stitch) to rapidly prototype UI concepts and validate technical feasibility, accelerating discovery-to-release cycles',
+        'Orchestrated the development of a Python/Flask-based backend to integrate AI-generated user stories directly into JIRA APIs, saving $200,000+ in annual labor costs',
+        'Managed cross-functional pods to deploy an intelligent support triage pipeline using GPT-5 APIs and Power Automate, automating global ticket classification',
+        'Acted as primary bridge between stakeholders and AI engineers, eliciting requirements for agentic AI initiatives'
       ],
-      technologies: ['Azure OpenAI', 'GPT-4/GPT-5', 'Flask', 'Python', 'Power Automate', 'AI Builder', 'GitHub Copilot', 'Amazon Q', 'JIRA API', 'Atlassian AI', 'EazyBI', 'RAG', 'LangChain'],
+      technologies: ['Azure OpenAI', 'Cursor', 'Claude', 'Python', 'Flask', 'JIRA API', 'Agile/Scrum', 'Product Roadmap Strategy', 'Stitch'],
       impact: '85% reduction in documentation time with $200K+ annual cost savings',
-      metrics: ['$200K+ Cost Savings', '85% Time Reduction', '20+ Apps Monitored']
+      metrics: ['$200K+ Cost Savings', '85% Time Reduction', 'Cross-Functional Pods']
     },
     {
       id: 'education-ms',
@@ -60,80 +56,77 @@ const Experience: React.FC = () => {
       type: 'education',
       color: '#BF5700',
       icon: '🎓',
-      description: 'Pursuing advanced degree in AI while working full-time, focusing on LLMs, Agentic AI, and Deep Learning.',
+      description: 'Bridging academic AI research with enterprise scalability.',
       achievements: [
-        'Enrolled in top-ranked AI program while maintaining full-time employment',
-        'Coursework in Machine Learning, Deep Learning, Natural Language Processing',
-        'Research focus on LLMs and Agentic AI systems',
-        'Applying academic knowledge directly to enterprise AI solutions'
+        'Published research on "The Persona Gap," auditing in-context bias in clinical LLMs using Explainable AI (XAI) principles and SHAP visualizations',
+        'Coursework in Deep Learning, Natural Language Processing, and Agentic AI',
+        'Applying academic knowledge directly to enterprise AI product solutions',
+        'Focus on AI Governance & Ethics for responsible AI deployment'
       ],
-      technologies: ['Machine Learning', 'Deep Learning', 'NLP', 'LLMs', 'Agentic AI', 'Python', 'TensorFlow', 'PyTorch'],
-      impact: 'Bridging academic AI research with enterprise applications'
+      technologies: ['Deep Learning', 'NLP', 'Agentic AI', 'AI Governance & Ethics', 'Explainable AI (XAI)', 'SHAP', 'Python', 'TensorFlow', 'PyTorch'],
+      impact: 'Bridging academic AI research with enterprise scalability'
     },
     {
       id: 'sr-technical-analyst',
       period: 'Dec 2021 - June 2024',
-      title: 'Sr. Technical Solution Analyst',
-      company: 'Align Technology',
+      title: 'Sr. Technical Solution Analyst & Product Owner',
+      company: 'Align Technology (Consultant via TCS)',
       location: 'Morrisville, NC',
       type: 'work',
       color: '#3B82F6',
       icon: '🚀',
-      description: 'Pioneered GenAI adoption for documentation and led agile transformation initiatives while delivering consumer/provider web applications.',
+      description: 'Managed product vision and backlogs for high-traffic consumer and provider web applications.',
       achievements: [
+        'Achieved a 40% reduction in manual documentation through early adoption of AI-assisted retrospectives and automated Jira workflows',
+        'Led cross-functional Scrum teams in the delivery of scalable web solutions, optimizing the Salesforce CRM for enhanced lead/campaign management',
+        'Implemented automated monitoring and performance dashboards using New Relic and EazyBI, increasing sprint visibility by 30% for executive stakeholders',
         'Delivered consumer/provider web apps, ensuring seamless UX and robust technical implementation',
-        'Led GenAI adoption for documentation and managed Scrum teams, utilizing AI-assisted retrospectives to reduce manual effort by 40%',
-        'Automated web app monitoring and reporting, increasing sprint visibility by 30%',
-        'Oversaw Salesforce CRM for lead/campaign management and analytics',
-        'Implemented AI-driven sprint planning using Atlassian AI with 25% improvement in sprint accuracy',
-        'Automated BI reporting with EazyBI Analytics for enhanced operational visibility'
+        'Managed product backlogs and sprint planning for multiple engineering pods'
       ],
-      technologies: ['Generative AI', 'Atlassian AI', 'JIRA', 'EazyBI Analytics', 'Salesforce', 'SOQL', 'Power Automate', 'Agile/Scrum', 'New Relic'],
+      technologies: ['Product Ownership', 'Salesforce CRM', 'Agile/Scrum', 'New Relic', 'EazyBI', 'Stakeholder Management', 'JIRA', 'AI-Assisted Workflows'],
       impact: '40% reduction in manual effort, 30% increase in sprint visibility',
       metrics: ['40% Efficiency Gain', '30% Visibility Increase']
     },
     {
       id: 'sr-systems-analyst',
       period: 'Aug 2018 - Dec 2021',
-      title: 'Sr. Systems Analyst',
-      company: 'Align Technology',
+      title: 'Sr. Analyst',
+      company: 'Align Technology (Consultant via TCS)',
       location: 'Hyderabad, India',
       type: 'work',
       color: '#10B981',
       icon: '👥',
-      description: 'Led technical analysis and design for large-scale enterprise conversational systems and portals with focus on UX and cloud infrastructure.',
+      description: 'Technical analysis and systems design for large-scale enterprise portals.',
       achievements: [
-        'Defined functional specifications and acceptance criteria for large-scale enterprise conversational systems and portals',
-        'Led UAT and business sign-off for critical enterprise projects',
-        'Designed interactive wireframes and UI prototypes in Figma for front-end applications',
-        'Managed Heroku apps, monitored uptime/downtime and performance',
-        'Served as Scrum Master for cross-functional development teams',
-        'Optimized Salesforce CRM workflows and data management'
+        'Transformed vague business requests into high-fidelity technical blueprints, ensuring 99.9% system uptime across heroku-hosted apps',
+        'Designed interactive wireframes and UI prototypes in Figma to validate requirements and guide front-end engineering pods',
+        'Performed deep-dive backend validation using SQL Server and Postman, ensuring data integrity across complex API integrations',
+        'Served as a Scrum Master, removing technical blockers and facilitating sprint planning for distributed engineering teams',
+        'Led UAT and business sign-off for critical enterprise projects'
       ],
-      technologies: ['Figma', 'Heroku', 'Salesforce CRM', 'New Relic', 'JIRA', 'Confluence', 'Lucid Chart', 'Agile/Scrum', 'UAT'],
-      impact: 'Enhanced team collaboration and application performance for enterprise systems'
+      technologies: ['Figma', 'Postman (API Testing)', 'Heroku', 'SQL Server', 'Systems Architecture', 'Technical Specs', 'Scrum Master', 'UAT'],
+      impact: '99.9% system uptime with high-fidelity technical blueprints'
     },
     {
       id: 'microsoft',
       period: 'June 2013 - Aug 2018',
-      title: 'Business Analyst / SQA',
-      company: 'Microsoft',
+      title: 'Business Analyst & SQA',
+      company: 'Microsoft (Consultant via TCS)',
       location: 'Hyderabad, India',
       type: 'work',
       color: '#8B5CF6',
       icon: '🏢',
-      description: 'Established foundation in enterprise software development with focus on quality engineering, business analysis, and requirements management.',
+      description: 'Established the foundation for enterprise software excellence through rigorous requirements gathering and quality assurance.',
       achievements: [
-        'Defined functional specifications and performed UAT for large-scale enterprise projects',
-        'Gathered and documented functional requirements, authored user stories and acceptance criteria',
+        'Guaranteed flawless delivery for major enterprise product lines through detailed BRDs, FSDs, and User Acceptance Testing (UAT)',
+        'Collaborated with downstream engineering teams to translate complex business goals into actionable technical requirements and user stories',
+        'Managed SQL Server databases and SharePoint integrations, ensuring high data accuracy and rigorous QA standards across multiple product versions',
         'Established QA processes and testing frameworks for enterprise applications',
-        'Collaborated with development teams on Visual Studio Team Services',
-        'Managed SQL Server databases and SharePoint integrations',
         'Led quality assurance initiatives across multiple product lines'
       ],
-      technologies: ['Visual Studio', 'SQL Server', 'Azure DevOps', 'SharePoint', 'JIRA', 'Quality Engineering', 'UAT', 'Requirements Analysis'],
+      technologies: ['Business Analysis (BRD/FSD)', 'UAT', 'SQL Server', 'SharePoint', 'Quality Assurance', 'JIRA', 'Visual Studio', 'Azure DevOps'],
       impact: 'Built strong foundation in enterprise software development and quality assurance'
-    }
+    },
   ];
 
 
@@ -161,10 +154,10 @@ const Experience: React.FC = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-sky-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-            Professional Journey
+            Technical Product Manager [AI] & AI Solution Lead
           </h2>
           <p className="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto px-4">
-            10+ years of experience driving AI-powered transformations and enterprise solutions
+            13 years of enterprise product delivery, bridging the gap between business strategy and AI-powered execution
           </p>
         </div>
 
@@ -400,6 +393,99 @@ const Experience: React.FC = () => {
           </div>
         </div>
 
+        {/* Personal Start-up & Passion Projects Section */}
+        <div 
+          className={`mt-20 transition-all duration-700 ease-out delay-300 ${
+            sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="text-center mb-12">
+            <div className="inline-block mb-4">
+              <span className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 rounded-full text-sm font-semibold border border-purple-500/30">
+                Personal Ventures
+              </span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-3">
+              Start-up & Passion Projects
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto px-4">
+              Building innovative products from concept to deployment
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* SprintPulse.ai */}
+            <div className="group bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-purple-500/30 hover:border-purple-500/60 hover:scale-105 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    🚀
+                  </div>
+                  <span className="px-3 py-1 bg-purple-500/30 text-purple-300 rounded-full text-xs font-bold border border-purple-500/50">
+                    Founder & Architect
+                  </span>
+                </div>
+                
+                <h4 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                  SprintPulse.ai
+                </h4>
+                
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Building an AI-driven SaaS for Agile orchestration. Integrating Agentic workflows with Jira/Asana to automate backlog grooming.
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {['Agentic AI', 'JIRA API', 'Asana', 'SaaS', 'Automation'].map((tech, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-2 py-1 bg-purple-500/20 text-purple-300 text-xs font-medium rounded-lg border border-purple-500/30"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Vittomni */}
+            <div className="group bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 border-2 border-pink-500/30 hover:border-pink-500/60 hover:scale-105 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                    💰
+                  </div>
+                  <span className="px-3 py-1 bg-pink-500/30 text-pink-300 rounded-full text-xs font-bold border border-pink-500/50">
+                    Product Owner
+                  </span>
+                </div>
+                
+                <h4 className="text-xl font-bold text-white mb-2 group-hover:text-pink-300 transition-colors">
+                  Vittomni
+                </h4>
+                
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Spearheading the end-to-end product lifecycle for a mobile personal finance app, from UX logic to Android deployment.
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {['Mobile App', 'Android', 'UX Design', 'Product Lifecycle', 'Finance'].map((tech, idx) => (
+                    <span 
+                      key={idx}
+                      className="px-2 py-1 bg-pink-500/20 text-pink-300 text-xs font-medium rounded-lg border border-pink-500/30"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Career Summary Stats with Animation */}
         <div 
           className={`mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 transition-all duration-700 ease-out delay-500 ${
@@ -407,10 +493,10 @@ const Experience: React.FC = () => {
           }`}
         >
           {[
-            { label: 'Years Experience', value: '10+', icon: '📅', color: '#8B5CF6', gradient: 'from-purple-500 to-purple-700' },
-            { label: 'AI Projects', value: '25+', icon: '🤖', color: '#3B82F6', gradient: 'from-blue-500 to-blue-700' },
-            { label: 'Teams Led', value: '15+', icon: '👥', color: '#10B981', gradient: 'from-green-500 to-green-700' },
-            { label: 'Cost Savings', value: '$200K+', icon: '💰', color: '#F59E0B', gradient: 'from-amber-500 to-amber-700' }
+            { label: 'Years Experience', value: '13+', icon: '📅', color: '#8B5CF6', gradient: 'from-purple-500 to-purple-700' },
+            { label: 'Efficiency Gain', value: '85%', icon: '📊', color: '#3B82F6', gradient: 'from-blue-500 to-blue-700' },
+            { label: 'Cost Savings', value: '$200K+', icon: '💰', color: '#10B981', gradient: 'from-green-500 to-green-700' },
+            { label: 'Awards', value: '30+', icon: '🏆', color: '#F59E0B', gradient: 'from-amber-500 to-amber-700' }
           ].map((stat, index) => (
             <div 
               key={index} 

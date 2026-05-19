@@ -18,7 +18,7 @@ const About: React.FC = () => {
             About Me
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            AI Solution Designer & Architect with 10+ years of experience in Generative AI and enterprise automation
+            Technical Product Manager & AI Solution Architect with 13 years of experience in enterprise product delivery and Generative AI automation.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ const About: React.FC = () => {
               Professional Background
             </h3>
             <p className="text-gray-700 text-base leading-relaxed">
-              I am an <strong className="text-sky-700">AI Solution Designer & Architect</strong> with over <strong className="text-sky-700">10 years of experience</strong> spearheading technical business transformations. My career is defined by bridging the gap between complex business requirements and <strong className="text-sky-700">production-ready Generative AI solutions</strong>.
+              I am a <strong className="text-sky-700">Technical Product Manager</strong> with over <strong className="text-sky-700">13 years of experience</strong> spearheading enterprise product vision. My career is defined by bridging the gap between complex business requirements and scalable engineering execution for world-class clients like <strong className="text-sky-700">Microsoft and Align Technology</strong>.
             </p>
           </div>
 
@@ -42,7 +42,7 @@ const About: React.FC = () => {
               Current Focus
             </h3>
             <p className="text-gray-700 text-base leading-relaxed">
-              Currently advancing my technical depth through an <strong className="text-sky-700">M.S. in Artificial Intelligence at the University of Texas at Austin</strong>, focusing on <strong className="text-gray-800">LLMs, Agentic AI, and Deep Learning</strong>.
+              Currently advancing my technical depth through an <strong className="text-sky-700">M.S. in Artificial Intelligence at the University of Texas at Austin</strong>, focusing on applying <strong className="text-gray-800">LLMs, Agentic AI, and Explainable AI (XAI)</strong> to solve real-world enterprise product challenges.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ const About: React.FC = () => {
               My Approach
             </h3>
             <p className="text-gray-700 text-base leading-relaxed">
-              I don't just analyze workflows; I <strong className="text-sky-700">automate them</strong> using a <strong className="text-gray-800">"vibe coding" approach</strong>—leveraging cutting-edge tools like <strong className="text-gray-800">GitHub Copilot, Amazon Q, and Cursor</strong> to accelerate development velocity.
+              I go beyond traditional backlog management. I leverage a <strong className="text-gray-800">"vibe coding" approach</strong> using tools like <strong className="text-gray-800">Cursor, Claude, and Azure OpenAI</strong> to rapidly prototype UIs, validate technical feasibility, and completely automate product documentation.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ const About: React.FC = () => {
               Core Expertise
             </h3>
             <p className="text-gray-700 text-base leading-relaxed">
-              Expert in <strong className="text-gray-800">Web application development and API integration</strong>, <strong className="text-gray-800">Salesforce CRM optimization</strong>, and <strong className="text-gray-800">Heroku cloud management</strong>, consistently enhancing <strong className="text-green-600">operational efficiency and user experience</strong>.
+              Expert in <strong className="text-gray-800">Agile/Scrum leadership, scalable API integrations, and cross-functional pod management</strong>. I specialize in reducing manual friction, consistently enhancing <strong className="text-green-600">operational efficiency and time-to-market</strong> for enterprise web applications.
             </p>
           </div>
         </div>
@@ -77,9 +77,9 @@ const About: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Impact 1 */}
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">Enterprise AI Documentation Architect</h4>
+              <h4 className="font-bold text-sky-700 mb-3 text-lg">Enterprise AI Documentation Workflow</h4>
               <p className="text-gray-700 text-sm mb-3">
-                Architected a web application using <strong>Azure OpenAI (GPT-4)</strong> and <strong>Flask</strong> that automates the generation of user stories and test cases.
+                Architected an enterprise GenAI product workflow using <strong>Azure OpenAI (GPT-4)</strong> and <strong>Flask</strong> to automatically translate raw business logic into detailed user stories and test cases.
               </p>
               <p className="text-sm text-green-700 font-medium">
                 <strong>Impact:</strong> Reduced manual documentation time by <strong>85%</strong> (7 hours down to 1) with a projected annual cost savings of <strong>$200,000+</strong>.
@@ -88,34 +88,34 @@ const About: React.FC = () => {
 
             {/* Impact 2 */}
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">Intelligent Support Automation Lead</h4>
+              <h4 className="font-bold text-sky-700 mb-3 text-lg">AI-Native Prototyping & Validation</h4>
               <p className="text-gray-700 text-sm mb-3">
-                Developed an end-to-end support triage pipeline for the <strong>Doctor Locator platform</strong> using the <strong>GPT-5 API</strong> and <strong>Power Automate</strong>.
+                Utilized <strong>Cursor, Claude, and Stitch</strong> to rapidly ideate UI mockups and validate the technical feasibility of complex user flows before engineering handoff.
               </p>
               <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Automated request classification <strong>(Region/Issue Type)</strong> for a global distribution list, ensuring processing within <strong>1–2 minutes</strong> and providing real-time dashboard analytics.
+                <strong>Impact:</strong> Accelerated discovery-to-release cycles by providing cross-functional engineering pods with technically validated, interactive product blueprints.
               </p>
             </div>
 
             {/* Impact 3 */}
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">AI-Driven Reporting & Compliance</h4>
+              <h4 className="font-bold text-sky-700 mb-3 text-lg">Intelligent Support Automation</h4>
               <p className="text-gray-700 text-sm mb-3">
-                Engineered a <strong>Power Automate + AI Builder</strong> solution to synthesize weekly email communications into structured, week-stamped project summaries.
+                Directed the product lifecycle for an end-to-end support triage pipeline on the <strong>Doctor Locator platform</strong> using <strong>GPT-5 APIs</strong> and <strong>Power Automate</strong>.
               </p>
               <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Eliminated manual status tracking and created a traceable <strong>audit trail</strong> for project evidence.
+                <strong>Impact:</strong> Automated global request classification <strong>(Region/Issue Type)</strong>, ensuring processing within <strong>1-2 minutes</strong> and providing real-time stakeholder dashboards.
               </p>
             </div>
 
             {/* Impact 4 */}
             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">Deep Learning Research (NLP)</h4>
+              <h4 className="font-bold text-sky-700 mb-3 text-lg">AI-Driven Agile Orchestration</h4>
               <p className="text-gray-700 text-sm mb-3">
-                Authored research on <strong>Hindi Fake News Detection</strong> utilizing <strong>LSTM Deep Learning</strong> networks.
+                Engineered a <strong>Power Automate + AI Builder</strong> solution to synthesize weekly enterprise communications into structured, week-stamped project summaries.
               </p>
               <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Achieved <strong>83.0% accuracy (0.89 AUC)</strong>, significantly outperforming traditional Machine Learning models <strong>(SVM/Logistic Regression)</strong>.
+                <strong>Impact:</strong> Eliminated manual Agile status tracking, creating a traceable <strong>audit trail</strong> and increasing sprint visibility for executive leadership.
               </p>
             </div>
           </div>
@@ -136,8 +136,8 @@ const About: React.FC = () => {
               {[
                 "Generative AI & LLM Architecture (GPT-4/5)",
                 "Agentic AI & Prompt Engineering",
-                "Full-Stack AI Application Development",
-                "Deep Learning & NLP Research (LSTM)",
+                "Product Vision & Roadmapping",
+                "Requirements Gathering (BRD/PRD)",
                 "AI-Powered Workflow Automation",
                 "Agile & Scrum Leadership (PSPO/PSM)",
                 "SDLC Optimization (85% Documentation Gain)",
@@ -162,10 +162,10 @@ const About: React.FC = () => {
               <div className="space-y-4">
                 <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
                   <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-sky-500 rounded-full mr-2"></span>AI Models & Frameworks
+                    <span className="w-2 h-2 bg-sky-500 rounded-full mr-2"></span>AI Models & Prototyping
                   </h5>
                   <div className="flex flex-wrap gap-2">
-                    {["Azure OpenAI", "GPT-4/3.5", "Agentic AI", "LSTM", "NLP", "TF-IDF"].map((tech, i) => (
+                    {["Azure OpenAI", "Claude 3.5", "GPT-4o", "Agentic AI", "RAG", "Cursor IDE", "Stitch"].map((tech, i) => (
                       <span key={i} className="px-2 py-1 bg-sky-100 text-sky-700 text-xs rounded-full font-medium">
                         {tech}
                       </span>
@@ -175,11 +175,11 @@ const About: React.FC = () => {
                 
                 <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
                   <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Programming & Development
+                    <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Low-Code & Automation
                   </h5>
                   <div className="flex flex-wrap gap-2">
-                    {["Python", "Flask", "Pandas", "NumPy", "Scikit-learn", "Bash", "SQL"].map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
+                    {["Power Automate", "Power Apps", "AI Builder", "Dataverse", "SharePoint", "API Integration"].map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
                         {tech}
                       </span>
                     ))}
@@ -190,11 +190,11 @@ const About: React.FC = () => {
               <div className="space-y-4">
                 <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
                   <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Low-Code & Automation
+                    <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Technical Architecture
                   </h5>
                   <div className="flex flex-wrap gap-2">
-                    {["Power Automate", "Power Apps", "AI Builder", "Dataverse", "SharePoint"].map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
+                    {["Python", "SQL", "Flask", "Figma", "Cloud Infrastructure", "REST APIs"].map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
                         {tech}
                       </span>
                     ))}
@@ -203,10 +203,10 @@ const About: React.FC = () => {
                 
                 <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
                   <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Observability & DevOps
+                    <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Agile & Observability
                   </h5>
                   <div className="flex flex-wrap gap-2">
-                    {["New Relic", "Splunk", "Kibana", "JIRA", "Atlassian AI"].map((tech, i) => (
+                    {["JIRA", "Confluence", "Atlassian AI", "New Relic", "Splunk", "Kibana"].map((tech, i) => (
                       <span key={i} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
                         {tech}
                       </span>

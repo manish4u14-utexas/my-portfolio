@@ -9,11 +9,9 @@ const Hero: React.FC = () => {
   });
 
   const roles = [
-    "AI Solution Designer",
-    "Automation Expert",
-    "Senior Technical Business Analyst (AI)",
-    "Enterprise Web Application Specialist",
-    "Agile/Scrum Leader",
+    "Technical Product Manager [AI]",
+    "AI Solution Architect",
+    "Agile Product Leader",
   ];
 
   return (
@@ -43,7 +41,7 @@ const Hero: React.FC = () => {
         {/* Introduction and Education */}
         <div className={`text-center mb-6 px-2 transition-all duration-1000 ease-out delay-300 ${heroInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-sm sm:text-md md:text-lg text-gray-300 mb-4 leading-relaxed">
-            I design and implement LLM-powered automation solutions for enterprise workflows. Currently focused on Generative AI, workflow optimization, and digital transformation.
+            I am a Technical Product Manager blending 13 years of enterprise delivery with hands-on GenAI architecture. I bridge the gap between business vision and engineering execution to build scalable, AI-powered automation products.
           </p>
           
           {/* Education Badge */}

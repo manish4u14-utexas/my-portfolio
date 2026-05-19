@@ -11,66 +11,66 @@ const Skills: React.FC = () => {
   const skillCategories = [
     {
       id: 'generative-ai',
-      title: 'Generative AI & LLMs',
+      title: 'Generative AI & ML Architecture',
       icon: '🤖',
       color: 'from-blue-500 to-cyan-500',
       skills: [
-        'Azure OpenAI (GPT-4/GPT-3.5)',
+        'Azure OpenAI (GPT-4 / GPT-4o)',
         'Agentic AI & Prompt Engineering',
-        'Deep Learning & LSTM',
-        'NLP (Tokenization, TF-IDF)',
-        'GitHub Copilot & Amazon Q',
-        'Cursor, Manus, Replit',
-        'Google AI Studio & Colab',
-        'Lightning.AI'
+        'Retrieval-Augmented Generation (RAG)',
+        'Explainable AI (XAI) & Model Auditing',
+        'AI-Native IDEs (Cursor, Claude Code)',
+        'NLP & Large-Scale Data Synthesis',
+        'LLM Evaluation & Solution Validation',
+        'Google AI Pro & BigQuery'
       ]
     },
     {
-      id: 'automation-lowcode',
-      title: 'Automation & Low-Code',
-      icon: '⚡',
-      color: 'from-green-500 to-emerald-500',
-      skills: [
-        'Power Automate & Power Apps',
-        'AI Builder Custom Prompts',
-        'Python (Pandas, NumPy, Scikit-learn)',
-        'Salesforce CRM & SOQL',
-        'New Relic, Kibana, Splunk',
-        'API Design (Postman)',
-        'SharePoint & Dataverse',
-        'Power BI & EazyBI'
-      ]
-    },
-    {
-      id: 'business-analysis',
-      title: 'BA & Agile Leadership',
+      id: 'product-strategy',
+      title: 'Product Strategy & Agile Leadership',
       icon: '📊',
       color: 'from-purple-500 to-pink-500',
       skills: [
-        'Expert Agile & Scrum (10+ yrs)',
-        'JIRA Automation & Admin',
-        'Atlassian AI (Planning/Estimation)',
-        'Technical Business Analysis',
-        'Requirements Engineering',
-        'User Stories & UAT',
-        'Stakeholder Management',
-        'Technical Documentation'
+        'Product Vision & Roadmapping',
+        'Expert Agile & Scrum Leadership (13 Years)',
+        'Requirements Gathering (PRDs & Functional Specs)',
+        'User Stories, Backlog Grooming & UAT',
+        'Cross-Functional Engineering Pod Management',
+        'Data-Driven Prioritization (Value vs. Complexity)',
+        'Stakeholder Management & Alignment',
+        'Atlassian AI (Sprint Planning & Estimation)'
       ]
     },
     {
-      id: 'technical-tools',
-      title: 'Technical Tools & Platforms',
+      id: 'automation-apis',
+      title: 'Enterprise Automation & APIs',
+      icon: '⚡',
+      color: 'from-green-500 to-emerald-500',
+      skills: [
+        'API Strategy & Design (REST, Postman)',
+        'Python & Flask Backend Integrations',
+        'Power Automate, Power Apps & Dataverse',
+        'AI Builder & Custom Prompts',
+        'Salesforce CRM Optimization',
+        'Automated BI Reporting (Power BI, EazyBI)',
+        'Jira Automation & Workflow Orchestration',
+        'Cloud Infrastructure Concepts (Azure / Heroku)'
+      ]
+    },
+    {
+      id: 'ux-observability',
+      title: 'UX Prototyping & Observability',
       icon: '🛠️',
       color: 'from-orange-500 to-red-500',
       skills: [
-        'Python (Streamlit, Plotly)',
-        'VS Code & Development Tools',
-        'Jira/Confluence Integration',
-        'Lucid Chart & Gliffy',
-        'MS Project & Asana',
-        'Excel Automation',
-        'Bugsnag & Performance Monitoring',
-        'Wireframing & Use Case Diagrams'
+        'Rapid UI Prototyping (Figma, Stitch)',
+        'Interactive Wireframing & User Journeys',
+        'Technical Feasibility Validation',
+        'System Observability (New Relic, Splunk)',
+        'Product Analytics & Dashboards (Kibana)',
+        'Performance & Error Monitoring (Bugsnag)',
+        'VS Code & GitHub Copilot',
+        'Asana & Jira Confluence Suite'
       ]
     }
   ];
@@ -145,8 +145,8 @@ const Skills: React.FC = () => {
             <h4 className="text-lg font-semibold text-gray-800 mb-2">🎯 Specialized Focus Areas</h4>
             <p className="text-gray-600 text-sm">
               <strong>Workflow Optimization:</strong> 85% documentation efficiency gains • 
-              <strong> AI Integration:</strong> Enterprise-scale automation solutions • 
-              <strong> Leadership:</strong> 10+ years Agile/Scrum expertise
+              <strong> AI Product Strategy:</strong> Enterprise-scale Generative AI architectures • 
+              <strong> Leadership:</strong> 13 years Agile product delivery & cross-functional execution
             </p>
           </div>
         </div>
