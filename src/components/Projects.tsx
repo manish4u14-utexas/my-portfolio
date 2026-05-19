@@ -10,7 +10,7 @@ interface ProjectData {
   color: string;
   impact: string;
   metrics: string;
-  category: 'ai' | 'automation' | 'crm' | 'analytics';
+  category: 'ai' | 'saas' | 'mobile' | 'research';
 }
 
 const Projects: React.FC = () => {
@@ -24,56 +24,56 @@ const Projects: React.FC = () => {
   const projects: ProjectData[] = [
     {
       id: 'ai-docs',
-      title: 'Generative AI for Documentation Automation',
-      description: 'Pioneered the use of Generative AI for requirement gathering, user story creation, and documentation, achieving a 40% reduction in manual effort and accelerating project timelines.',
-      technologies: ['Azure OpenAI', 'GPT-4', 'Flask', 'Python', 'Prompt Engineering'],
+      title: 'Enterprise AI Documentation Automation',
+      description: 'Architected an Azure OpenAI (GPT-4) and Flask workflow to translate raw business logic into functional specifications and push directly to JIRA APIs.',
+      technologies: ['Azure OpenAI', 'GPT-4', 'Flask', 'Python', 'JIRA API', 'Prompt Engineering'],
       icon: '🤖',
       color: '#3B82F6',
-      impact: 'Reduced documentation time by 85% (7 hours to 1 hour)',
-      metrics: '$200K+ annual cost savings',
+      impact: 'Reduced manual documentation time by 85% saving $200k+ annually',
+      metrics: '$200K+ annual cost savings with 85% time reduction',
       category: 'ai'
     },
     {
-      id: 'sprint-ai',
-      title: 'AI-Driven Agile Sprint Optimization',
-      description: 'Implemented AI-driven sprint planning and estimation using Atlassian AI, resulting in a 25% improvement in sprint accuracy and more effective backlog prioritization.',
-      technologies: ['Atlassian AI', 'JIRA', 'Agile', 'Scrum', 'Data Analysis'],
+      id: 'sprintpulse',
+      title: 'SprintPulse.ai (Agile Orchestration SaaS)',
+      description: 'Architecting a commercial SaaS platform utilizing "vibe coding" to build a multi-agent system with live API integrations across Jira and enterprise wikis for automated sprint reporting.',
+      technologies: ['Agentic AI', 'Multi-Agent Systems', 'JIRA API', 'SaaS Architecture', 'Enterprise Wikis'],
       icon: '🚀',
       color: '#10B981',
-      impact: '25% improvement in sprint accuracy',
-      metrics: 'Enhanced team velocity and predictability',
-      category: 'automation'
+      impact: 'AI-Native SaaS architecture and agentic workflow integration',
+      metrics: 'Commercial SaaS with multi-agent orchestration',
+      category: 'saas'
     },
     {
-      id: 'bi-reporting',
-      title: 'Automated Business Intelligence Reporting',
-      description: 'Automated critical reporting and data visualization processes using EazyBI Analytics, significantly increasing visibility into sprint progress and team velocity.',
-      technologies: ['EazyBI Analytics', 'JIRA', 'Data Visualization', 'Business Intelligence'],
-      icon: '📊',
-      color: '#8B5CF6',
-      impact: '30% increase in operational visibility',
-      metrics: 'Real-time actionable insights for leadership',
-      category: 'analytics'
-    },
-    {
-      id: 'crm-enhancement',
-      title: 'Salesforce CRM Enhancement for Lead Management',
-      description: 'Managed and optimized Salesforce CRM for doctor-facing operations, including lead generation, targeted marketing campaigns, and event management.',
-      technologies: ['Salesforce', 'SOQL', 'CRM Optimization', 'Lead Management', 'Campaign Analytics'],
-      icon: '🎨',
+      id: 'vittomni',
+      title: 'Vitt-Omni (Personal Finance Mobile App)',
+      description: 'Directed the end-to-end product lifecycle, UX logic, and development of a mobile personal finance application featuring complex loan and investment calculation modules.',
+      technologies: ['Mobile Development', 'Android', 'UX Design', 'Product Lifecycle', 'Google Play'],
+      icon: '💰',
       color: '#F59E0B',
-      impact: 'Streamlined lead management workflow',
-      metrics: 'Enhanced campaign performance tracking',
-      category: 'crm'
+      impact: 'End-to-end B2C mobile product delivery and Google Play deployment',
+      metrics: 'Full product lifecycle from concept to deployment',
+      category: 'mobile'
+    },
+    {
+      id: 'persona-gap',
+      title: 'The Persona Gap: Clinical LLM Auditing',
+      description: 'Authored MSAI research evaluating high-risk generative AI architectures in healthcare. Implemented SHAP visualizations to audit in-context bias and enforce Explainable AI (XAI) principles.',
+      technologies: ['Explainable AI (XAI)', 'SHAP', 'Clinical LLMs', 'AI Governance', 'Healthcare AI'],
+      icon: '🔬',
+      color: '#8B5CF6',
+      impact: 'Advanced AI Governance and Explainable AI (XAI) implementation',
+      metrics: 'Published MSAI research on clinical AI bias auditing',
+      category: 'research'
     }
   ];
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: '📋' },
     { id: 'ai', label: 'AI Solutions', icon: '🤖' },
-    { id: 'automation', label: 'Automation', icon: '⚙️' },
-    { id: 'analytics', label: 'Analytics', icon: '📊' },
-    { id: 'crm', label: 'CRM', icon: '🎨' }
+    { id: 'saas', label: 'SaaS Products', icon: '🚀' },
+    { id: 'mobile', label: 'Mobile Apps', icon: '📱' },
+    { id: 'research', label: 'Research', icon: '🔬' }
   ];
 
   const filteredProjects = filterCategory === 'all' 
@@ -91,7 +91,7 @@ const Projects: React.FC = () => {
         </h2>
         
         <p className={`text-center text-gray-300 mb-12 transition-all duration-700 ease-out delay-300 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          Interactive showcase of AI-powered solutions and enterprise transformations
+          Showcasing enterprise AI solutions, SaaS products, mobile apps, and research initiatives
         </p>
 
         {/* Category Filter */}
@@ -194,7 +194,7 @@ const Projects: React.FC = () => {
         {/* Summary Stats */}
         <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-700 ease-out delay-1000 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {[
-            { label: 'AI Projects Delivered', value: '25+', icon: '🤖', color: '#3B82F6' },
+            { label: 'Enterprise AI Solutions', value: '4+', icon: '🤖', color: '#3B82F6' },
             { label: 'Efficiency Improvement', value: '85%', icon: '⚡', color: '#10B981' },
             { label: 'Cost Savings Generated', value: '$200K+', icon: '💰', color: '#F59E0B' }
           ].map((stat, index) => (
