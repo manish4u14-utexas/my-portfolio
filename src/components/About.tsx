@@ -1,5 +1,23 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useCountUp } from '../hooks/useCountUp';
+
+// Animated stat counter component
+const StatCounter: React.FC<{ end: number; suffix: string; prefix?: string; label: string; icon: string; enabled: boolean; delay: number }> = ({ end, suffix, prefix = '', label, icon, enabled, delay }) => {
+  const value = useCountUp({ end, suffix, prefix, enabled, duration: 2000 + delay });
+
+  return (
+    <div className="text-center group">
+      <div className="glow-pulse bg-slate-800/80 border border-slate-700/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-sky-500/40 hover:bg-slate-800">
+        <div className="text-2xl sm:text-3xl mb-2">{icon}</div>
+        <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-tight">
+          {value}
+        </div>
+        <div className="text-xs sm:text-sm text-gray-400 font-medium">{label}</div>
+      </div>
+    </div>
+  );
+};
 
 const About: React.FC = () => {
   const { ref: sectionRef, inView: sectionInView } = useInView({
@@ -7,217 +25,108 @@ const About: React.FC = () => {
     threshold: 0.1,
   });
 
+  const stats = [
+    { end: 13, suffix: '+', label: 'Years Experience', icon: '📅', delay: 0 },
+    { end: 85, suffix: '%', label: 'Efficiency Gains', icon: '⚡', delay: 200 },
+    { end: 200, suffix: 'K+', prefix: '$', label: 'Cost Savings', icon: '💰', delay: 400 },
+    { end: 30, suffix: '+', label: 'Awards & Certs', icon: '🏆', delay: 600 },
+  ];
+
   return (
-    <section id="about" className="py-20 px-4 md:px-10 bg-gradient-to-br from-gray-100 via-slate-100 to-gray-200 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        <div 
+    <section id="about" className="py-16 sm:py-20 px-4 md:px-10 bg-[#0F172A] overflow-hidden">
+      <div className="max-w-5xl mx-auto">
+        {/* Section Header */}
+        <div
           ref={sectionRef}
-          className={`text-center mb-16 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`text-center mb-12 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <h2 className="text-4xl font-bold text-sky-600 mb-4">
+          <span className="inline-block px-4 py-1.5 bg-sky-500/10 text-sky-400 rounded-full text-xs font-semibold border border-sky-500/20 mb-4">
             About Me
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Builder PM Who <span className="text-sky-400">Ships AI Products</span>
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            Technical Product Manager & AI Solution Architect with 13 years of experience in enterprise product delivery and Generative AI automation.
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            I don't just manage backlogs — I architect GenAI workflows, prototype with code, and bridge the gap between business vision and scalable engineering execution.
           </p>
         </div>
 
-        {/* Main Content Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {/* Card 1: Background */}
-          <div className={`bg-white rounded-xl p-6 shadow-lg transition-all duration-500 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="text-2xl mr-2">👨‍💻</span>
-              Professional Background
-            </h3>
-            <p className="text-gray-700 text-base leading-relaxed">
-              I am a <strong className="text-sky-700">Technical Product Manager</strong> with over <strong className="text-sky-700">13 years of experience</strong> spearheading enterprise product vision. My career is defined by bridging the gap between complex business requirements and scalable engineering execution for world-class clients like <strong className="text-sky-700">Microsoft and Align Technology</strong>.
+        {/* Quick Identity Cards - 2 compact cards */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 transition-all duration-700 ease-out delay-200 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* What I Do */}
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-5 card-hover">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-sky-500/20 flex items-center justify-center text-lg">⚡</div>
+              <h3 className="text-lg font-bold text-white">What I Do</h3>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Lead enterprise AI product strategy at <strong className="text-sky-300">Align Technology</strong>. I use Azure OpenAI, Cursor & Claude to rapidly prototype, validate feasibility, and automate documentation — cutting manual effort by 85%.
             </p>
           </div>
 
-          {/* Card 2: Education */}
-          <div className={`bg-white rounded-xl p-6 shadow-lg transition-all duration-500 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '150ms' }}>
-            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="text-2xl mr-2">🎓</span>
-              Current Focus
-            </h3>
-            <p className="text-gray-700 text-base leading-relaxed">
-              Currently advancing my technical depth through an <strong className="text-sky-700">M.S. in Artificial Intelligence at the University of Texas at Austin</strong>, focusing on applying <strong className="text-gray-800">LLMs, Agentic AI, and Explainable AI (XAI)</strong> to solve real-world enterprise product challenges.
-            </p>
-          </div>
-
-          {/* Card 3: Approach */}
-          <div className={`bg-white rounded-xl p-6 shadow-lg transition-all duration-500 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '300ms' }}>
-            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="text-2xl mr-2">⚡</span>
-              My Approach
-            </h3>
-            <p className="text-gray-700 text-base leading-relaxed">
-              I go beyond traditional backlog management. I leverage a <strong className="text-gray-800">"vibe coding" approach</strong> using tools like <strong className="text-gray-800">Cursor, Claude, and Azure OpenAI</strong> to rapidly prototype UIs, validate technical feasibility, and completely automate product documentation.
-            </p>
-          </div>
-
-          {/* Card 4: Expertise */}
-          <div className={`bg-white rounded-xl p-6 shadow-lg transition-all duration-500 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '450ms' }}>
-            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-              <span className="text-2xl mr-2">🚀</span>
-              Core Expertise
-            </h3>
-            <p className="text-gray-700 text-base leading-relaxed">
-              Expert in <strong className="text-gray-800">Agile/Scrum leadership, scalable API integrations, and cross-functional pod management</strong>. I specialize in reducing manual friction, consistently enhancing <strong className="text-green-600">operational efficiency and time-to-market</strong> for enterprise web applications.
+          {/* My Edge */}
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-5 card-hover">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-lg">🧠</div>
+              <h3 className="text-lg font-bold text-white">My Edge</h3>
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Pursuing <strong className="text-sky-300">M.S. in AI at UT Austin</strong> while shipping production AI products. I bring academic depth (LLMs, XAI, Deep Learning) with 13 years of enterprise execution at Microsoft & Align.
             </p>
           </div>
         </div>
 
-        {/* Signature AI Impacts Section */}
-        <div className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-semibold mb-6 text-sky-600 flex items-center justify-center">
-            <span className="mr-2">🚀</span>Signature AI Impacts
-          </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Impact 1 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">Enterprise AI Documentation Workflow</h4>
-              <p className="text-gray-700 text-sm mb-3">
-                Architected an enterprise GenAI product workflow using <strong>Azure OpenAI (GPT-4)</strong> and <strong>Flask</strong> to automatically translate raw business logic into detailed user stories and test cases.
-              </p>
-              <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Reduced manual documentation time by <strong>85%</strong> (7 hours down to 1) with a projected annual cost savings of <strong>$200,000+</strong>.
-              </p>
-            </div>
-
-            {/* Impact 2 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">AI-Native Prototyping & Validation</h4>
-              <p className="text-gray-700 text-sm mb-3">
-                Utilized <strong>Cursor, Claude, and Stitch</strong> to rapidly ideate UI mockups and validate the technical feasibility of complex user flows before engineering handoff.
-              </p>
-              <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Accelerated discovery-to-release cycles by providing cross-functional engineering pods with technically validated, interactive product blueprints.
-              </p>
-            </div>
-
-            {/* Impact 3 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">Intelligent Support Automation</h4>
-              <p className="text-gray-700 text-sm mb-3">
-                Directed the product lifecycle for an end-to-end support triage pipeline on the <strong>Doctor Locator platform</strong> using <strong>GPT-5 APIs</strong> and <strong>Power Automate</strong>.
-              </p>
-              <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Automated global request classification <strong>(Region/Issue Type)</strong>, ensuring processing within <strong>1-2 minutes</strong> and providing real-time stakeholder dashboards.
-              </p>
-            </div>
-
-            {/* Impact 4 */}
-            <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-sky-500">
-              <h4 className="font-bold text-sky-700 mb-3 text-lg">AI-Driven Agile Orchestration</h4>
-              <p className="text-gray-700 text-sm mb-3">
-                Engineered a <strong>Power Automate + AI Builder</strong> solution to synthesize weekly enterprise communications into structured, week-stamped project summaries.
-              </p>
-              <p className="text-sm text-green-700 font-medium">
-                <strong>Impact:</strong> Eliminated manual Agile status tracking, creating a traceable <strong>audit trail</strong> and increasing sprint visibility for executive leadership.
-              </p>
-            </div>
-          </div>
+        {/* Animated Stats Grid */}
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 transition-all duration-700 ease-out delay-400 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {stats.map((stat, index) => (
+            <StatCounter
+              key={index}
+              end={stat.end}
+              suffix={stat.suffix}
+              prefix={stat.prefix}
+              label={stat.label}
+              icon={stat.icon}
+              enabled={sectionInView}
+              delay={stat.delay}
+            />
+          ))}
         </div>
 
-        {/* Technical Competencies Section */}
-        <div className={`mt-12 pt-8 border-t border-slate-300 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-semibold mb-8 text-sky-600 flex items-center justify-center">
-            <span className="mr-2">⚡</span>Technical Competencies & Expertise
+        {/* Signature Impacts - condensed into one visual row */}
+        <div className={`mt-12 transition-all duration-700 ease-out delay-500 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h3 className="text-center text-sm font-semibold text-sky-400 uppercase tracking-wider mb-6">
+            Signature AI Impacts
           </h3>
-          
-          {/* Core AI Competencies */}
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold text-sky-700 mb-4 flex items-center justify-center">
-              <span className="mr-2">🧠</span>Core AI & Leadership Expertise
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-              {[
-                "Generative AI & LLM Architecture (GPT-4/5)",
-                "Agentic AI & Prompt Engineering",
-                "Product Vision & Roadmapping",
-                "Requirements Gathering (BRD/PRD)",
-                "AI-Powered Workflow Automation",
-                "Agile & Scrum Leadership (PSPO/PSM)",
-                "SDLC Optimization (85% Documentation Gain)",
-                "Enterprise AI Adoption & Strategy"
-              ].map((skill, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-3 rounded-lg border-l-3 border-sky-400 text-sm font-medium text-slate-700 shadow-sm hover:shadow-md transition-all duration-300"
-                >
-                  <span className="text-sky-600 mr-2">✦</span>{skill}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technology Stack */}
-          <div>
-            <h4 className="text-lg font-semibold text-sky-700 mb-4 flex items-center justify-center">
-              <span className="mr-2">🛠️</span>Technology Stack & Tools
-            </h4>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-sky-500 rounded-full mr-2"></span>AI Models & Prototyping
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {["Azure OpenAI", "Claude 3.5", "GPT-4o", "Agentic AI", "RAG", "Cursor IDE", "Stitch"].map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-sky-100 text-sky-700 text-xs rounded-full font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>Low-Code & Automation
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {["Power Automate", "Power Apps", "AI Builder", "Dataverse", "SharePoint", "API Integration"].map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              {
+                title: 'GenAI Documentation Engine',
+                impact: '85% time saved, $200K+ annually',
+                tech: 'Azure OpenAI + Flask + JIRA API',
+              },
+              {
+                title: 'Intelligent Support Triage',
+                impact: 'Auto-classification in 1-2 min',
+                tech: 'GPT APIs + Power Automate',
+              },
+              {
+                title: 'AI-Native Prototyping',
+                impact: 'Discovery-to-release acceleration',
+                tech: 'Cursor + Claude + Stitch',
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="impact-box group hover:border-l-sky-400 transition-all duration-300">
+                <h4 className="font-semibold text-white text-sm mb-1">{item.title}</h4>
+                <p className="text-green-400 text-xs font-medium mb-1">{item.impact}</p>
+                <p className="text-gray-500 text-xs">{item.tech}</p>
               </div>
-              
-              <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Technical Architecture
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {["Python", "SQL", "Flask", "Figma", "Cloud Infrastructure", "REST APIs"].map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                  <h5 className="font-semibold text-sky-700 mb-3 flex items-center">
-                    <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>Agile & Observability
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {["JIRA", "Confluence", "Atlassian AI", "New Relic", "Splunk", "Kibana"].map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* Section divider */}
+      <div className="section-divider mt-16 max-w-4xl mx-auto" />
     </section>
   );
 };
