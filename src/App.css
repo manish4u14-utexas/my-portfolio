@@ -135,12 +135,13 @@ html {
 .split-pane {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .split-pane {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr;
+    gap: 1.5rem;
   }
 }
 
@@ -154,22 +155,18 @@ html {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Tech pill styles */
+/* Tech pill styles - flat, non-interactive labels */
 .tech-pill {
   background: #1e293b;
-  border: 1px solid #475569;
+  border: 1px solid #334155;
   color: #94a3b8;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
   font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.tech-pill:hover {
-  background: #334155;
-  color: #e2e8f0;
-  border-color: #64748b;
+  transition: none;
+  cursor: default;
+  user-select: none;
 }
 
 /* Impact highlight box */

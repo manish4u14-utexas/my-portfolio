@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import SprintPulseArchitecture from './diagrams/SprintPulseArchitecture';
+import SprintPulseUserFlow from './diagrams/SprintPulseUserFlow';
+import ExecutiveReportingArchitecture from './diagrams/ExecutiveReportingArchitecture';
+import ExecutiveReportingUserFlow from './diagrams/ExecutiveReportingUserFlow';
+import ExecutiveReportingGovernance from './diagrams/ExecutiveReportingGovernance';
 
 interface CaseStudy {
   id: string;
@@ -14,13 +19,23 @@ interface CaseStudy {
   demoPlaceholder: string;
 }
 
-const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string }> = ({ archSrc, demoSrc, title }) => {
-  const [view, setView] = useState<'architecture' | 'demo'>('architecture');
+const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; projectId: string }> = ({ archSrc, demoSrc, title, projectId }) => {
+  const [view, setView] = useState<'architecture' | 'demo' | 'governance'>('architecture');
+
+  // Determine which project has custom animated diagrams
+  const hasAnimated = projectId === 'sprintpulse' || projectId === 'exec-reporting';
+  const hasGovernanceTab = projectId === 'exec-reporting';
+
+  const getTabLabel = () => {
+    if (projectId === 'sprintpulse') return 'User Flow';
+    if (projectId === 'exec-reporting') return 'User Flow';
+    return 'Live Demo';
+  };
 
   return (
     <div className="h-full flex flex-col">
       {/* Toggle buttons */}
-      <div className="flex gap-2 mb-3">
+      <div className="flex gap-2 mb-3 flex-wrap">
         <button
           onClick={() => setView('architecture')}
           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
@@ -39,56 +54,77 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string }>
               : 'bg-slate-700/50 text-gray-400 border border-slate-600/50 hover:text-gray-300'
           }`}
         >
-          ▶️ Live Demo
+          ▶️ {getTabLabel()}
         </button>
+        {hasGovernanceTab && (
+          <button
+            onClick={() => setView('governance')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+              view === 'governance'
+                ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
+                : 'bg-slate-700/50 text-gray-400 border border-slate-600/50 hover:text-gray-300'
+            }`}
+          >
+            🛡️ AI Governance
+          </button>
+        )}
       </div>
 
       {/* Media container */}
-      <div className="flex-1 min-h-[250px] sm:min-h-[300px] bg-slate-800 rounded-xl border border-slate-700/50 overflow-hidden relative shadow-inner">
-        {view === 'architecture' ? (
-          <div className="w-full h-full flex items-center justify-center p-4">
-            <img
-              src={archSrc}
-              alt={`${title} Architecture`}
-              className="w-full h-auto rounded-lg object-contain max-h-[280px]"
-              onError={(e) => {
-                // Show placeholder if image not found
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                target.parentElement!.innerHTML = `
-                  <div class="flex flex-col items-center justify-center h-full text-center p-6">
-                    <div class="shimmer-placeholder w-full h-48 rounded-lg mb-4"></div>
-                    <p class="text-gray-500 text-xs">Architecture diagram coming soon</p>
-                    <p class="text-gray-600 text-xs mt-1">Add: public/${archSrc.split('/').pop()}</p>
-                  </div>
-                `;
-              }}
-            />
-          </div>
-        ) : (
-          <div className="w-full h-full flex items-center justify-center p-4">
-            <video
-              src={demoSrc}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto rounded-lg max-h-[280px]"
-              onError={(e) => {
-                const target = e.target as HTMLVideoElement;
-                target.style.display = 'none';
-                target.parentElement!.innerHTML = `
-                  <div class="flex flex-col items-center justify-center h-full text-center p-6">
-                    <div class="w-16 h-16 rounded-full bg-sky-500/20 flex items-center justify-center mb-4">
-                      <svg class="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <div className="flex-1 min-h-[280px] sm:min-h-[320px] bg-slate-800 rounded-xl border border-slate-700/50 overflow-hidden relative shadow-inner">
+        {view === 'architecture' && (
+          hasAnimated ? (
+            projectId === 'sprintpulse' ? <SprintPulseArchitecture /> : <ExecutiveReportingArchitecture />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img
+                src={archSrc}
+                alt={`${title} Architecture`}
+                className="w-full h-auto rounded-lg object-contain max-h-[280px]"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-full text-center p-6">
+                      <div class="shimmer-placeholder w-full h-48 rounded-lg mb-4"></div>
+                      <p class="text-gray-500 text-xs">Architecture diagram coming soon</p>
                     </div>
-                    <p class="text-gray-500 text-xs">Demo video coming soon</p>
-                    <p class="text-gray-600 text-xs mt-1">Add: public/${demoSrc.split('/').pop()}</p>
-                  </div>
-                `;
-              }}
-            />
-          </div>
+                  `;
+                }}
+              />
+            </div>
+          )
+        )}
+        {view === 'demo' && (
+          hasAnimated ? (
+            projectId === 'sprintpulse' ? <SprintPulseUserFlow /> : <ExecutiveReportingUserFlow />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <video
+                src={demoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto rounded-lg max-h-[280px]"
+                onError={(e) => {
+                  const target = e.target as HTMLVideoElement;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-full text-center p-6">
+                      <div class="w-16 h-16 rounded-full bg-sky-500/20 flex items-center justify-center mb-4">
+                        <svg class="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      </div>
+                      <p class="text-gray-500 text-xs">Demo video coming soon</p>
+                    </div>
+                  `;
+                }}
+              />
+            </div>
+          )
+        )}
+        {view === 'governance' && projectId === 'exec-reporting' && (
+          <ExecutiveReportingGovernance />
         )}
       </div>
     </div>
@@ -103,20 +139,20 @@ const FeaturedProjects: React.FC = () => {
 
   const caseStudies: CaseStudy[] = [
     {
-      id: 'ai-docs',
-      title: 'Enterprise AI Documentation Engine',
-      subtitle: 'GenAI Workflow Automation',
-      description: 'Architected an Azure OpenAI (GPT-4) + Flask pipeline that translates raw business logic into functional specs and pushes user stories directly to JIRA via API.',
+      id: 'exec-reporting',
+      title: 'Executive Status Reporting Agent',
+      subtitle: 'Production AI Automation',
+      description: 'Production-grade AI platform that transforms unstructured leadership emails into executive-ready portfolio status reports using Azure OpenAI, Power Automate, and Teams — eliminating manual weekly reporting.',
       impact: [
-        { label: 'Time Saved', value: '85%' },
-        { label: 'Annual Savings', value: '$200K+' },
-        { label: 'Manual Hours Cut', value: '7→1 hr' },
+        { label: 'Weekly Hours Saved', value: '4-6 hrs' },
+        { label: 'Emails Processed', value: '50+/week' },
+        { label: 'Governance', value: 'HITL → Autopilot' },
       ],
-      technologies: ['Azure OpenAI', 'GPT-4', 'Python', 'Flask', 'JIRA API', 'Prompt Engineering'],
+      technologies: ['Azure OpenAI', 'Power Automate', 'SharePoint', 'Teams', 'Prompt Engineering', 'AI Governance'],
       color: '#3B82F6',
-      icon: '🤖',
-      archPlaceholder: '/my-portfolio/ai-docs-arch.png',
-      demoPlaceholder: '/my-portfolio/ai-docs-demo.mp4',
+      icon: '📊',
+      archPlaceholder: '/my-portfolio/exec-reporting-arch.png',
+      demoPlaceholder: '/my-portfolio/exec-reporting-demo.mp4',
     },
     {
       id: 'sprintpulse',
@@ -126,7 +162,7 @@ const FeaturedProjects: React.FC = () => {
       impact: [
         { label: 'Architecture', value: 'Multi-Agent' },
         { label: 'Integrations', value: 'Jira + Asana' },
-        { label: 'Status', value: 'In Development' },
+        { label: 'Status', value: 'MVP Live' },
       ],
       technologies: ['Agentic AI', 'Multi-Agent Systems', 'JIRA API', 'Next.js', 'SaaS Architecture'],
       color: '#10B981',
@@ -245,6 +281,7 @@ const FeaturedProjects: React.FC = () => {
                   archSrc={study.archPlaceholder}
                   demoSrc={study.demoPlaceholder}
                   title={study.title}
+                  projectId={study.id}
                 />
               </div>
             </div>
