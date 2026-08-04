@@ -23,7 +23,7 @@ const Publications: React.FC = () => {
       title: 'The Persona Gap: Auditing In-Context Bias in Clinical LLMs Using Explainable AI',
       abstract: 'Research evaluating high-risk generative AI architectures in healthcare. Implemented SHAP visualizations to audit in-context bias and enforce Explainable AI (XAI) principles for responsible clinical AI deployment.',
       date: '2025',
-      doi: 'https://doi.org/10.5281/zenodo.18167945',
+      doi: 'https://zenodo.org/records/20029302',
       github: 'https://github.com/manish4u14-utexas/The-Persona-Gap-LLM-Audit',
       keywords: ['Explainable AI (XAI)', 'SHAP', 'Clinical LLMs', 'AI Governance', 'Healthcare AI', 'Bias Auditing'],
       metrics: [
