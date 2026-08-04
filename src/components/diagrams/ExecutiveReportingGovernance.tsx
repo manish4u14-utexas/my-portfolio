@@ -12,7 +12,7 @@ const ExecutiveReportingGovernance: React.FC = () => {
         if (prev >= 10) { clearInterval(timer); return prev; }
         return prev + 1;
       });
-    }, 400);
+    }, 200);
     return () => clearInterval(timer);
   }, [inView]);
 

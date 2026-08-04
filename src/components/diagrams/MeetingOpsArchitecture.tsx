@@ -9,7 +9,7 @@ const MeetingOpsArchitecture: React.FC = () => {
     if (!inView) return;
     const timer = setInterval(() => {
       setStep((prev) => { if (prev >= 12) { clearInterval(timer); return prev; } return prev + 1; });
-    }, 350);
+    }, 200);
     return () => clearInterval(timer);
   }, [inView]);
 
