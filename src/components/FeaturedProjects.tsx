@@ -5,6 +5,8 @@ import SprintPulseUserFlow from './diagrams/SprintPulseUserFlow';
 import ExecutiveReportingArchitecture from './diagrams/ExecutiveReportingArchitecture';
 import ExecutiveReportingUserFlow from './diagrams/ExecutiveReportingUserFlow';
 import ExecutiveReportingGovernance from './diagrams/ExecutiveReportingGovernance';
+import MeetingOpsArchitecture from './diagrams/MeetingOpsArchitecture';
+import MeetingOpsUserFlow from './diagrams/MeetingOpsUserFlow';
 
 interface CaseStudy {
   id: string;
@@ -23,7 +25,7 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
   const [view, setView] = useState<'architecture' | 'demo' | 'governance'>('architecture');
 
   // Determine which project has custom animated diagrams
-  const hasAnimated = projectId === 'sprintpulse' || projectId === 'exec-reporting';
+  const hasAnimated = projectId === 'sprintpulse' || projectId === 'exec-reporting' || projectId === 'meetingops';
   const hasGovernanceTab = projectId === 'exec-reporting';
 
   const getTabLabel = () => {
@@ -74,7 +76,9 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
       <div className="flex-1 min-h-[280px] sm:min-h-[320px] bg-slate-800 rounded-xl border border-slate-700/50 overflow-hidden relative shadow-inner">
         {view === 'architecture' && (
           hasAnimated ? (
-            projectId === 'sprintpulse' ? <SprintPulseArchitecture /> : <ExecutiveReportingArchitecture />
+            projectId === 'sprintpulse' ? <SprintPulseArchitecture /> :
+            projectId === 'meetingops' ? <MeetingOpsArchitecture /> :
+            <ExecutiveReportingArchitecture />
           ) : (
             <div className="w-full h-full flex items-center justify-center p-4">
               <img
@@ -97,7 +101,9 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
         )}
         {view === 'demo' && (
           hasAnimated ? (
-            projectId === 'sprintpulse' ? <SprintPulseUserFlow /> : <ExecutiveReportingUserFlow />
+            projectId === 'sprintpulse' ? <SprintPulseUserFlow /> :
+            projectId === 'meetingops' ? <MeetingOpsUserFlow /> :
+            <ExecutiveReportingUserFlow />
           ) : (
             <div className="w-full h-full flex items-center justify-center p-4">
               <video
@@ -169,6 +175,22 @@ const FeaturedProjects: React.FC = () => {
       icon: '🚀',
       archPlaceholder: '/my-portfolio/sprintpulse-arch.png',
       demoPlaceholder: '/my-portfolio/sprintpulse-demo.mp4',
+    },
+    {
+      id: 'meetingops',
+      title: 'MeetingOps AI',
+      subtitle: 'Copilot Studio Agent (Personal Tool)',
+      description: 'M365 Copilot Studio agent that converts post-meeting artifacts into actionable outputs — MOM, follow-up emails, Jira drafts, and KT docs via private Teams adaptive cards.',
+      impact: [
+        { label: 'Follow-up Time', value: '~0 min' },
+        { label: 'Actions Available', value: '5 one-click' },
+        { label: 'Status', value: 'In Use' },
+      ],
+      technologies: ['Copilot Studio', 'Power Automate', 'Teams', 'Microsoft Graph', 'SharePoint', 'Adaptive Cards'],
+      color: '#6366F1',
+      icon: '🤖',
+      archPlaceholder: '/my-portfolio/meetingops-arch.png',
+      demoPlaceholder: '/my-portfolio/meetingops-demo.mp4',
     },
     {
       id: 'persona-gap',
