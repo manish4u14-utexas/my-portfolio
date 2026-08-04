@@ -92,27 +92,27 @@ const About: React.FC = () => {
           ))}
         </div>
 
-        {/* Signature Impacts - condensed into one visual row */}
+        {/* Signature Impacts - reflecting real shipped products */}
         <div className={`mt-12 transition-all duration-700 ease-out delay-500 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className="text-center text-sm font-semibold text-sky-400 uppercase tracking-wider mb-6">
-            Signature AI Impacts
+            What I've Built & Shipped
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[
               {
-                title: 'GenAI Documentation Engine',
-                impact: '85% time saved, $200K+ annually',
-                tech: 'Azure OpenAI + Flask + JIRA API',
+                title: 'Executive Reporting Agent',
+                impact: 'Eliminated 4-6 hrs/week of manual status consolidation',
+                tech: 'Azure OpenAI + Power Automate + Teams',
               },
               {
-                title: 'Intelligent Support Triage',
-                impact: 'Auto-classification in 1-2 min',
-                tech: 'GPT APIs + Power Automate',
+                title: 'MeetingOps AI Agent',
+                impact: 'Zero-touch meeting follow-ups via Copilot Studio',
+                tech: 'Copilot Studio + Power Automate + Graph API',
               },
               {
-                title: 'AI-Native Prototyping',
-                impact: 'Discovery-to-release acceleration',
-                tech: 'Cursor + Claude + Stitch',
+                title: 'SprintPulse.ai (Founder)',
+                impact: 'MVP live — AI-native agile delivery SaaS',
+                tech: 'Next.js + Agentic AI + JIRA API',
               },
             ].map((item, idx) => (
               <div key={idx} className="impact-box group hover:border-l-sky-400 transition-all duration-300">

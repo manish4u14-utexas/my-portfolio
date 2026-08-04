@@ -191,22 +191,6 @@ const FeaturedProjects: React.FC = () => {
       demoPlaceholder: '/my-portfolio/meetingops-demo.mp4',
     },
     {
-      id: 'persona-gap',
-      title: 'The Persona Gap: Clinical LLM Auditing',
-      subtitle: 'MSAI Research Publication',
-      description: 'Authored research evaluating bias in clinical LLMs using SHAP visualizations and Explainable AI principles. Advancing AI governance for healthcare applications.',
-      impact: [
-        { label: 'Focus', value: 'XAI & Bias' },
-        { label: 'Domain', value: 'Healthcare AI' },
-        { label: 'Method', value: 'SHAP + XAI' },
-      ],
-      technologies: ['Explainable AI', 'SHAP', 'Clinical LLMs', 'AI Governance', 'Python'],
-      color: '#8B5CF6',
-      icon: '🔬',
-      archPlaceholder: '/my-portfolio/persona-gap-arch.png',
-      demoPlaceholder: '/my-portfolio/persona-gap-demo.mp4',
-    },
-    {
       id: 'support-triage',
       title: 'Intelligent Support Triage Pipeline',
       subtitle: 'Enterprise AI Automation',
@@ -233,13 +217,13 @@ const FeaturedProjects: React.FC = () => {
           className={`text-center mb-12 transition-all duration-700 ease-out ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <span className="inline-block px-4 py-1.5 bg-sky-500/10 text-sky-400 rounded-full text-xs font-semibold border border-sky-500/20 mb-4">
-            Featured Work
+            AI Products & Agents
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Featured AI <span className="text-sky-400">Case Studies</span>
+            Featured AI <span className="text-sky-400">Products</span>
           </h2>
           <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
-            Real products I built, shipped, or am currently developing — with measurable business impact
+            Production AI agents and products I built, shipped, and use daily — with measurable business impact
           </p>
         </div>
 
@@ -331,18 +315,18 @@ const FeaturedProjects: React.FC = () => {
               </div>
             </div>
 
-            {/* Fake News Detection */}
+            {/* Support Triage */}
             <div className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-4 card-hover">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-xl">📰</span>
+                <span className="text-xl">⚙️</span>
                 <div>
-                  <h4 className="text-sm font-bold text-white">Hindi Fake News Detection</h4>
-                  <p className="text-xs text-gray-500">ML/DL Research • 83% Accuracy</p>
+                  <h4 className="text-sm font-bold text-white">Intelligent Support Triage</h4>
+                  <p className="text-xs text-gray-500">GPT-Powered Classification • 1-2 min</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-400 mb-2">LSTM-based approach achieving 83% accuracy and AUC 0.89 for Hindi language fake news.</p>
+              <p className="text-xs text-gray-400 mb-2">End-to-end support triage pipeline automating global request classification by region and issue type.</p>
               <div className="flex flex-wrap gap-1">
-                {['LSTM', 'NLP', 'Python', 'TensorFlow'].map((t, i) => (
+                {['GPT APIs', 'Power Automate', 'AI Builder', 'Power BI'].map((t, i) => (
                   <span key={i} className="tech-pill">{t}</span>
                 ))}
               </div>

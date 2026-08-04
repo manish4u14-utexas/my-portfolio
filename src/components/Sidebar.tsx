@@ -53,11 +53,11 @@ const Sidebar: React.FC = () => {
   const navItems = [
     { id: 'home', label: 'Home', icon: 'home' },
     { id: 'about', label: 'About', icon: 'user' },
-    { id: 'projects', label: 'Projects', icon: 'code' },
+    { id: 'projects', label: 'AI Products', icon: 'code' },
     { id: 'skills', label: 'Skills', icon: 'award' },
     { id: 'experience', label: 'Experience', icon: 'briefcase' },
     { id: 'education', label: 'Education & Certs', icon: 'book' },
-    { id: 'publications', label: 'Publications', icon: 'document' },
+    { id: 'publications', label: 'MSAI Research', icon: 'document' },
     { id: 'contact', label: 'Contact', icon: 'mail' },
   ];
 
