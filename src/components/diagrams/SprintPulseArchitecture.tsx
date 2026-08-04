@@ -8,10 +8,7 @@ const SprintPulseArchitecture: React.FC = () => {
   useEffect(() => {
     if (!inView) return;
     const timer = setInterval(() => {
-      setStep((prev) => {
-        if (prev >= 10) { clearInterval(timer); return prev; }
-        return prev + 1;
-      });
+      setStep((prev) => { if (prev >= 10) { clearInterval(timer); return prev; } return prev + 1; });
     }, 400);
     return () => clearInterval(timer);
   }, [inView]);
@@ -40,50 +37,51 @@ const SprintPulseArchitecture: React.FC = () => {
         <p className="text-[10px] text-gray-500">AI-powered agile delivery platform</p>
       </div>
 
-      {/* Top Row */}
+      {/* Top Row with arrows */}
       <div className="mb-2">
         <p className="text-[9px] text-gray-600 font-medium mb-1.5 uppercase tracking-wider">Infrastructure</p>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5">
+        <div className="flex flex-wrap items-center gap-y-1.5">
           {topRow.map((block, i) => (
-            <div
-              key={i}
-              className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 1 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-              style={{ transitionDelay: `${200 + i * 200}ms`, borderColor: `${block.color}50`, backgroundColor: `${block.color}10` }}
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm">{block.icon}</span>
-                <span className="text-[10px] font-semibold text-white leading-tight">{block.title}</span>
+            <React.Fragment key={i}>
+              <div
+                className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 1 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                style={{ transitionDelay: `${200 + i * 200}ms`, borderColor: `${block.color}50`, backgroundColor: `${block.color}10` }}
+              >
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm">{block.icon}</span>
+                  <span className="text-[10px] font-semibold text-white">{block.title}</span>
+                </div>
               </div>
-            </div>
+              {i < topRow.length - 1 && (
+                <span className={`text-sky-400/50 text-sm mx-1 transition-opacity duration-300 ${step >= 2 + Math.floor(i / 2) ? 'opacity-100' : 'opacity-0'}`}>→</span>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>
 
-      {/* Flow direction */}
-      <div className={`flex items-center justify-center gap-1 my-2 transition-all duration-500 ${step >= 5 ? 'opacity-100' : 'opacity-0'}`}>
-        {['requests', 'context', 'data', 'enforce'].map((l, i) => (
-          <React.Fragment key={i}>
-            <span className="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-gray-400 rounded">{l}</span>
-            {i < 3 && <span className="text-gray-600 text-xs">→</span>}
-          </React.Fragment>
-        ))}
-      </div>
+      {/* Arrow down */}
+      <div className={`text-center text-sky-400/50 text-sm my-1 transition-opacity duration-400 ${step >= 5 ? 'opacity-100' : 'opacity-0'}`}>↓</div>
 
-      {/* Bottom Row */}
+      {/* Bottom Row with arrows */}
       <div className="mb-2">
         <p className="text-[9px] text-gray-600 font-medium mb-1.5 uppercase tracking-wider">Application Layer</p>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5">
+        <div className="flex flex-wrap items-center gap-y-1.5">
           {bottomRow.map((block, i) => (
-            <div
-              key={i}
-              className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 6 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-              style={{ transitionDelay: `${1800 + i * 200}ms`, borderColor: `${block.color}50`, backgroundColor: `${block.color}10` }}
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm">{block.icon}</span>
-                <span className="text-[10px] font-semibold text-white leading-tight">{block.title}</span>
+            <React.Fragment key={i}>
+              <div
+                className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 6 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                style={{ transitionDelay: `${1800 + i * 200}ms`, borderColor: `${block.color}50`, backgroundColor: `${block.color}10` }}
+              >
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm">{block.icon}</span>
+                  <span className="text-[10px] font-semibold text-white">{block.title}</span>
+                </div>
               </div>
-            </div>
+              {i < bottomRow.length - 1 && (
+                <span className={`text-sky-400/50 text-sm mx-1 transition-opacity duration-300 ${step >= 7 + Math.floor(i / 2) ? 'opacity-100' : 'opacity-0'}`}>→</span>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>

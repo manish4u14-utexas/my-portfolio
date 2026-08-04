@@ -29,9 +29,7 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
   const hasGovernanceTab = projectId === 'exec-reporting';
 
   const getTabLabel = () => {
-    if (projectId === 'sprintpulse') return 'User Flow';
-    if (projectId === 'exec-reporting') return 'User Flow';
-    return 'Live Demo';
+    return 'User Flow';
   };
 
   return (

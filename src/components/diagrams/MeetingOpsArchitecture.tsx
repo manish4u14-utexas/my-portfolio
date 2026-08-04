@@ -66,36 +66,45 @@ const MeetingOpsArchitecture: React.FC = () => {
       </div>
 
       {/* Arrow */}
-      <div className={`text-center text-gray-600 text-xs mb-1 transition-opacity duration-400 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>↓</div>
+      <div className={`text-center text-sky-400/50 text-sm mb-1 transition-opacity duration-400 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>↓</div>
 
       {/* Row 2: Copilot Studio Agent - Skills */}
       <div className={`mb-2 transition-all duration-600 ${step >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`} style={{ transitionDelay: '800ms' }}>
         <p className="text-[9px] text-gray-600 font-medium mb-1 uppercase tracking-wider">Copilot Studio — Skills</p>
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           {skills.map((s, i) => (
-            <div key={i} className="rounded border border-sky-500/40 bg-sky-500/8 px-1.5 py-1.5 text-center">
-              <span className="text-sm block">{s.icon}</span>
-              <span className="text-[8px] font-medium text-sky-300 leading-tight block mt-0.5">{s.title}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Row 3: Tools */}
-      <div className={`mb-2 transition-all duration-600 ${step >= 7 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`} style={{ transitionDelay: '1600ms' }}>
-        <p className="text-[9px] text-gray-600 font-medium mb-1 uppercase tracking-wider">Action Tools</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1">
-          {tools.map((t, i) => (
-            <div key={i} className="rounded border border-purple-500/40 bg-purple-500/8 px-1.5 py-1.5 text-center">
-              <span className="text-sm block">{t.icon}</span>
-              <span className="text-[8px] font-medium text-purple-300 leading-tight block mt-0.5">{t.title}</span>
-            </div>
+            <React.Fragment key={i}>
+              <div className="rounded border border-sky-500/40 bg-sky-500/8 px-1.5 py-1.5 text-center">
+                <span className="text-sm block">{s.icon}</span>
+                <span className="text-[8px] font-medium text-sky-300 leading-tight block mt-0.5">{s.title}</span>
+              </div>
+              {i < skills.length - 1 && <span className="text-sky-400/40 text-xs">→</span>}
+            </React.Fragment>
           ))}
         </div>
       </div>
 
       {/* Arrow */}
-      <div className={`text-center text-gray-600 text-xs mb-1 transition-opacity duration-400 ${step >= 9 ? 'opacity-100' : 'opacity-0'}`}>↓</div>
+      <div className={`text-center text-sky-400/50 text-sm mb-1 transition-opacity duration-400 ${step >= 7 ? 'opacity-100' : 'opacity-0'}`}>↓</div>
+
+      {/* Row 3: Tools */}
+      <div className={`mb-2 transition-all duration-600 ${step >= 7 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`} style={{ transitionDelay: '1600ms' }}>
+        <p className="text-[9px] text-gray-600 font-medium mb-1 uppercase tracking-wider">Action Tools</p>
+        <div className="flex flex-wrap items-center gap-1">
+          {tools.map((t, i) => (
+            <React.Fragment key={i}>
+              <div className="rounded border border-purple-500/40 bg-purple-500/8 px-1.5 py-1.5 text-center">
+                <span className="text-sm block">{t.icon}</span>
+                <span className="text-[8px] font-medium text-purple-300 leading-tight block mt-0.5">{t.title}</span>
+              </div>
+              {i < tools.length - 1 && <span className="text-purple-400/40 text-xs">→</span>}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      {/* Arrow */}
+      <div className={`text-center text-sky-400/50 text-sm mb-1 transition-opacity duration-400 ${step >= 9 ? 'opacity-100' : 'opacity-0'}`}>↓</div>
 
       {/* Row 4: Data & Integrations */}
       <div className={`mb-2 transition-all duration-600 ${step >= 10 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`} style={{ transitionDelay: '2400ms' }}>
