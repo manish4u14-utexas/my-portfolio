@@ -44,7 +44,7 @@ const SprintPulseArchitecture: React.FC = () => {
           {topRow.map((block, i) => (
             <React.Fragment key={i}>
               <div
-                className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 1 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 1 + i ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 style={{ transitionDelay: `${200 + i * 200}ms`, borderColor: `${block.color}50`, backgroundColor: `${block.color}10` }}
               >
                 <div className="flex items-center gap-1.5">
@@ -53,7 +53,7 @@ const SprintPulseArchitecture: React.FC = () => {
                 </div>
               </div>
               {i < topRow.length - 1 && (
-                <span className={`text-sky-400/50 text-sm mx-1 transition-opacity duration-300 ${step >= 2 + Math.floor(i / 2) ? 'opacity-100' : 'opacity-0'}`}>→</span>
+                <span className={`text-sky-400/50 text-sm mx-1 transition-opacity duration-300 ${step >= 2 + i ? 'opacity-100' : 'opacity-0'}`}>→</span>
               )}
             </React.Fragment>
           ))}
@@ -70,7 +70,7 @@ const SprintPulseArchitecture: React.FC = () => {
           {bottomRow.map((block, i) => (
             <React.Fragment key={i}>
               <div
-                className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 6 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                className={`rounded-lg border px-2 py-2 transition-all duration-600 ${step >= 6 + i ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 style={{ transitionDelay: `${1800 + i * 200}ms`, borderColor: `${block.color}50`, backgroundColor: `${block.color}10` }}
               >
                 <div className="flex items-center gap-1.5">
@@ -79,7 +79,7 @@ const SprintPulseArchitecture: React.FC = () => {
                 </div>
               </div>
               {i < bottomRow.length - 1 && (
-                <span className={`text-sky-400/50 text-sm mx-1 transition-opacity duration-300 ${step >= 7 + Math.floor(i / 2) ? 'opacity-100' : 'opacity-0'}`}>→</span>
+                <span className={`text-sky-400/50 text-sm mx-1 transition-opacity duration-300 ${step >= 7 + i ? 'opacity-100' : 'opacity-0'}`}>→</span>
               )}
             </React.Fragment>
           ))}

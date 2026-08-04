@@ -46,7 +46,7 @@ const MeetingOpsUserFlow: React.FC = () => {
           {journey.map((s, i) => (
             <React.Fragment key={i}>
               <div
-                className={`rounded-lg border px-2 py-1.5 transition-all duration-600 ${step >= 1 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                className={`rounded-lg border px-2 py-1.5 transition-all duration-600 ${step >= 1 + i ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
                 style={{ transitionDelay: `${200 + i * 250}ms`, borderColor: `${s.color}50`, backgroundColor: `${s.color}10`, minWidth: '80px' }}
               >
                 <div className="flex items-center gap-1 mb-0.5">
@@ -58,8 +58,8 @@ const MeetingOpsUserFlow: React.FC = () => {
               </div>
               {i < journey.length - 1 && (
                 <span
-                  className={`text-sky-400/60 text-sm mx-1 transition-opacity duration-400 ${step >= 2 + Math.floor(i / 2) ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ transitionDelay: `${350 + i * 250}ms` }}
+                  className={`text-sky-400/60 text-sm mx-1 transition-opacity duration-400 ${step >= 2 + i ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ transitionDelay: `${400 + i * 250}ms` }}
                 >→</span>
               )}
             </React.Fragment>
@@ -77,7 +77,7 @@ const MeetingOpsUserFlow: React.FC = () => {
           {actions.map((a, i) => (
             <div
               key={i}
-              className={`rounded-lg border px-2.5 py-2 text-center transition-all duration-500 ${step >= 8 + Math.floor(i / 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+              className={`rounded-lg border px-2.5 py-2 text-center transition-all duration-500 ${step >= 8 + i ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
               style={{ transitionDelay: `${2400 + i * 200}ms`, borderColor: `${a.color}50`, backgroundColor: `${a.color}10` }}
             >
               <span className="text-base block">{a.icon}</span>
