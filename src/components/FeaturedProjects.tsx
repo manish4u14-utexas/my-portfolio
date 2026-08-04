@@ -7,6 +7,8 @@ import ExecutiveReportingUserFlow from './diagrams/ExecutiveReportingUserFlow';
 import ExecutiveReportingGovernance from './diagrams/ExecutiveReportingGovernance';
 import MeetingOpsArchitecture from './diagrams/MeetingOpsArchitecture';
 import MeetingOpsUserFlow from './diagrams/MeetingOpsUserFlow';
+import VittOmniArchitecture from './diagrams/VittOmniArchitecture';
+import VittOmniUserFlow from './diagrams/VittOmniUserFlow';
 
 interface CaseStudy {
   id: string;
@@ -25,7 +27,7 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
   const [view, setView] = useState<'architecture' | 'demo' | 'governance'>('architecture');
 
   // Determine which project has custom animated diagrams
-  const hasAnimated = projectId === 'sprintpulse' || projectId === 'exec-reporting' || projectId === 'meetingops';
+  const hasAnimated = projectId === 'sprintpulse' || projectId === 'exec-reporting' || projectId === 'meetingops' || projectId === 'vittomni';
   const hasGovernanceTab = projectId === 'exec-reporting';
 
   const getTabLabel = () => {
@@ -76,6 +78,7 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
           hasAnimated ? (
             projectId === 'sprintpulse' ? <SprintPulseArchitecture /> :
             projectId === 'meetingops' ? <MeetingOpsArchitecture /> :
+            projectId === 'vittomni' ? <VittOmniArchitecture /> :
             <ExecutiveReportingArchitecture />
           ) : (
             <div className="w-full h-full flex items-center justify-center p-4">
@@ -101,6 +104,7 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
           hasAnimated ? (
             projectId === 'sprintpulse' ? <SprintPulseUserFlow /> :
             projectId === 'meetingops' ? <MeetingOpsUserFlow /> :
+            projectId === 'vittomni' ? <VittOmniUserFlow /> :
             <ExecutiveReportingUserFlow />
           ) : (
             <div className="w-full h-full flex items-center justify-center p-4">
@@ -191,20 +195,20 @@ const FeaturedProjects: React.FC = () => {
       demoPlaceholder: '/my-portfolio/meetingops-demo.mp4',
     },
     {
-      id: 'support-triage',
-      title: 'Intelligent Support Triage Pipeline',
-      subtitle: 'Enterprise AI Automation',
-      description: 'Directed product lifecycle for an end-to-end support triage system using GPT APIs and Power Automate, automating global request classification by region and issue type.',
+      id: 'vittomni',
+      title: 'Vitt-Omni',
+      subtitle: 'Cross-Platform Financial Toolkit (Founder)',
+      description: 'Full-stack mobile app combining 13 financial calculators, AI-powered advisory (Gemini), live currency rates, goal tracking, and smart insights — built from scratch and shipped to Play Store.',
       impact: [
-        { label: 'Processing', value: '1-2 min' },
-        { label: 'Coverage', value: 'Global' },
-        { label: 'Output', value: 'Real-time Dashboards' },
+        { label: 'Calculators', value: '13' },
+        { label: 'Platform', value: 'Play Store' },
+        { label: 'AI Model', value: 'Gemini 1.5' },
       ],
-      technologies: ['GPT-5 APIs', 'Power Automate', 'AI Builder', 'Dataverse', 'Power BI'],
-      color: '#F59E0B',
-      icon: '⚙️',
-      archPlaceholder: '/my-portfolio/support-triage-arch.png',
-      demoPlaceholder: '/my-portfolio/support-triage-demo.mp4',
+      technologies: ['React Native', 'Firebase', 'Gemini AI', 'Redux Toolkit', 'TypeScript', 'Expo'],
+      color: '#10B981',
+      icon: '💰',
+      archPlaceholder: '/my-portfolio/vittomni-arch.png',
+      demoPlaceholder: '/my-portfolio/vittomni-demo.mp4',
     },
   ];
 
@@ -290,48 +294,6 @@ const FeaturedProjects: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Additional Projects - compact grid */}
-        <div className={`mt-12 transition-all duration-700 ease-out delay-500 ${sectionInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6">
-            Other Ventures
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Vittomni */}
-            <div className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-4 card-hover">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-xl">💰</span>
-                <div>
-                  <h4 className="text-sm font-bold text-white">Vittomni</h4>
-                  <p className="text-xs text-gray-500">Personal Finance Mobile App</p>
-                </div>
-              </div>
-              <p className="text-xs text-gray-400 mb-2">End-to-end B2C product from UX design to Google Play deployment.</p>
-              <div className="flex flex-wrap gap-1">
-                {['Mobile', 'Android', 'UX Design', 'Product Lifecycle'].map((t, i) => (
-                  <span key={i} className="tech-pill">{t}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Support Triage */}
-            <div className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-4 card-hover">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-xl">⚙️</span>
-                <div>
-                  <h4 className="text-sm font-bold text-white">Intelligent Support Triage</h4>
-                  <p className="text-xs text-gray-500">GPT-Powered Classification • 1-2 min</p>
-                </div>
-              </div>
-              <p className="text-xs text-gray-400 mb-2">End-to-end support triage pipeline automating global request classification by region and issue type.</p>
-              <div className="flex flex-wrap gap-1">
-                {['GPT APIs', 'Power Automate', 'AI Builder', 'Power BI'].map((t, i) => (
-                  <span key={i} className="tech-pill">{t}</span>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
