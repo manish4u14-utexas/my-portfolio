@@ -21,6 +21,7 @@ interface CaseStudy {
   icon: string;
   archPlaceholder: string;
   demoPlaceholder: string;
+  liveUrl?: string;
 }
 
 const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; projectId: string }> = ({ archSrc, demoSrc, title, projectId }) => {
@@ -177,6 +178,7 @@ const FeaturedProjects: React.FC = () => {
       icon: '🚀',
       archPlaceholder: '/my-portfolio/sprintpulse-arch.png',
       demoPlaceholder: '/my-portfolio/sprintpulse-demo.mp4',
+      liveUrl: 'https://sprintpulse.ai',
     },
     {
       id: 'meetingops',
@@ -209,6 +211,7 @@ const FeaturedProjects: React.FC = () => {
       icon: '💰',
       archPlaceholder: '/my-portfolio/vittomni-arch.png',
       demoPlaceholder: '/my-portfolio/vittomni-demo.mp4',
+      liveUrl: 'https://vitt.sprintpulse.ai',
     },
   ];
 
@@ -261,6 +264,20 @@ const FeaturedProjects: React.FC = () => {
                     <p className="text-gray-400 text-sm leading-relaxed mb-4">
                       {study.description}
                     </p>
+
+                    {/* Live URL button */}
+                    {study.liveUrl && (
+                      <a
+                        href={study.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-500/15 text-green-400 border border-green-500/30 rounded-lg text-xs font-semibold hover:bg-green-500/25 hover:border-green-400/50 transition-all duration-200 mb-4"
+                      >
+                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        Try it Live →
+                        <span className="text-green-300/80 font-normal ml-1">{study.liveUrl.replace('https://', '')}</span>
+                      </a>
+                    )}
                   </div>
 
                   {/* Impact Box */}
