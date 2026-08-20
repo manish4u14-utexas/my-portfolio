@@ -25,11 +25,12 @@ interface CaseStudy {
 }
 
 const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; projectId: string }> = ({ archSrc, demoSrc, title, projectId }) => {
-  const [view, setView] = useState<'architecture' | 'demo' | 'governance'>('architecture');
+  const [view, setView] = useState<'architecture' | 'demo' | 'governance' | 'video'>('architecture');
 
   // Determine which project has custom animated diagrams
   const hasAnimated = projectId === 'sprintpulse' || projectId === 'exec-reporting' || projectId === 'meetingops' || projectId === 'vittomni';
   const hasGovernanceTab = projectId === 'exec-reporting';
+  const hasDemoTab = projectId === 'vittomni';
 
   const getTabLabel = () => {
     return 'User Flow';
@@ -69,6 +70,18 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
             }`}
           >
             🛡️ AI Governance
+          </button>
+        )}
+        {hasDemoTab && (
+          <button
+            onClick={() => setView('video')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+              view === 'video'
+                ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40'
+                : 'bg-slate-700/50 text-gray-400 border border-slate-600/50 hover:text-gray-300'
+            }`}
+          >
+            🎬 Demo
           </button>
         )}
       </div>
@@ -134,6 +147,30 @@ const MediaToggle: React.FC<{ archSrc: string; demoSrc: string; title: string; p
         )}
         {view === 'governance' && projectId === 'exec-reporting' && (
           <ExecutiveReportingGovernance />
+        )}
+        {view === 'video' && (
+          <div className="w-full h-full flex items-center justify-center p-4">
+            <video
+              src={demoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto rounded-lg max-h-[300px]"
+              onError={(e) => {
+                const target = e.target as HTMLVideoElement;
+                target.style.display = 'none';
+                target.parentElement!.innerHTML = `
+                  <div class="flex flex-col items-center justify-center h-full text-center p-6">
+                    <div class="w-16 h-16 rounded-full bg-sky-500/20 flex items-center justify-center mb-4">
+                      <svg class="w-8 h-8 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <p class="text-gray-500 text-xs">Demo video coming soon</p>
+                  </div>
+                `;
+              }}
+            />
+          </div>
         )}
       </div>
     </div>
